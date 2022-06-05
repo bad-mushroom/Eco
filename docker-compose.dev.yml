@@ -19,6 +19,7 @@ services:
        - '${APP_HTTP_PORT:-80}:80'
     restart: unless-stopped
     volumes:
+      - ./.build/nginx.dev.conf:/etc/nginx/conf.d/default.conf
       - ./:/var/www
 
 # -- FPM
