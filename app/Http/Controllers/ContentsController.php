@@ -13,7 +13,7 @@ class ContentsController extends Controller
             ->with(['author:id,name', 'type:label,slug', 'comments', 'tags'])
             ->get();
 
-        return view('contents')
+        return view('home')
             ->with('contents', $contents);
     }
 }

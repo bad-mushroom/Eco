@@ -13,4 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/content', 'App\Http\Controllers\ContentsController@index');
+Route::group(['middleware' => 'theme:ecosphere'], function () {
+    Route::get('/content', 'App\Http\Controllers\ContentsController@index');
+    Route::get('/', 'App\Http\Controllers\HomeController@index');
+});
