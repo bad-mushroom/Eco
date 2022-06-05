@@ -10,7 +10,7 @@ class ContentsController extends Controller
     public function index(Request $request)
     {
         $contents = Content::query()
-            ->with(['author:id,name', 'type:label,slug', 'commentable'])
+            ->with(['author:id,name', 'type:label,slug', 'comments', 'tags'])
             ->get();
 
         return view('contents')

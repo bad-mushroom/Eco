@@ -6,7 +6,7 @@ use App\Models\Comment;
 
 trait Commentable
 {
-    public function commentable()
+    public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
     }

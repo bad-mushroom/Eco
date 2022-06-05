@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\Traits\Taggable;
 use App\Models\Traits\Uuidable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Tag extends Model
 {
-    use HasFactory, Taggable, Uuidable;
+    use HasFactory, Uuidable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +16,8 @@ class Comment extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'body',
+        'label',
+        'slug'
     ];
 
     // -- Relationships
@@ -25,14 +25,18 @@ class Comment extends Model
     /**
      * Get all of the models that own comments.
      */
-    public function commentable()
+    public function taggable()
     {
         return $this->morphTo();
     }
 
-    public function author()
+    public function contents()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->morphedByMany(Content::class, 'taggable');
     }
 
+    public function comments()
+    {
+        return $this->morphedByMany(Comment::class, 'taggable');
+    }
 }

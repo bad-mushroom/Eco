@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Models\Traits\Commentable;
 use App\Models\Traits\Sluggable;
+use App\Models\Traits\Taggable;
 use App\Models\Traits\Uuidable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
-    use Commentable, HasFactory, Sluggable, Uuidable;
+    use Commentable, HasFactory, Sluggable, Taggable, Uuidable;
 
     protected $sluggableColumn = 'subject';
 
@@ -46,5 +47,4 @@ class Content extends Model
     {
         return $this->belongsTo(ContentType::class, 'content_type_id');
     }
-
 }

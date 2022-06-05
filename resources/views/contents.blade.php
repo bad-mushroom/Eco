@@ -1,3 +1,3 @@
 @foreach ($contents as $content)
-    {{ dump($content->commentable) }}
+    {{ dump($content) }}
 @endforeach
