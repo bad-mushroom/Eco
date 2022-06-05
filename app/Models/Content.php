@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Commentable;
 use App\Models\Traits\Sluggable;
 use App\Models\Traits\Uuidable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
-    use HasFactory, Sluggable, Uuidable;
+    use Commentable, HasFactory, Sluggable, Uuidable;
 
     protected $sluggableColumn = 'subject';
 

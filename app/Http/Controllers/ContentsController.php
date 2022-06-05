@@ -9,7 +9,9 @@ class ContentsController extends Controller
 {
     public function index(Request $request)
     {
-        $contents = Content::all();
+        $contents = Content::query()
+            ->with(['author:id,name', 'type:label,slug', 'commentable'])
+            ->get();
 
         return view('contents')
             ->with('contents', $contents);
