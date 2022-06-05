@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Sluggable;
 use App\Models\Traits\Uuidable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
-    use HasFactory, Uuidable;
+    use HasFactory, Sluggable, Uuidable;
+
+    protected $sluggableColumn = 'label';
 
     /**
      * The attributes that are mass assignable.
@@ -22,9 +25,6 @@ class Tag extends Model
 
     // -- Relationships
 
-    /**
-     * Get all of the models that own comments.
-     */
     public function taggable()
     {
         return $this->morphTo();
