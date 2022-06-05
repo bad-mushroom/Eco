@@ -1,3 +1,9 @@
-@foreach ($contents as $content)
-    {{ dump($content) }}
-@endforeach
+<html>
+<head>
+    @livewireStyles
+</head>
+<body>
+    <livewire:counter />
+    @livewireScripts
+</body>
+</html>
