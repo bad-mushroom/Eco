@@ -11,6 +11,8 @@ class Content extends Model
 {
     use HasFactory, Sluggable, Uuidable;
 
+    protected $sluggableColumn = 'subject';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,12 +38,12 @@ class Content extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function type()
     {
-        return $this->belongsTo(ContentType::class);
+        return $this->belongsTo(ContentType::class, 'content_type_id');
     }
 
 }

@@ -34,6 +34,16 @@ trait Sluggable
     }
 
     /**
+     * Fetch the separator to be used for slugs.
+     *
+     * @return string
+     */
+    protected function getSluggableSeparator(): string
+    {
+        return '-';
+    }
+
+    /**
      * Slug Getter/Setter.
      *
      * @return Attribute
@@ -42,7 +52,9 @@ trait Sluggable
     {
         return Attribute::make(
             get: fn ($value) => $value,
-            set: fn ($value, $attributes) => empty($value) ? Str::slug($attributes[$this->getSluggableColumn()]) : $value,
+            set: fn ($value, $attributes) => empty($value)
+                ? Str::slug($attributes[$this->getSluggableColumn()], $this->getSluggableSeparator())
+                : $value,
         );
     }
 }

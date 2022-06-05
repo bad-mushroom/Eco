@@ -2,19 +2,24 @@
 
 namespace Tests\Unit\Models\Traits;
 
-use PHPUnit\Framework\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class SluggableTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function test_that_true_is_true()
+    public function testSlugIsSetOnSaving()
     {
-        $content = new \App\Models\Content;
-        dd($content->save());
-        $this->assertTrue(true);
+        $contentType = \App\Models\ContentType::factory()->make();
+        $this->assertEmpty($contentType->slug);
+
+        $contentType->save();
+        $this->assertNotEmpty($contentType->slug);
     }
 }

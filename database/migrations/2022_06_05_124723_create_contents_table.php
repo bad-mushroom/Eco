@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('content_type_id')->constrained();
             $table->string('subject');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->text('body')->nullable();
             $table->foreignUuid('user_id')->constrained();
             $table->boolean('is_published')->default(false);
