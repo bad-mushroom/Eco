@@ -1,0 +1,67 @@
+version: '3.5'
+
+# Networks --------------------------------------------------------------------
+
+networks:
+  eco:
+    external: true
+
+# Services --------------------------------------------------------------------
+
+services:
+
+# -- Web
+
+  eco-web:
+    image: nginx:latest
+    container_name: eco_web
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www
+
+# -- FPM
+
+  eco-fpm:
+    container_name: eco_fpm
+    build:
+      context: ./.build
+      dockerfile: fpm.dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www
+
+# -- DB
+
+  eco-db:
+    image: mysql:latest
+    container_name: eco_db
+    volumes:
+      - ../database:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+
+# -- HTTPS Proxy
+
+  nazo-proxy:
+    image: steveltn/https-portal:latest
+    container_name: eco_proxy
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
+    environment:
+      DOMAINS: '
+        ${DOMAIN_NAME} -> http://ecoweb'
+      STAGE: ${CERT_DEPLOYMENT_LEVEL:-local}
+      FORCE_RENEW: ${CERT_FORCE_RENEW:-false}
+    volumes:
+      - https-portal-data:/var/lib/https-portal
+
+# Volumes ---------------------------------------------------------------------
+
+volumes:
+  https-portal-data:
