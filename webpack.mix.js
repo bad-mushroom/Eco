@@ -15,4 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+
 require(`${__dirname}/themes/ecosphere/webpack.mix.js`);

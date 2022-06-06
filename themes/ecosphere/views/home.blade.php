@@ -1,3 +1,7 @@
 @extends('layouts.app')
 
-<livewire:counter />
+@section('content')
+    <div>
+        @livewire('show-posts')
+    </div>
+@endsection

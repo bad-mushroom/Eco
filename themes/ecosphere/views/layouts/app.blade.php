@@ -12,14 +12,17 @@
     <title>{{ config('app.name', 'Eco') }}</title>
 
     <script src="{{ mix('js/app.js', 'themes/ecosphere') }}" defer></script>
-
     <link href="{{ mix('css/app.css', 'themes/ecosphere') }}" rel="stylesheet">
 
     @livewireStyles
 </head>
 
 <body>
+    @include('layouts.navigation')
+
     @yield('content')
+
+    @include('layouts.footer')
 
     @livewireScripts
 </body>
