@@ -2,6 +2,8 @@
 
 @section('content')
     <div>
-        @livewire('show-posts')
+        @if (true)
+            @livewire('show-posts')
+        @endif
     </div>
 @endsection

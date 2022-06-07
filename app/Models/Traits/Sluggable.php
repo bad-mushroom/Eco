@@ -40,6 +40,10 @@ trait Sluggable
      */
     protected function getSluggableSeparator(): string
     {
+        if (property_exists($this, 'sluggableSeparator')) {
+            return $this->sluggableSeparator;
+        }
+
         return '-';
     }
 

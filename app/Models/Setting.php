@@ -12,6 +12,7 @@ class Setting extends Model
     use HasFactory, Sluggable, Uuidable;
 
     protected $sluggableColumn = 'label';
+    protected $sluggableSeparator = '_';
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +23,7 @@ class Setting extends Model
         'label',
         'slug',
         'description',
+        'value',
         'default',
     ];
 

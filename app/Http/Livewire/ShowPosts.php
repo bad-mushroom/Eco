@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Content;
+use App\Services\Settings\Facades\Setting;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,6 +16,6 @@ class ShowPosts extends Component
     public function render()
     {
         return view('livewire.show_posts')
-            ->with('posts', Content::paginate(2));
+            ->with('posts', Content::paginate(Setting::get('posts_per_page')));
     }
 }

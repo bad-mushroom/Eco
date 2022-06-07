@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'theme:ecosphere'], function () {
-    Route::get('/content', 'App\Http\Controllers\ContentsController@index');
+    Route::get('/contents', 'App\Http\Controllers\ContentsController@index');
+    Route::get('/contents/{slug}', 'App\Http\Controllers\ContentsController@show');
     Route::get('/', 'App\Http\Controllers\HomeController@index');
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('', 'App\Http\Controllers\Admin\DashboardController@index');
+    Route::get('dashboard', 'App\Http\Controllers\Admin\DashboardController@index');
 });

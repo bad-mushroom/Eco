@@ -20,7 +20,23 @@
 <body>
     @include('layouts.navigation')
 
-    @yield('content')
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                @yield('content')
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Tags</div>
+                    <div class="card-body">
+                        @foreach ($tags as $tag)
+                           <a href="/content?tag={{ $tag->slug }}">{{ $tag->label }}</a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @include('layouts.footer')
 

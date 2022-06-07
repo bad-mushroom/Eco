@@ -4,7 +4,7 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
             @foreach($posts as $post)
                 <div class="post-preview">
-                    <a href="post.html">
+                    <a href="/contents/{{ $post->slug }}">
                         <h2 class="post-title">{{ $post->subject }}</h2>
                     </a>
                     <p class="post-meta">
@@ -13,6 +13,12 @@
                         on {{ $post->created_at }}
                     </p>
                 </div>
+
+                <p>{{ $post->body }}</p>
+
+                @foreach ($post->tags as $tag)
+                    <a href="" class="badge rounded-pill bg-primary">{{ $tag->label }}</a>
+                @endforeach
 
                 <hr class="my-4" />
             @endforeach
