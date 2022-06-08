@@ -23,4 +23,5 @@ Route::group(['middleware' => 'theme:ecosphere'], function () {
 Route::group(['prefix' => 'admin'], function () {
     Route::get('', 'App\Http\Controllers\Admin\DashboardController@index');
     Route::get('dashboard', 'App\Http\Controllers\Admin\DashboardController@index');
+    Route::get('settings', 'App\Http\Controllers\Admin\SettingsController@index');
 });
