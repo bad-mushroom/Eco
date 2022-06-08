@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('body')->nullable();
             $table->foreignUuid('user_id')->constrained();
+            $table->foreignUuid('category_id')->nullable()->constrained();
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
