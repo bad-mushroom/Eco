@@ -23,6 +23,14 @@ class SettingsSeeder extends Seeder
             'default'         => 10,
             'setting_type_id' => $this->lookupSettingType('content')->id,
         ]);
+
+        Setting::create([
+            'label'           => 'Main Navigation Menu',
+            'description'     => 'Primary navigation menu',
+            'value'           => null,
+            'default'         => null,
+            'setting_type_id' => $this->lookupSettingType('content')->id,
+        ]);
     }
 
     protected function lookupSettingType(string $slug): ?SettingType

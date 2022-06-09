@@ -20,20 +20,22 @@
 <body>
     @include('layouts.navigation')
 
-    <div class="container mt-5">
+    <header class="py-5 bg-light border-bottom mb-4">
+        <div class="container">
+            <div class="text-center my-5">
+                <h1 class="fw-bolder">Welcome to Blog Home!</h1>
+                <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-lg-8">
                 @yield('content')
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Tags</div>
-                    <div class="card-body">
-                        @foreach ($tags as $tag)
-                           <a href="/content?tag={{ $tag->slug }}">{{ $tag->label }}</a>
-                        @endforeach
-                    </div>
-                </div>
+            <div class="col-lg-4">
+                @include('layouts.widgetbar')
             </div>
         </div>
     </div>

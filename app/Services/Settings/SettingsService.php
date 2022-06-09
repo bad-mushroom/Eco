@@ -16,4 +16,9 @@ class SettingsService
             ? null
             : $setting->value;
     }
+
+    public function all()
+    {
+        return Setting::all();
+    }
 }
