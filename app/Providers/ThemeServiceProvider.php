@@ -19,6 +19,6 @@ class ThemeServiceProvider extends ServiceProvider
     {
         // -- Misc
 
-        View::composer('layouts.app', ViewComposers\AppViewComposer::class);
+        View::composer('layout', ViewComposers\AppViewComposer::class);
     }
 }

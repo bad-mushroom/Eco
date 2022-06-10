@@ -1,9 +1,7 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
     <div>
-        @if (true)
-            @livewire('show-posts')
-        @endif
+        @livewire('show-posts')
     </div>
 @endsection

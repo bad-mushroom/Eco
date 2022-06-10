@@ -15,14 +15,14 @@ class ContentTypesSeeder extends Seeder
      */
     public function run()
     {
-        ContentType::factory()->create([
-            'label'       => 'Post',
-            'description' => 'A blog post.',
-        ]);
+        $post = ContentType::firstOrNew(['slug' => 'post']);
+        $post->label = 'Post';
+        $post->description = 'A blog post.';
+        $post->save();
 
-        ContentType::factory()->create([
-            'label'       => 'Page',
-            'description' => 'A website page.',
-        ]);
+        $page = ContentType::firstOrNew(['slug' => 'page']);
+        $page->label = 'Page';
+        $page->description = 'A website page.';
+        $page->save();
     }
 }

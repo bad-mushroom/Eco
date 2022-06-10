@@ -16,7 +16,7 @@ class ContentsController extends Controller
             ->get();
 
         return view('home')
-            ->with('contents', $contents);
+            ->with('articles', $contents);
     }
 
     public function show(Request $request, string $slug)
@@ -27,6 +27,6 @@ class ContentsController extends Controller
             ->first();
 
         return view('pages.content_show')
-            ->with('content', $content);
+            ->with('article', $content);
     }
 }
