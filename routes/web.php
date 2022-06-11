@@ -26,5 +26,3 @@ Route::group(['middleware' => 'theme:ecosphere'], function () {
     Route::get('/contents/{slug}', 'App\Http\Controllers\ArticlesController@show');
     Route::get('/', 'App\Http\Controllers\HomeController@index');
 });
-
-
