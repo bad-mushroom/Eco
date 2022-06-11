@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('label');
             $table->string('slug');
             $table->string('url');
+            $table->string('icon')->nullable();
             $table->foreignUuid('menu_id')->constrained();
             $table->timestamps();
         });

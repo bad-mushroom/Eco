@@ -1,12 +1,12 @@
 <nav class="sb-topnav navbar navbar-expand sticky-top navbar-dark bg-dark">
-        <a class="navbar-brand ps-3" href="{{ route('admin.dashboard') }}">eco</a>
+        <a class="navbar-brand ps-3" href="{{ route('admin.dashboard') }}">{{ $site_title ?? 'Eco' }}</a>
 
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars text-light"></i></button>
 
     <ul class="navbar-nav ms-auto ms-md-0 ms-5 me-lg-4 ps-3">
         <li>
-            <a class="nav-link " id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link" href="#">
                 <i class="fas fa-eye fa-fw"></i> View Site
             </a>
         </li>

@@ -20,11 +20,13 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('summary')->nullable();
             $table->text('body')->nullable();
+            $table->text('featured_image')->nullable();
             $table->foreignUuid('user_id')->constrained();
             $table->foreignUuid('category_id')->nullable()->constrained();
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
             $table->boolean('is_featured')->default(false);
+            $table->boolean('allow_comments')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

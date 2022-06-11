@@ -12,22 +12,22 @@ $blue: #3d5a80;
 $indigo: #6574cd;
 $purple: #9561e2;
 $pink: #f66d9b;
-$red: #be2e2e;
-$orange: #ee6c4d;
+$red: #c85c5c;
+$orange: #e37f5b;
 $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
-$cyan: #6cb2eb;
+$cyan: #55a9ee;
 $black: #141920;
-$white: #f4f2f2;
+$white: #ffffff;
 
 $light: $white;
 $dark: $black;
 
-$theme-colors: ("primary": $blue,
-    "secondary": #8d99ae,
+$theme-colors: ("primary": $cyan,
+    "secondary": #b3b6ba,
     "success": $green,
-    "info": $cyan,
+    "info": $teal,
     "warning": $orange,
     "danger": $red,
     "light": $white,

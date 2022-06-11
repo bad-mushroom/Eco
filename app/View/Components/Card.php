@@ -4,16 +4,20 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class TestComponent extends Component
+class Card extends Component
 {
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(
+        public string $header = '',
+        public string $body = '',
+        public string $footer = '',
+    )
     {
-        //
     }
 
     /**
@@ -23,6 +27,6 @@ class TestComponent extends Component
      */
     public function render()
     {
-        return view('components.test-component');
+        return view('components.card');
     }
 }

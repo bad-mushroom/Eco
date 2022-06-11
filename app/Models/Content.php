@@ -25,6 +25,7 @@ class Content extends Model
         'subject',
         'slug',
         'body',
+        'icon',
         'is_published',
     ];
 
