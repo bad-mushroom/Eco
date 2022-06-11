@@ -6,7 +6,7 @@ use App\Models\Content;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class ContentsController extends Controller
+class ArticlesController extends Controller
 {
     public function index(Request $request)
     {

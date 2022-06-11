@@ -11,9 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js('resources/js/app.js', 'public/admin/js')
+mix.sass('resources/scss/app.scss', 'public/admin/css');
 
-require(`${__dirname}/themes/ecosphere/webpack.mix.js`);
+
+// require(`${__dirname}/themes/ecosphere/webpack.mix.js`);

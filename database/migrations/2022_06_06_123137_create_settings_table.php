@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->text('value')->nullable();
             $table->text('default')->nullable();
+            $table->string('datatype')->default('string');
             $table->foreignUuid('setting_type_id')->constrained();
             $table->timestamps();
         });

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Livewire\ShowPosts;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('', 'App\Http\Controllers\Admin\DashboardController@index');
+    Route::get('dashboard', 'App\Http\Controllers\Admin\DashboardController@index')->name('dashboard');
+    Route::get('settings', 'App\Http\Controllers\Admin\SettingsController@index');
+    Route::resource('content', 'App\Http\Controllers\Admin\ContentsController');
+});
+
 Route::group(['middleware' => 'theme:ecosphere'], function () {
-    Route::get('/contents', 'App\Http\Controllers\ContentsController@index');
-    Route::get('/contents/{slug}', 'App\Http\Controllers\ContentsController@show');
+    Route::get('/contents', 'App\Http\Controllers\ArticlesController@index');
+    Route::get('/contents/{slug}', 'App\Http\Controllers\ArticlesController@show');
     Route::get('/', 'App\Http\Controllers\HomeController@index');
 });
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('', 'App\Http\Controllers\Admin\DashboardController@index');
-    Route::get('dashboard', 'App\Http\Controllers\Admin\DashboardController@index');
-    Route::get('settings', 'App\Http\Controllers\Admin\SettingsController@index');
-});
+

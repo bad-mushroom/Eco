@@ -9,6 +9,6 @@ class SettingsController extends Controller
 {
     public function index(Request $request)
     {
-        return view('admin.pages.settings');
+        return view('admin.content.blank');
     }
 }

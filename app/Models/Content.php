@@ -6,6 +6,7 @@ use App\Models\Traits\Commentable;
 use App\Models\Traits\Sluggable;
 use App\Models\Traits\Taggable;
 use App\Models\Traits\Uuidable;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -51,5 +52,16 @@ class Content extends Model
     public function type()
     {
         return $this->belongsTo(ContentType::class, 'content_type_id');
+    }
+
+    public function scopeByType($query, string $slug = '*')
+    {
+        if ($slug === '*') {
+            return $query;
+        }
+
+        return $query->whereHas('type', function($query) use ($slug) {
+            return $query->where('slug', $slug);
+        });
     }
 }

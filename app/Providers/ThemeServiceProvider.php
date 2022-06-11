@@ -3,8 +3,6 @@
 namespace App\Providers;
 
 use App\Http\ViewComposers;
-use App\Models\Menu;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,8 +15,8 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // -- Misc
+        // -- Composers
 
-        View::composer('layout', ViewComposers\AppViewComposer::class);
+        View::composer(['layout', 'admin.content.content_create'], ViewComposers\AppViewComposer::class);
     }
 }

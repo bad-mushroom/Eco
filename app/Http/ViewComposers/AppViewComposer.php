@@ -2,6 +2,7 @@
 
 namespace App\Http\ViewComposers;
 
+use App\Models\ContentType;
 use App\Models\Menu;
 use App\Models\Tag;
 use App\Services\Settings\Facades\Setting;
@@ -19,7 +20,7 @@ class AppViewComposer
     public function compose(View $view)
     {
         $view->with('tags', Tag::all());
-
+        $view->with('contentTypes', ContentType::all());
         $this->registerMenus($view);
 
         $view->with('site_title', Setting::get('site_title'));
