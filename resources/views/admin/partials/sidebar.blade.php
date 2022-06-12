@@ -27,6 +27,11 @@
                 Pages
             </a>
 
+            <a class="nav-link collapsed" href="{{ route('admin.categories.index') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                Categories
+            </a>
+
             <div class="sb-sidenav-menu-heading">Configuration</div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
                 <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>

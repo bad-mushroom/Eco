@@ -4,6 +4,8 @@ namespace App\Http\ViewComposers;
 
 use App\Models\ContentType;
 use App\Models\SettingType;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 class SidebarViewComposer
@@ -17,6 +19,13 @@ class SidebarViewComposer
     public function compose(View $view)
     {
         $view->with('contentTypes', ContentType::all());
-        $view->with('settingTypes', SettingType::orderBy('label')->get());
+        $view->with('settingTypes', $this->getSettingTypes());
+    }
+
+    protected function getSettingTypes(): Collection
+    {
+        return Cache::remember('settingTypes', 60 * 60 * 8, function() {
+            return SettingType::orderBy('label')->get();
+        });
     }
 }

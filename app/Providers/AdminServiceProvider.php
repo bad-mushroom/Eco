@@ -18,6 +18,6 @@ class AdminServiceProvider extends ServiceProvider
         // -- Composers
 
         View::composer(['layout'], ViewComposers\AppViewComposer::class);
-        View::composer(['admin.partial.sidebar'], ViewComposers\SidebarViewComposer::class);
+        View::composer(['admin.partials.sidebar'], ViewComposers\SidebarViewComposer::class);
     }
 }

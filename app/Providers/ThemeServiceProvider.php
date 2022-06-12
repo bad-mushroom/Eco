@@ -17,6 +17,5 @@ class ThemeServiceProvider extends ServiceProvider
     {
         // -- Composers
 
-        View::composer(['layout', 'admin.pages.*'], ViewComposers\AppViewComposer::class);
     }
 }

@@ -68,6 +68,6 @@
     </div>
 </div>
 
-{{-- {{ $pages->links() }} --}}
+{{ $contents->links() }}
 
 @endsection

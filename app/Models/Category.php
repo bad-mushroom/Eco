@@ -26,8 +26,8 @@ class Category extends Model
 
     // -- Relationships
 
-    public function content()
+    public function contents()
     {
-        return $this->hasMany(Content::class);
+        return $this->hasMany(Content::class, 'content_id');
     }
 }

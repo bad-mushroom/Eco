@@ -3,22 +3,20 @@
 namespace App\Services\Settings;
 
 use App\Models\Setting;
+use Illuminate\Support\Facades\Cache;
 
 class SettingsService
 {
     public function get(string $settingSlug)
     {
-        $setting = Setting::query()
-            ->where('slug', $settingSlug)
-            ->first();
-
-        return empty($setting)
-            ? null
-            : $setting->value;
+        $settings = $this->all();
+        $setting = $settings->first(fn ($setting) => $setting->slug == $settingSlug);
     }
 
     public function all()
     {
-        return Setting::all();
+        return Cache::remember('settings', 60 * 60 * 8, function() {
+            return Setting::all();
+        });
     }
 }
