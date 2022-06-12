@@ -5,10 +5,10 @@
     <x-slot:body>
         <div class="mb-3">
             <label for="content-type-id" class="form-label">Type</label>
-            <select class="form-control" id="content-type-id" aria-describedby="contentTypeHelp">
+            <select class="form-control" name="content_type_id" id="content-type-id" aria-describedby="contentTypeHelp" wire:model="selectedContentType">
                 @foreach ($contentTypes as $type)
-                    <option value="{{ $type->id }}"
-                        @if (optional($selectedType)->slug == $type->slug)
+                    <option value="{{ $type->slug }}"
+                        @if (optional($selectedType ?? null)->slug == $type->slug)
                             selected
                         @endif>{{ $type->label }}
                     </option>
@@ -18,8 +18,8 @@
         </div>
         <div class="mb-3">
             <label for="user-id" class="form-label">Author</label>
-            <select class="form-control" id="user-id" aria-describedby="authorHelp">
-                <option></option>
+            <select class="form-control" name="user_id" id="user-id" aria-describedby="authorHelp">
+                <option value="{{ auth()->id() }}">{{ auth()->user()->name }}</option>
             </select>
             <div id="user-id" class="form-text">User that will be credited with this content.</div>
         </div>
@@ -34,8 +34,6 @@
         @if ($content ?? false)
             @foreach ($content->tags as $tag) {{ $tag->label }}@endforeach
         @endif
-        <textarea class="form-control">
-
-        </textarea>
+        <textarea name="tags" class="form-control"></textarea>
     </x-slot>
 </x-card>

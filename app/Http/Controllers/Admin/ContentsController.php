@@ -52,4 +52,12 @@ class ContentsController extends Controller
     {
         return $this->edit($request, $contentId);
     }
+
+    public function store(Request $request)
+    {
+        logger($request->all());
+        return redirect()
+            ->back()
+            ->with('success', 'Your content has been added.');
+    }
 }

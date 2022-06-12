@@ -13,7 +13,6 @@
 
     <div class="card-body">
         <table class="table table-striped table-hover">
-            <caption>Content</caption>
             <thead>
                 <tr>
                     <th scope="col" colspan="2">Content</th>
