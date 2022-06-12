@@ -14,14 +14,16 @@ class ShowContentTypeForm extends Component
      */
     public $selectedContentType;
 
-    public function mount($defaultType = null)
-    {logger($defaultType);
+    public function mount($defaultType = null, $content = null)
+    {
         $this->selectedContentType = $defaultType;
+        $this->content = $content;
     }
 
     public function render()
     {
         return view('livewire.content-type-form')
-            ->with('type', $this->selectedContentType);
+            ->with('type', $this->selectedContentType)
+            ->with('content', $this->content);
     }
 }

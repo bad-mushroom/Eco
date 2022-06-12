@@ -198,6 +198,7 @@ return [
         App\Providers\SettingServiceProvider::class,
         App\Providers\AdminServiceProvider::class,
         App\Providers\ThemeServiceProvider::class,
+        App\Providers\ContentTypeServiceProvider::class,
 
     ],
 

@@ -4,6 +4,7 @@
 @include('admin.partials.container_header', ['page_title' => $settingType->label . ' Settings'])
 
 <div class="container">
+    @include('admin.partials.alerts')
     <div class="card">
         <div class="card-body row">
             <form action="{{ route('admin.settings.update') }}" method="post">

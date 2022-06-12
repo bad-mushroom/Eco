@@ -24,10 +24,13 @@ class Content extends Model
      */
     protected $fillable = [
         'subject',
+        'summary',
         'slug',
         'body',
-        'icon',
         'is_published',
+        'content_type_id',
+        'published_at',
+        'user_id',
     ];
 
     /**

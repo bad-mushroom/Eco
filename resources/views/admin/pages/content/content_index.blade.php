@@ -31,28 +31,28 @@
             <tbody>
                 @foreach ($contents as $content)
                     <tr>
-                        <td class="text-center"><i class="fas fa-{{ $content->type->icon ?? 'file' }} text-primary fs-3 mt-2"></i></td>
-                        <td>
+                        <td valign="middle" class="text-center"><i class="fas fa-{{ $content->type->icon ?? 'file' }} text-primary fs-3 mt-2"></i></td>
+                        <td valign="middle">
                             <h4>{{ $content->subject }}</h4>
                             <em class="text-muted">{{ Str::limit($content->body, 50, '...') }}</em>
                         </td>
-                        <td>
+                        <td valign="middle">
                             <a href="{{ route('admin.content.index') }}">
                                 <span class="badge bg-info">{{ $content->comments_count }}</span>
                             </a>
                         </td>
-                        <td>
+                        <td valign="middle">
                             {!! !empty($content->relative_published_at) ? $content->relative_published_at : '<em class="text-muted">Not Published</em>' !!}
                         </td>
-                        <td>
-                            {{ $content->author->name }}
+                        <td valign="middle">
+                            <img src="/avatar.jpg" class="rounded-circle border border-3" style="width: 35px;" alt="{{ $content->author->name }}" title="{{ $content->author->name }}" />
                         </td>
-                        <td>
+                        <td valign="middle">
                             <a href="{{ route('admin.content.index', ['type' => $content->type->slug]) }}">
-                                <span class="badge bg-info"><i class="fas fa-{{ $content->type->icon ?? 'message' }} me-2"></i>{{ $content->type->label }}</span>
+                                <span class="badge bg-primary p-2"><i class="fas fa-{{ $content->type->icon ?? 'message' }} me-2"></i>{{ $content->type->label }}</span>
                             </a>
                         </td>
-                        <td>
+                        <td valign="middle">
                             <a href="{{ route('admin.content.edit', $content) }}" title="Preview" target="_blank"
                                 class="btn btn-sm btn-secondary text-dark"><i class="fas fa-eye"></i>
                             </a>

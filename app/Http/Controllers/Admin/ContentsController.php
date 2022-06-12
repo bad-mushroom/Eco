@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Content;
 use App\Models\ContentType;
+use App\Models\Tag;
+use App\Services\ContentTypes\Facades\Type;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ContentsController extends Controller
 {
@@ -15,6 +19,7 @@ class ContentsController extends Controller
             ->byType($request->get('type') ?? '*')
             ->withCount('comments')
             ->with(['author:id,name', 'type'])
+            ->orderByDesc('updated_at')
             ->paginate(15);
 
         $selectedType = $request->has('type') && $request->get('type') !== '*'
@@ -53,11 +58,48 @@ class ContentsController extends Controller
         return $this->edit($request, $contentId);
     }
 
-    public function store(Request $request)
+    public function update(Request $request, Content $content)
     {
-        logger($request->all());
+        $data = Type::fetch($request->get('content_type'))->validate($request->all());
+
+        $attributes = array_merge([
+            'content_type_id' => Type::model($request->get('content_type'))->id,
+            'is_published'    => $request->has('published') ? true : false,
+            'published_at'    => $request->has('published') ? Carbon::now() : null,
+        ], $data->validated());
+
+        $content->update($attributes);
+        $content->createAndAssociateTables(explode(',', $request->get('tags')));
+
         return redirect()
             ->back()
+            ->with('success', 'Your content has been updated.');
+    }
+
+    public function store(Request $request)
+    {
+        $data = Type::fetch($request->get('content_type'))->validate($request->all());
+
+        $attributes = array_merge([
+            'content_type_id' => Type::model($request->get('content_type'))->id,
+            'is_published'    => $request->has('published') ? true : false,
+            'published_at'    => $request->has('published') ? Carbon::now() : null,
+        ], $data->validated());
+
+        $content = Content::create($attributes);
+        $content->createAndAssociateTables(explode(',', $request->get('tags')));
+
+        return redirect()
+            ->route('admin.content.edit', $content->id)
             ->with('success', 'Your content has been added.');
+    }
+
+    public function delete(Content $content)
+    {
+        $content->delete();
+
+        return redirect()
+            ->route('admin.content.index')
+            ->with('success', 'Your content has been deleted.');
     }
 }

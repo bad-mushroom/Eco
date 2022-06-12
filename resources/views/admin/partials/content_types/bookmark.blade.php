@@ -3,7 +3,7 @@
         <div class="col-lg-12">
             <div class="mb-3">
                 <label for="subject" class="form-label required">Link</label>
-                <input type="text" name="subject" class="form-control" id="subject" aria-describedby="subjectHelp">
+                <input type="url" name="subject" class="form-control" id="subject" value="{{ $content->subject ?? '' }}" aria-describedby="subjectHelp">
                 <div id="subjectHelp" class="form-text">Full URL to the page or site you want to bookmark.</div>
             </div>
         </div>
