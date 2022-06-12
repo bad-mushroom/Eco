@@ -17,9 +17,10 @@
         <div class="input-group">
             <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
                 aria-describedby="btnNavbarSearch" />
-            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-primary text-light" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
         </div>
     </form>
+
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
@@ -28,7 +29,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Preferences</a></li>
-                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Activity Log</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Change Password</a></li>
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
@@ -37,6 +38,7 @@
         </li>
     </ul>
 </nav>
+
 <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
     {{ csrf_field() }}
 </form>

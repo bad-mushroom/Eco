@@ -26,13 +26,13 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th colspan="7"></th>
+                    <th colspan="7">{{ $contents->links() }}</th>
                 </tr>
             </tfoot>
             <tbody>
                 @foreach ($contents as $content)
                     <tr>
-                        <td class="text-center"><i class="fas fa-{{ $content->type->icon }} text-primary fs-3 mt-2"></i></td>
+                        <td class="text-center"><i class="fas fa-{{ $content->type->icon ?? 'file' }} text-primary fs-3 mt-2"></i></td>
                         <td>
                             <h4>{{ $content->subject }}</h4>
                             <em class="text-muted">{{ Str::limit($content->body, 50, '...') }}</em>
@@ -43,14 +43,14 @@
                             </a>
                         </td>
                         <td>
-                            {{ $content->created_at->format('F jS Y') }} at {{ $content->created_at->format('h:i:s a') }}
+                            {!! !empty($content->relative_published_at) ? $content->relative_published_at : '<em class="text-muted">Not Published</em>' !!}
                         </td>
                         <td>
                             {{ $content->author->name }}
                         </td>
                         <td>
                             <a href="{{ route('admin.content.index', ['type' => $content->type->slug]) }}">
-                                <span class="badge bg-info">{{ $content->type->label }}</span>
+                                <span class="badge bg-info"><i class="fas fa-{{ $content->type->icon ?? 'message' }} me-2"></i>{{ $content->type->label }}</span>
                             </a>
                         </td>
                         <td>
@@ -67,7 +67,5 @@
         </table>
     </div>
 </div>
-
-{{ $contents->links() }}
 
 @endsection

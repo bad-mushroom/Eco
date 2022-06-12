@@ -23,6 +23,15 @@ class SettingsController extends Controller
 
     public function update(Request $request)
     {
+        foreach ($request->all() as $setting => $value) {
+            Setting::where('slug', $setting)
+                ->update(['value' => $value]);
+        }
+
         Cache::forget('settings');
+
+        return redirect()
+            ->back()
+            ->with('success', 'Your settings have been saved.');
     }
 }

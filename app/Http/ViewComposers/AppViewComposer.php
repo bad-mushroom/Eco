@@ -22,6 +22,7 @@ class AppViewComposer
         $this->registerMenus($view);
 
         $view->with('site_title', Setting::get('site_title'));
+        $view->with('site_headline', Setting::get('site_headline'));
     }
 
     protected function registerMenus(View $view)

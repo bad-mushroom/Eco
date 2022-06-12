@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\Commentable;
+use App\Models\Traits\Formatable;
 use App\Models\Traits\Sluggable;
 use App\Models\Traits\Taggable;
 use App\Models\Traits\Uuidable;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Content extends Model
 {
-    use Commentable, HasFactory, Sluggable, Taggable, Uuidable;
+    use Commentable, Formatable, HasFactory, Sluggable, Taggable, Uuidable;
 
     protected $sluggableColumn = 'subject';
 

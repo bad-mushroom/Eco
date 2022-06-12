@@ -1,5 +1,10 @@
 <nav class="sb-sidenav accordion text-light sb-sidebar-dark" id="sidenavAccordion">
     <div class="sb-sidenav-menu">
+        <div class="text-center my-3">
+            <img src="/avatar.jpg" class="rounded-circle border border-3" style="width: 100px;" alt="" />
+            <p class="fw-bold fs-5 pt-2">{{ auth()->user()->name }}</p>
+        </div>
+        <hr>
         <div class="nav">
             <div class="sb-sidenav-menu-heading">Favorites</div>
             <a class="nav-link" href="{{ route('admin.dashboard') }}">
@@ -45,14 +50,27 @@
                     @endforeach
                 </nav>
             </div>
-            <a class="nav-link" href="{{ route('admin.dashboard') }}">
+
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAppearance"
+                aria-expanded="false" aria-controls="collapseAppearance">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Appearance
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
+            <div class="collapse" id="collapseAppearance" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="{{ route('admin.menus.index') }}">Navigation Menus</a>
+                </nav>
+            </div>
+            <div class="collapse" id="collapseAppearance" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="{{ route('admin.menus.index') }}">Themes</a>
+                </nav>
+            </div>
         </div>
     </div>
     <div class="sb-sidenav-footer">
-        <div class="small">Logged in as:</div>
-        {{ auth()->user()->name }}
+        <div class="small">Last Seen:</div>
+        {{ auth()->user()->last_login_at ?? 'Unknown' }}
     </div>
 </nav>
