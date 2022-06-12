@@ -1,7 +1,8 @@
 
 <footer class="py-5 bg-dark">
     <div class="container">
-        <ul class="list-inline text-center">
+       @if ($menuSocial ?? false)
+       <ul class="list-inline text-center">
             @foreach($menuSocial as $item)
             <li class="list-inline-item">
                 <a href="{{ $item->url }}">
@@ -14,6 +15,7 @@
             </li>
             @endforeach
         </ul>
+        @endif
         <p class="m-0 text-center text-white">Copyright &copy; {{ $site_title }} 2022</p>
     </div>
 </footer>

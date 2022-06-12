@@ -26,7 +26,7 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-file-lines"></i></div>
                 Pages
             </a>
-            
+
             <div class="sb-sidenav-menu-heading">Configuration</div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
                 <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
@@ -48,6 +48,6 @@
     </div>
     <div class="sb-sidenav-footer">
         <div class="small">Logged in as:</div>
-        Start Bootstrap
+        {{ auth()->user()->name }}
     </div>
 </nav>

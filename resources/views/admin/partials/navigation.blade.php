@@ -6,8 +6,8 @@
 
     <ul class="navbar-nav ms-auto ms-md-0 ms-5 me-lg-4 ps-3">
         <li>
-            <a class="nav-link" href="#">
-                <i class="fas fa-eye fa-fw"></i> View Site
+            <a class="nav-link" href="{{ route('home') }}">
+                <i class="fas fa-eye me-2"></i>View Site
             </a>
         </li>
     </ul>
@@ -32,8 +32,11 @@
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
+                <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
             </ul>
         </li>
     </ul>
 </nav>
+<form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+</form>
