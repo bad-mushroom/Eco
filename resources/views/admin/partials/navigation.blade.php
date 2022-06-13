@@ -28,8 +28,8 @@
                 <i class="fas fa-user fa-fw"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Preferences</a></li>
-                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Change Password</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin.profile') }}">Profile</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin.password') }}">Change Password</a></li>
                 <li>
                     <hr class="dropdown-divider" />
                 </li>
