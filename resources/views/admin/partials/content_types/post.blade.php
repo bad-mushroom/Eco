@@ -26,7 +26,7 @@
         </div>
         <div class="col-lg-6 text-end">
             @if ($content)
-                @if ($content->is_published)
+                @if ($content->published_at)
                     <button type="submit" name="unpublish" class="btn btn-secondary text-light"><i class="fas fa-cloud me-2"></i>Convert to Draft</button>
                 @endif
             @else

@@ -25,7 +25,7 @@ class ContentTypeService
      * @param string $slug
      * @return ContentTypeInterface
      */
-    public function fetch(string $slug): ContentTypeInterface
+    public function fetch(string $slug)
     {
         $class = $this->getClassName($slug);
 

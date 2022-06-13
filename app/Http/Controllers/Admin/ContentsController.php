@@ -64,12 +64,11 @@ class ContentsController extends Controller
 
         $attributes = array_merge([
             'content_type_id' => Type::model($request->get('content_type'))->id,
-            'is_published'    => $request->has('published') ? true : false,
-            'published_at'    => $request->has('published') ? Carbon::now() : null,
+            'published_at'    => $request->has('publish') ? Carbon::now() : null,
         ], $data->validated());
 
         $content->update($attributes);
-        $content->createAndAssociateTables(explode(',', $request->get('tags')));
+        $content->createAndAssociateTags(explode(',', $request->get('tags')));
 
         return redirect()
             ->back()
@@ -82,12 +81,11 @@ class ContentsController extends Controller
 
         $attributes = array_merge([
             'content_type_id' => Type::model($request->get('content_type'))->id,
-            'is_published'    => $request->has('published') ? true : false,
-            'published_at'    => $request->has('published') ? Carbon::now() : null,
+            'published_at'    => $request->has('publish') ? Carbon::now() : null,
         ], $data->validated());
 
         $content = Content::create($attributes);
-        $content->createAndAssociateTables(explode(',', $request->get('tags')));
+        $content->createAndAssociateTags(explode(',', $request->get('tags')));
 
         return redirect()
             ->route('admin.content.edit', $content->id)

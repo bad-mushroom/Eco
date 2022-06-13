@@ -15,8 +15,15 @@ class ShowPosts extends Component
 
     public function render()
     {
+        $contents = Content::query()
+            ->published()
+            ->notFeatured()
+            ->with('type')
+            ->orderByDesc('published_at')
+            ->paginate(Setting::get('posts_per_page'));
+
         return view('livewire.show_posts')
-            ->with('posts', Content::whereNull('is_featured')->with('type')->paginate(Setting::get('posts_per_page')))
+            ->with('contents', $contents)
             ->with('featured', Content::where('is_featured', true)->with('type')->first());
     }
 }

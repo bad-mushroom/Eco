@@ -18,7 +18,7 @@ class SidebarViewComposer
      */
     public function compose(View $view)
     {
-        $view->with('contentTypes', ContentType::all());
+        $view->with('contentTypes', ContentType::withCount('contents')->get());
         $view->with('settingTypes', $this->getSettingTypes());
     }
 

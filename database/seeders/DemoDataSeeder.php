@@ -22,9 +22,7 @@ class DemoDataSeeder extends Seeder
 
         $authors->each(function($author) {
             if (rand(0, 1)) {
-                $payload = ['is_published' => true, 'published_at' => Carbon::now(),];
-            } else {
-                $payload = ['is_published' => false,];
+                $payload = ['published_at' => Carbon::now(),];
             }
 
             Content::factory(rand(0, 5))

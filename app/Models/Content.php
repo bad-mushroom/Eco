@@ -27,7 +27,6 @@ class Content extends Model
         'summary',
         'slug',
         'body',
-        'is_published',
         'content_type_id',
         'published_at',
         'user_id',
@@ -59,6 +58,8 @@ class Content extends Model
         return $this->belongsTo(ContentType::class, 'content_type_id');
     }
 
+    // -- Scopes
+
     public function scopeByType($query, string $slug = '*')
     {
         if ($slug === '*') {
@@ -69,4 +70,15 @@ class Content extends Model
             return $query->where('slug', $slug);
         });
     }
+
+    public function scopePublished($query)
+    {
+        return $query->whereNotNull('published_at');
+    }
+
+    public function scopeNotFeatured($query)
+    {
+        return $query->where('is_featured', false);
+    }
+
 }
