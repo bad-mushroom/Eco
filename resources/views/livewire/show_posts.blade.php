@@ -1,9 +1,11 @@
 <div>
-    <div class="row" data-masonry='{"percentPosition": true }'>
+    <div class="row">
         @if ($featured)
-            @includeIf('contentTypes.' . $featured->type->slug)
+            @includeIf('contentTypes.' . $featured->type->slug, ['content' => $featured])
         @endif
+    </div>
 
+    <div class="row" data-masonry='{"percentPosition": true }'>
         @foreach($contents as $content)
             <div class="col-lg-6">
                 @includeIf('contentTypes.' . $content->type->slug)

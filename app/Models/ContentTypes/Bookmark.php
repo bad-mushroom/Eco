@@ -14,7 +14,7 @@ class Bookmark extends Content implements ContentTypeInterface
     public function rules(): array
     {
         return [
-            'subject' => ['required', 'max:255', 'url'],
+            'subject' => ['sometimes', 'max:255', 'url'],
             'user_id' => ['required']
         ];
     }
@@ -27,4 +27,13 @@ class Bookmark extends Content implements ContentTypeInterface
         return ValidatorFacade::make($input, $this->rules());
     }
 
+    public function onSaving(Content $content)
+    {
+        //
+    }
+
+    public function onSaved(Content $content)
+    {
+        //
+    }
 }

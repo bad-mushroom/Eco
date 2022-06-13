@@ -18,6 +18,7 @@ class ShowPosts extends Component
         $contents = Content::query()
             ->published()
             ->notFeatured()
+            ->notPages()
             ->with('type')
             ->orderByDesc('published_at')
             ->paginate(Setting::get('posts_per_page'));

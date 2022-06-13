@@ -17,12 +17,11 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('content_type_id')->constrained();
             $table->string('subject');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->text('summary')->nullable();
             $table->text('body')->nullable();
             $table->text('featured_image')->nullable();
             $table->foreignUuid('user_id')->constrained();
-            $table->foreignUuid('category_id')->nullable()->constrained();
             $table->timestamp('published_at')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->boolean('allow_comments')->default(false);

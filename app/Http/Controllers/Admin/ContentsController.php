@@ -17,6 +17,7 @@ class ContentsController extends Controller
     {
         $contents = Content::query()
             ->byType($request->get('type') ?? '*')
+            ->notPages()
             ->withCount('comments')
             ->with(['author:id,name', 'type'])
             ->orderByDesc('updated_at')
