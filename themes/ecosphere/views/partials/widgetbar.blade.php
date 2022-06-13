@@ -31,7 +31,7 @@
     <div class="card-header">Tags</div>
     <div class="card-body">
         @foreach ($tags as $tag)
-            {{ $tag->label }}
+           <span class="badge bg-primary text-light p-2 my-1 mx-1 fs-5">{{ $tag->label }}</span>
         @endforeach
     </div>
 </div>

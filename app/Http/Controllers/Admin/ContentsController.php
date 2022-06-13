@@ -36,7 +36,7 @@ class ContentsController extends Controller
     {
         $content = Content::query()
             ->where('id', $contentId)
-            ->with(['tags', 'category', 'author', 'type'])
+            ->with(['tags', 'author', 'type'])
             ->first();
 
         return view('admin.pages.content.content_edit')
