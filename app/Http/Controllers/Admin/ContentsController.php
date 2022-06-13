@@ -66,6 +66,8 @@ class ContentsController extends Controller
         $attributes = array_merge([
             'content_type_id' => Type::model($request->get('content_type'))->id,
             'published_at'    => $request->has('publish') ? Carbon::now() : null,
+            'featured_image'  => $request->hasFile('featured_image') ? base64_encode(file_get_contents($request->file('featured_image')->path())) : null,
+
         ], $data->validated());
 
         $content->update($attributes);
@@ -83,6 +85,7 @@ class ContentsController extends Controller
         $attributes = array_merge([
             'content_type_id' => Type::model($request->get('content_type'))->id,
             'published_at'    => $request->has('publish') ? Carbon::now() : null,
+            'featured_image'  => $request->hasFile('featured_image') ? base64_encode(file_get_contents($request->file('featured_image')->path())) : null,
         ], $data->validated());
 
         $content = Content::create($attributes);

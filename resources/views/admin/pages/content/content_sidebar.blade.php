@@ -28,6 +28,17 @@
 
 <x-card>
     <x-slot:header>
+        <i class="fas fa-tag me-2"></i>Featured Image
+    </x-slot>
+    <x-slot:body>
+        <label for="featured-image" class="form-label">Image</label>
+        <input type="file" class="form-control" name="featured_image" id="featured-image">
+        <div class="form-text">Preview image.</div>
+    </x-slot>
+</x-card>
+
+<x-card>
+    <x-slot:header>
         <i class="fas fa-tag me-2"></i>Tags
     </x-slot>
     <x-slot:body>

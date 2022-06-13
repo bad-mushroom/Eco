@@ -8,7 +8,6 @@ use App\Models\Traits\Sluggable;
 use App\Models\Traits\Taggable;
 use App\Models\Traits\Uuidable;
 use App\Services\ContentTypes\Facades\Type;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,6 +35,8 @@ class Content extends Model
         'content_type_id',
         'published_at',
         'user_id',
+        'featured_image',
+        'is_featured',
     ];
 
     /**

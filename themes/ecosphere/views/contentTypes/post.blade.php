@@ -1,5 +1,7 @@
 <div class="card mb-4">
-    <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+    @if ($content->featured_image)
+        <a href="#!"><img class="card-img-top" src="data:image/png;base64,{{ $content->featured_image }}" alt="{{ $content->subject }}" /></a>
+    @endif
     <div class="card-body">
         <div class="small text-muted">{{ $content->relative_published_at }}</div>
         <h2 class="card-title h4">{{ $content->subject }}</h2>
