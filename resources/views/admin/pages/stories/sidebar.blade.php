@@ -6,7 +6,7 @@
         <div class="mb-3">
             <label for="content-type" class="form-label">Type</label>
             <select class="form-control" name="story_type" id="content-type" aria-describedby="contentTypeHelp" wire:model="selectedStoryType" @if ($story) disabled @endif>
-                @foreach ($storyTypes as $type)
+                @foreach ($storyTypes ?? [] as $type)
                     <option value="{{ $type->slug }}"
                         @if (optional($selectedType ?? null)->slug == $type->slug)
                             selected

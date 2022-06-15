@@ -91,7 +91,7 @@ class StoriesController extends Controller
         $story->createAndAssociateTags(explode(',', $request->get('tags')));
 
         return redirect()
-            ->route('admin.story.edit', $story->id)
+            ->route('admin.stories.edit', $story->id)
             ->with('success', 'Your story has been added.');
     }
 

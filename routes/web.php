@@ -28,7 +28,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 });
 
 Route::group(['middleware' => 'theme:ecosphere'], function () {
-    Route::get('/stories', 'App\Http\Controllers\ArticlesController@index');
+    Route::get('/stories', 'App\Http\Controllers\StoriesController@index');
     Route::get('/stories/{storyType:slug}/{story:slug}', 'App\Http\Controllers\StoriesController@show')->name('stories.show');
-    Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+    Route::get('/', 'App\Http\Controllers\StoriesController@index')->name('home');
 });

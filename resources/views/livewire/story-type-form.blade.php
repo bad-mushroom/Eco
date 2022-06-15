@@ -8,10 +8,10 @@
         <div class="row">
             <div class="col-lg-9">
                 @include('admin.partials.alerts')
-                @include('admin.partials.story_types.' . $type, ['content' => $story])
+                @include('admin.partials.stories.' . $type, ['content' => $story])
             </div>
             <div class="col-lg-3">
-                @include('admin.pages.content.story_sidebar')
+                @include('admin.pages.stories.sidebar')
             </div>
         </div>
     </div>

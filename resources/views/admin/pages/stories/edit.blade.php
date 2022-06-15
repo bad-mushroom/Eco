@@ -3,9 +3,9 @@
 <form action="{{ route('admin.stories.update', $story) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('put')
-    @livewire('show-content-type-form', [
+    @livewire('show-story-type-form', [
         'defaultType' => $story->type->slug,
-        'content'     => $story,
+        'story'     => $story,
     ])
 </form>
 @endsection
