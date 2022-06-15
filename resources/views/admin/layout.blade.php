@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+
     <title>Dashboard - Eco Admin</title>
+
     <link href="/admin/css/app.css" rel="stylesheet" />
+
     @yield('css')
     @livewireStyles
 </head>
@@ -29,6 +32,7 @@
     <script src="/admin/js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+
     @yield('js')
     @livewireScripts
 </body>

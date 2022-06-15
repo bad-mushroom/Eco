@@ -6,8 +6,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            @include('admin.partials.alerts')
             <div class="card">
-                @include('admin.partials.alerts')
                 <form action="{{ route('admin.profile.update') }}" method="post">
                     @csrf
                     @method('put')

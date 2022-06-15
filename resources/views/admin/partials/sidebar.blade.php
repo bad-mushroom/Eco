@@ -15,7 +15,7 @@
             <div class="sb-sidenav-menu-heading">Content</div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePosts" aria-expanded="false" aria-controls="collapsePosts">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                Content Types
+                By Types
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapsePosts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -45,7 +45,6 @@
                     @endforeach
                 </nav>
             </div>
-
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAppearance"
                 aria-expanded="false" aria-controls="collapseAppearance">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>

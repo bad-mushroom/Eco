@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('label')->unique();
             $table->string('slug')->unique();
             $table->string('icon')->nullable();
+            $table->json('configuration')->nullable();
+            $table->boolean('has_comments')->default('false');
+            $table->boolean('has_preview_image')->default('false');
+            $table->boolean('has_tags')->default('true');
             $table->string('description')->nullable();
             $table->timestamps();
         });

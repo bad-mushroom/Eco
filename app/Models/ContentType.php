@@ -21,6 +21,12 @@ class ContentType extends Model
     protected $fillable = [
         'label',
         'slug',
+        'icon',
+        'description',
+        'configuration',
+        'has_comments',
+        'has_preview_image',
+        'has_tags',
     ];
 
     // -- Relationships

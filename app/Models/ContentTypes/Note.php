@@ -27,4 +27,14 @@ class Note extends Content implements ContentTypeInterface
     {
         return ValidatorFacade::make($input, $this->rules());
     }
+
+    public function onSaving(Content $content)
+    {
+        //
+    }
+
+    public function onSaved(Content $content)
+    {
+        //
+    }
 }
