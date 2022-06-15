@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignUuid('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->uuidMorphs('commentable');
             $table->text('body');
+            $table->string('author');
+            $table->string('session');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Story;
 use Illuminate\Http\Request;
 
@@ -14,5 +15,12 @@ class CommentsController extends Controller
         return view('admin.pages.comments.index')
             ->with('comments', $story->comments()->paginate(15))
             ->with('story', $story);
+    }
+
+    public function destroy(Request $request, Story $story, Comment $comment)
+    {
+        $comment->delete();
+
+        return redirect()->route('admin.comments.index', $story)->with('success', 'The comment has been deleted.');
     }
 }

@@ -19,7 +19,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::get('settings/{type}', 'App\Http\Controllers\Admin\SettingsController@index')->name('settings.index');
     Route::put('settings', 'App\Http\Controllers\Admin\SettingsController@update')->name('settings.update');
     Route::resource('stories', 'App\Http\Controllers\Admin\StoriesController');
-    Route::resource('stories/{stories}/comments', 'App\Http\Controllers\Admin\CommentsController');
+    Route::resource('stories/{story}/comments', 'App\Http\Controllers\Admin\CommentsController');
     Route::resource('menus', 'App\Http\Controllers\Admin\MenusController');
     Route::get('profile', 'App\Http\Controllers\Admin\ProfileController@edit')->name('profile');
     Route::put('profile', 'App\Http\Controllers\Admin\ProfileController@update')->name('profile.update');
@@ -31,4 +31,5 @@ Route::group(['middleware' => 'theme:ecosphere'], function () {
     Route::get('/stories', 'App\Http\Controllers\StoriesController@index');
     Route::get('/stories/{storyType:slug}/{story:slug}', 'App\Http\Controllers\StoriesController@show')->name('stories.show');
     Route::get('/', 'App\Http\Controllers\StoriesController@index')->name('home');
+    Route::resource('stories/{story}/comments', 'App\Http\Controllers\CommentsController');
 });

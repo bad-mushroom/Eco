@@ -2,6 +2,7 @@
     @if ($story->featured_image)
         <a href="#!"><img class="card-img-top" src="data:image/png;base64,{{ $story->featured_image }}" alt="{{ $story->subject }}" /></a>
     @endif
+
     <div class="card-body">
         <div class="small text-muted">{{ $story->relative_published_at }} by {{ $story->author->name }}</div>
         <h2 class="card-title h4">{{ $story->subject }}</h2>

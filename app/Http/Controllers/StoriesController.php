@@ -32,6 +32,7 @@ class StoriesController extends Controller
             ->first();
 
         return view('pages.story')
-            ->with('story', $story);
+            ->with('story', $story)
+            ->with('comments', $story->comments);
     }
 }
