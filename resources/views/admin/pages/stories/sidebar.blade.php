@@ -27,7 +27,7 @@
             <hr>
             <div class="mb-3">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><span class="fw-bold">Published</span>: {{ $story->relative_published_at ?? 'Never'}}</li>
+                    <li class="list-group-item"><span class="fw-bold">Published</span>: {{ $story->published_at ? $story->relative_published_at : 'Never'}}</li>
                     <li class="list-group-item"><span class="fw-bold">Comments</span>: {{ $story->comments_count }}</li>
                 </ul>
             </div>

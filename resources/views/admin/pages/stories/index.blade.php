@@ -1,12 +1,12 @@
 @extends('admin.layout')
 
 @section('content')
-@include('admin.partials.container_header', ['page_title' => 'Story <em>' . Str::plural(optional($selectedType)->label) . '</em>'])
+@include('admin.partials.container_header', ['page_title' => 'Stories <em>' . Str::plural(optional($selectedType)->label) . '</em>'])
 <div class="container-sm">
     <div class="row px-4">
         <div class="col-12 text-end">
             <a href="{{ route('admin.stories.create', ['type' => optional($selectedType)->slug ]) }}" class="btn btn-primary text-light">
-                <i class="fas fa-plus me-2"></i>New Story
+                <i class="fas fa-plus me-2"></i>New {{ optional($selectedType)->label }}
             </a>
         </div>
     </div>
@@ -31,9 +31,11 @@
             <tbody>
                 @foreach ($stories as $story)
                     <tr>
-                        <td valign="middle" class="text-center"><i class="fas fa-{{ $story->type->icon ?? 'file' }} text-primary fs-3 mt-2"></i></td>
+                        <td valign="middle" class="text-center">
+                            <i class="fas fa-{{ $story->type->icon ?? 'file' }} @if ($story->published_at) text-primary @else text-muted @endif fs-4 mt-2"></i>
+                        </td>
                         <td valign="middle">
-                            <h4>{{ $story->subject }}</h4>
+                            <h5>{{ $story->subject }}</h5>
                             <em class="text-muted">{{ Str::limit($story->body, 50, '...') }}</em>
                         </td>
                         <td valign="middle">
@@ -45,7 +47,9 @@
                             {!! !empty($story->relative_published_at) ? $story->relative_published_at : '<em class="text-muted">Not Published</em>' !!}
                         </td>
                         <td valign="middle">
-                            <img src="/avatar.jpg" class="rounded-circle border border-3" style="width: 35px;" alt="{{ $story->author->name }}" title="{{ $story->author->name }}" />
+                            <a href="{{ route('admin.stories.index', ['author' => $story->author]) }}">
+                                <img src="/avatar.jpg" class="rounded-circle border border-3" style="width: 35px;" alt="{{ $story->author->name }}" title="{{ $story->author->name }}" />
+                            </a>
                         </td>
                         <td valign="middle">
                             <a href="{{ route('admin.stories.index', ['type' => $story->type->slug]) }}">
@@ -53,9 +57,13 @@
                             </a>
                         </td>
                         <td valign="middle">
-                            <a href="{{ route('admin.stories.edit', $story) }}" title="Preview" target="_blank"
-                                class="btn btn-sm btn-secondary text-dark"><i class="fas fa-eye"></i>
-                            </a>
+                            @if ($story->published_at)
+                                <a href="{{ route('stories.show', ['storyType' => $story->type, 'story' => $story]) }}" title="Preview" target="_blank"
+                                    class="btn btn-sm btn-secondary text-dark"><i class="fas fa-eye"></i>
+                                </a>
+                            @else
+                                <button class="btn btn-sm btn-secondary text-dark" disabled><i class="fas fa-eye"></i></button>
+                            @endif
                             <a href="{{ route('admin.stories.edit', $story) }}" title="Edit"
                                 class="btn btn-sm btn-secondary text-dark"><i class="fas fa-edit"></i>
                             </a>

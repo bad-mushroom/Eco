@@ -28,7 +28,7 @@
             <tbody>
                 @forelse ($comments as $comment)
                     <tr>
-                        <td valign="middle" class="text-center"><i class="fas fa-comments text-primary fs-3 mt-2"></i></td>
+                        <td valign="middle" class="text-center"><i class="fas fa-comments @if($comment->is_approved) text-primary @else text-secondary @endif fs-4 mt-2"></i></td>
                         <td valign="middle">
                             <em class="text-muted">{{ Str::limit($comment->body, 50, '...') }}</em>
                         </td>
@@ -36,11 +36,30 @@
                         <td valign="middle">{{ $comment->relative_created_at }} </td>
                         <td valign="middle">{{ $comment->session }}</td>
                         <td valign="middle">
-                            <form action="{{ route('admin.comments.destroy', ['story' => $story, 'comment' => $comment]) }}" method="POST">
-                                @csrf
-                                @method('delete')
-                               <button title="Delete" class="btn btn-sm btn-danger text-light"><i class="fas fa-trash"></i></button>
-                            </form>
+                            <div class="row">
+                            <div class="col-6 text-end">
+                            @if (!$comment->is_approved)
+                                <form action="{{ route('admin.comments.approve', ['story' => $story, 'comment' => $comment]) }}" method="POST">
+                                    @csrf
+                                    @method('put')
+                                    <button title="Delete" class="btn btn-sm btn-primary text-light"><i class="fas fa-check"></i></button>
+                                </form>
+                            @else
+                                <form action="{{ route('admin.comments.disapprove', ['story' => $story, 'comment' => $comment]) }}" method="POST">
+                                    @csrf
+                                    @method('put')
+                                    <button title="Delete" class="btn btn-sm btn-warning text-light"><i class="fas fa-x"></i></button>
+                                </form>
+                            @endif
+                            </div>
+                            <div class="col-6 text">
+                                <form action="{{ route('admin.comments.destroy', ['story' => $story, 'comment' => $comment]) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                <button title="Delete" class="btn btn-sm btn-danger text-light"><i class="fas fa-trash"></i></button>
+                                </form>
+                            </div>
+                            </div>
                         </td>
                     </tr>
                 @empty

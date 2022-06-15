@@ -18,7 +18,7 @@ class SidebarViewComposer
      */
     public function compose(View $view)
     {
-        $view->with('storyTypes', StoryType::withCount('stories')->get());
+        $view->with('storyTypes', StoryType::withCount('stories')->where('slug', '!=', 'page')->get());
         $view->with('settingTypes', $this->getSettingTypes());
     }
 

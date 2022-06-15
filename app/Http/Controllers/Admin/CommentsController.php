@@ -17,6 +17,22 @@ class CommentsController extends Controller
             ->with('story', $story);
     }
 
+    public function approve(Request $request, Story $story, Comment $comment)
+    {
+        $comment->is_approved = true;
+        $comment->save();
+
+        return redirect()->back()->with('success', 'The comment has been approved.');
+    }
+
+    public function disapprove(Request $request, Story $story, Comment $comment)
+    {
+        $comment->is_approved = false;
+        $comment->save();
+
+        return redirect()->back()->with('success', 'The comment has been disapproved and will no longer appear.');
+    }
+
     public function destroy(Request $request, Story $story, Comment $comment)
     {
         $comment->delete();

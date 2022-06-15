@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('body');
             $table->string('author');
             $table->string('session');
+            $table->boolean('is_approved')->default(false);
             $table->timestamps();
         });
     }

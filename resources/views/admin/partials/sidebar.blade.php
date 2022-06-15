@@ -22,7 +22,7 @@
                 <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="{{ route('admin.stories.index', ['type' => '*']) }}">View All Stories</a>
                     @foreach ($storyTypes as $type)
-                        <a class="nav-link" href="{{ route('admin.stories.index', ['type' => $type->slug]) }}">{{ $type->label }}</a>
+                        <a class="nav-link" href="{{ route('admin.stories.index', ['type' => $type->slug]) }}">{{ Str::plural($type->label) }}</a>
                     @endforeach
                 </nav>
             </div>
@@ -65,6 +65,6 @@
     </div>
     <div class="sb-sidenav-footer">
         <div class="small">Last Seen:</div>
-        {{ auth()->user()->last_login_at ?? 'Unknown' }}
+        {{ auth()->user()->last_login_at->format('m/d/Y h:i a') ?? 'Unknown' }}
     </div>
 </nav>

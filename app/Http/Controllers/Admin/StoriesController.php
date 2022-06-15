@@ -60,10 +60,10 @@ class StoriesController extends Controller
 
     public function update(Request $request, Story $story)
     {
-        $data = Type::fetch($request->get('story_type'))->validate($request->all());
+        $data = Type::fetch($story->type->slug)->validate($request->all());
 
         $attributes = array_merge([
-            'story_type_id' => Type::model($request->get('story_type'))->id,
+            'story_type_id' => Type::model($story->type->slug)->id,
             'published_at'    => $request->has('publish') ? Carbon::now() : null,
             'featured_image'  => $request->hasFile('featured_image') ? base64_encode(file_get_stories($request->file('featured_image')->path())) : null,
 

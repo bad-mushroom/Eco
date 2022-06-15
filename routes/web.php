@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
     Route::put('settings', 'App\Http\Controllers\Admin\SettingsController@update')->name('settings.update');
     Route::resource('stories', 'App\Http\Controllers\Admin\StoriesController');
     Route::resource('stories/{story}/comments', 'App\Http\Controllers\Admin\CommentsController');
+    Route::put('stories/{story}/comments{comment}/approve', 'App\Http\Controllers\Admin\CommentsController@approve')->name('comments.approve');
+    Route::put('stories/{story}/comments{comment}/disapprove', 'App\Http\Controllers\Admin\CommentsController@disapprove')->name('comments.disapprove');
     Route::resource('menus', 'App\Http\Controllers\Admin\MenusController');
     Route::get('profile', 'App\Http\Controllers\Admin\ProfileController@edit')->name('profile');
     Route::put('profile', 'App\Http\Controllers\Admin\ProfileController@update')->name('profile.update');
