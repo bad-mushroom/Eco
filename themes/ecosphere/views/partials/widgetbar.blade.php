@@ -14,11 +14,11 @@
     <div class="card-header">Categories</div>
     <div class="card-body">
         <div class="row">
-            @foreach($contentTypes->chunk(2) as $chunk)
+            @foreach($storyTypes->chunk(2) as $chunk)
             <div class="row">
                 @foreach($chunk as $type)
                 <div class="col-md-6">
-                   <a href="#">{{ Str::plural($type->label) }} ({{ $type->contents_count }})</a>
+                   <a href="#">{{ Str::plural($type->label) }} ({{ $type->stories_count }})</a>
                 </div>
                 @endforeach
             </div>

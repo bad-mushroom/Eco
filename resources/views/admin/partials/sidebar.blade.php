@@ -12,7 +12,7 @@
                 Dashboard
             </a>
 
-            <div class="sb-sidenav-menu-heading">Content</div>
+            <div class="sb-sidenav-menu-heading">Stories</div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePosts" aria-expanded="false" aria-controls="collapsePosts">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 By Types
@@ -20,14 +20,14 @@
             </a>
             <div class="collapse" id="collapsePosts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="{{ route('admin.content.index', ['type' => '*']) }}">View All Content</a>
-                    @foreach ($contentTypes as $type)
-                        <a class="nav-link" href="{{ route('admin.content.index', ['type' => $type->slug]) }}">{{ $type->label }}</a>
+                    <a class="nav-link" href="{{ route('admin.stories.index', ['type' => '*']) }}">View All Stories</a>
+                    @foreach ($storyTypes as $type)
+                        <a class="nav-link" href="{{ route('admin.stories.index', ['type' => $type->slug]) }}">{{ $type->label }}</a>
                     @endforeach
                 </nav>
             </div>
 
-            <a class="nav-link collapsed" href="{{ route('admin.content.index', ['type' => 'page']) }}">
+            <a class="nav-link collapsed" href="{{ route('admin.stories.index', ['type' => 'page']) }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-file-lines"></i></div>
                 Pages
             </a>

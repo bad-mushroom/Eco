@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\ContentTypes\Facades;
+namespace App\Services\StoryTypes\Facades;
 
-use App\Services\ContentTypes\ContentTypeService;
+use App\Services\StoryTypes\StoryTypeService;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method fetch() ContentTypeService
- * @method model() ContentTypeService
+ * @method fetch() StoryTypeService
+ * @method model() StoryTypeService
  */
 class Type extends Facade
 {
@@ -18,6 +18,6 @@ class Type extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return ContentTypeService::class;
+        return StoryTypeService::class;
     }
 }

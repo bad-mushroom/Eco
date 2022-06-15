@@ -15,10 +15,10 @@ class SettingTypesSeeder extends Seeder
      */
     public function run()
     {
-        $content = SettingType::firstOrNew(['slug' => 'content']);
-        $content->label = 'Content';
-        $content->description = 'Settings relating to content writing and reading.';
-        $content->save();
+        $story = SettingType::firstOrNew(['slug' => 'content']);
+        $story->label = 'Story';
+        $story->description = 'Settings relating to story writing and reading.';
+        $story->save();
 
         $general = SettingType::firstOrNew(['slug' => 'general']);
         $general->label = 'General';

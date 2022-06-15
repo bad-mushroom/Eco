@@ -7,7 +7,7 @@ use App\Models\Traits\Uuidable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContentType extends Model
+class StoryType extends Model
 {
     use HasFactory, Sluggable, Uuidable;
 
@@ -31,8 +31,8 @@ class ContentType extends Model
 
     // -- Relationships
 
-    public function contents()
+    public function stories()
     {
-        return $this->hasMany(Content::class);
+        return $this->hasMany(Story::class);
     }
 }

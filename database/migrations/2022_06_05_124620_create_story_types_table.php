@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('content_types', function (Blueprint $table) {
+        Schema::create('story_types', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('label')->unique();
             $table->string('slug')->unique();
             $table->string('icon')->nullable();
             $table->json('configuration')->nullable();
-            $table->boolean('has_comments')->default('false');
-            $table->boolean('has_preview_image')->default('false');
-            $table->boolean('has_tags')->default('true');
+            $table->boolean('has_comments')->default(false);
+            $table->boolean('has_preview_image')->default(false);
+            $table->boolean('has_tags')->default(true);
             $table->string('description')->nullable();
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('content_types');
+        Schema::dropIfExists('story_types');
     }
 };

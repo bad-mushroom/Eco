@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('stories', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('content_type_id')->constrained();
+            $table->foreignUuid('story_type_id')->constrained();
             $table->string('subject');
             $table->string('slug');
             $table->text('summary')->nullable();
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('stories');
     }
 };

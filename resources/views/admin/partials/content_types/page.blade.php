@@ -18,7 +18,7 @@
             <div class="mb-3">
                 <label for="editor" class="form-label">Body</label>
                 <textarea class="form-control" name="body" id="editor" style="height: 300px"></textarea>
-                <div id="editor-help" class="form-text">Full content of the page.</div>
+                <div id="editor-help" class="form-text">Full story of the page.</div>
             </div>
         </div>
         <div class="col-lg-6">

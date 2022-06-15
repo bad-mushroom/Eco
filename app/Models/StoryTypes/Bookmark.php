@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Models\ContentTypes;
+namespace App\Models\StoryTypes;
 
-use App\Models\Content;
-use App\Models\Interfaces\ContentTypeInterface;
+use App\Models\Story;
+use App\Models\Interfaces\StoryTypeInterface;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\Validator as ValidatorFacade;
 
-class Bookmark extends Content implements ContentTypeInterface
+class Bookmark extends Story implements StoryTypeInterface
 {
-    public $table = 'contents';
+    public $table = 'stories';
 
     public function rules(): array
     {
@@ -20,19 +20,19 @@ class Bookmark extends Content implements ContentTypeInterface
     }
 
     /**
-     * Validate the content type's data.
+     * Validate the story type's data.
      */
     public function validate(array $input): Validator
     {
         return ValidatorFacade::make($input, $this->rules());
     }
 
-    public function onSaving(Content $content)
+    public function onSaving(Story $story)
     {
         //
     }
 
-    public function onSaved(Content $content)
+    public function onSaved(Story $story)
     {
         //
     }

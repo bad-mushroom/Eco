@@ -30,9 +30,9 @@ class Tag extends Model
         return $this->morphTo();
     }
 
-    public function contents()
+    public function stories()
     {
-        return $this->morphedByMany(Content::class, 'taggable');
+        return $this->morphedByMany(Story::class, 'taggable');
     }
 
     public function comments()

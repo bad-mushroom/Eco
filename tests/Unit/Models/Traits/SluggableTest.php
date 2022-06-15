@@ -16,10 +16,10 @@ class SluggableTest extends TestCase
      */
     public function testSlugIsSetOnSaving()
     {
-        $contentType = \App\Models\ContentType::factory()->make();
-        $this->assertEmpty($contentType->slug);
+        $storyType = \App\Models\StoryType::factory()->make();
+        $this->assertEmpty($storyType->slug);
 
-        $contentType->save();
-        $this->assertNotEmpty($contentType->slug);
+        $storyType->save();
+        $this->assertNotEmpty($storyType->slug);
     }
 }

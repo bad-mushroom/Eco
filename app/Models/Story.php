@@ -7,11 +7,11 @@ use App\Models\Traits\Formatable;
 use App\Models\Traits\Sluggable;
 use App\Models\Traits\Taggable;
 use App\Models\Traits\Uuidable;
-use App\Services\ContentTypes\Facades\Type;
+use App\Services\StoryTypes\Facades\Type;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Content extends Model
+class Story extends Model
 {
     use Commentable, Formatable, HasFactory, Sluggable, Taggable, Uuidable;
 
@@ -32,7 +32,7 @@ class Content extends Model
         'summary',
         'slug',
         'body',
-        'content_type_id',
+        'story_type_id',
         'published_at',
         'user_id',
         'featured_image',
@@ -54,7 +54,7 @@ class Content extends Model
     /**
      * Model Boot.
      *
-     * Register created and updated methods for content type aliases.
+     * Register created and updated methods for story type aliases.
      *
      * @return void
      */
@@ -63,20 +63,20 @@ class Content extends Model
         parent::boot();
 
         // Called before model is saved to the database
-        static::saving(function ($content) {
-            $alias = Type::fetch($content->type->slug);
+        static::saving(function ($story) {
+            $alias = Type::fetch($story->type->slug);
 
             if (method_exists($alias, 'onSaving')) {
-                $alias->onSaving($content);
+                $alias->onSaving($story);
             }
         });
 
         // Called after the model is saved to the database
-        static::saved(function ($content) {
-            $alias = Type::fetch($content->type->slug);
+        static::saved(function ($story) {
+            $alias = Type::fetch($story->type->slug);
 
             if (method_exists($alias, 'onSaved')) {
-                $alias->onSaved($content);
+                $alias->onSaved($story);
             }
         });
     }
@@ -90,7 +90,7 @@ class Content extends Model
 
     public function type()
     {
-        return $this->belongsTo(ContentType::class, 'content_type_id');
+        return $this->belongsTo(StoryType::class, 'story_type_id');
     }
 
     // -- Scopes
@@ -118,8 +118,15 @@ class Content extends Model
 
     public function scopeNotPages($query)
     {
-        $page = ContentType::where('slug', 'page')->first();
-        return $query->where('content_type_id', '!=', $page->id);
+        $page = StoryType::where('slug', 'page')->first();
+        return $query->where('story_type_id', '!=', $page->id);
+    }
+
+    public function scopeForType($query, $slug)
+    {
+        return $query->whereHas('type', function($query) use ($slug) {
+            return $query->where('slug', $slug);
+        });
     }
 
 }

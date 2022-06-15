@@ -2,31 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Content;
-use App\Models\Tag;
+use App\Models\Story;
 use Illuminate\Http\Request;
 
-class ArticlesController extends Controller
+class StoriesController extends Controller
 {
     public function index(Request $request)
     {
-        $contents = Content::query()
+        $stories = Story::query()
             ->with(['author:id,name', 'type:label,slug', 'tags:label,slug'])
             ->withCount('comments')
             ->get();
 
         return view('home')
-            ->with('articles', $contents);
+            ->with('stories', $stories);
     }
 
-    public function show(Request $request, string $slug)
+    public function show(Request $request, string $storyTypeSlug, string $storySlug)
     {
-        $content = Content::query()
+        $Story = Story::query()
             ->with(['author:id,name', 'type:label,slug', 'comments', 'tags:label,slug'])
-            ->where('slug', $slug)
+            ->where('slug', $storySlug)
+            ->forType($storyTypeSlug)
             ->first();
 
-        return view('pages.content_show')
-            ->with('article', $content);
+        return view('pages.story')
+            ->with('story', $story);
     }
 }

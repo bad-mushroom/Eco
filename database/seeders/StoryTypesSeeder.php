@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\ContentType;
+use App\Models\StoryType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ContentTypesSeeder extends Seeder
+class StoryTypesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,12 +15,12 @@ class ContentTypesSeeder extends Seeder
      */
     public function run()
     {
-        $post = ContentType::firstOrNew(['slug' => 'post']);
+        $post = StoryType::firstOrNew(['slug' => 'post']);
         $post->label = 'Post';
         $post->description = 'A blog post.';
         $post->save();
 
-        $page = ContentType::firstOrNew(['slug' => 'page']);
+        $page = StoryType::firstOrNew(['slug' => 'page']);
         $page->label = 'Page';
         $page->description = 'A website page.';
         $page->save();

@@ -2,8 +2,8 @@
 
 @section('content')
 @include('admin.partials.container_header', [
-    'page_title' => $content->subject . ' Comments',
-    'back' => 'admin.content.index',
+    'page_title' => $story->subject . ' Comments',
+    'back' => 'admin.stories.index',
 ])
 
 <div class="container-fluid px-4">
@@ -36,7 +36,7 @@
                                 alt="{{ $comment->author ?? $comment->username ?? 'anonymous' }}" title="{{ $comment->author ?? $comment->username ?? 'anonymous' }}" />
                         </td>
                         <td valign="middle">
-                            {!! !empty($comment->relative_created_at) ? $content->relative_created_at : '<em
+                            {!! !empty($comment->relative_created_at) ? $story->relative_created_at : '<em
                                 class="text-muted">Not Published</em>' !!}
                         </td>
 

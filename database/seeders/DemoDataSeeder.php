@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Content;
-use App\Models\ContentType;
+use App\Models\Story;
+use App\Models\StoryType;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -25,14 +25,14 @@ class DemoDataSeeder extends Seeder
                 $payload = ['published_at' => Carbon::now(),];
             }
 
-            Content::factory(rand(0, 5))
+            Story::factory(rand(0, 5))
                 ->author($author->id)
                 ->type()
                 ->create($payload);
         });
 
-        ContentType::all()->each(function($type) {
-            Content::factory(rand(0, 5))
+        StoryType::all()->each(function($type) {
+            Story::factory(rand(0, 5))
                 ->author()
                 ->type($type->id)
                 ->create();

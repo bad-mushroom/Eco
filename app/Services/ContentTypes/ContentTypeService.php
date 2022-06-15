@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Services\ContentTypes;
+namespace App\Services\StoryTypes;
 
-use App\Http\ContentTypes\Interfaces\ContentTypeInterface;
-use App\Models\ContentType;
+use App\Http\StoryTypes\Interfaces\StoryTypeInterface;
+use App\Models\StoryType;
 use Illuminate\Support\Str;
 
-class ContentTypeService
+class StoryTypeService
 {
     /**
-     * Find the ContentType model based on its `slug`.
+     * Find the StoryType model based on its `slug`.
      *
      * @param string $slug
-     * @return ContentType
+     * @return StoryType
      */
-    public function model(string $slug): ContentType
+    public function model(string $slug): StoryType
     {
-        return ContentType::where('slug', $slug)->first();
+        return StoryType::where('slug', $slug)->first();
     }
 
     /**
-     * Fetch an instance of the Content Alias model (e.g. Post, Note, etc)
+     * Fetch an instance of the Story Alias model (e.g. Post, Note, etc)
      *
      * @param string $slug
-     * @return ContentTypeInterface
+     * @return StoryTypeInterface
      */
     public function fetch(string $slug)
     {
@@ -39,6 +39,6 @@ class ContentTypeService
      */
     protected function getClassName(string $slug): string
     {
-        return 'App\Models\ContentTypes\\' . Str::title($slug);
+        return 'App\Models\StoryTypes\\' . Str::title($slug);
     }
 }

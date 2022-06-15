@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Content;
+use App\Models\Story;
 use App\Services\Settings\Facades\Setting;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -15,7 +15,7 @@ class ShowPosts extends Component
 
     public function render()
     {
-        $contents = Content::query()
+        $stories = Story::query()
             ->published()
             ->notFeatured()
             ->notPages()
@@ -24,7 +24,7 @@ class ShowPosts extends Component
             ->paginate(Setting::get('posts_per_page'));
 
         return view('livewire.show_posts')
-            ->with('contents', $contents)
-            ->with('featured', Content::where('is_featured', true)->with('type')->first());
+            ->with('stories', $stories)
+            ->with('featured', Story::where('is_featured', true)->with('type')->first());
     }
 }

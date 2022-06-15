@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Content;
+use App\Models\Story;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
 
         Relation::morphMap([
-            'Content' => Content::class,
+            'Story' => Story::class,
         ]);
     }
 }

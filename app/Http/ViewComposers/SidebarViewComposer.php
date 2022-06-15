@@ -2,7 +2,7 @@
 
 namespace App\Http\ViewComposers;
 
-use App\Models\ContentType;
+use App\Models\StoryType;
 use App\Models\SettingType;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -18,7 +18,7 @@ class SidebarViewComposer
      */
     public function compose(View $view)
     {
-        $view->with('contentTypes', ContentType::withCount('contents')->get());
+        $view->with('storyTypes', StoryType::withCount('stories')->get());
         $view->with('settingTypes', $this->getSettingTypes());
     }
 

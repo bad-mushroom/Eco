@@ -4,10 +4,10 @@ namespace App\Models\Interfaces;
 
 use Illuminate\Contracts\Validation\Validator;
 
-interface ContentTypeInterface
+interface StoryTypeInterface
 {
     /**
-     * Validate the content type's data.
+     * Validate the story type's data.
      */
     public function validate(array $input): Validator;
 

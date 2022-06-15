@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\ContentType;
+use App\Models\StoryType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ContentType>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\StoryType>
  */
-class ContentFactory extends Factory
+class StoryFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -37,7 +37,7 @@ class ContentFactory extends Factory
     {
         return $this->state(function (array $attributes) use ($id) {
             return [
-                'content_type_id' => $id ?? ContentType::factory()->create()->id,
+                'story_type_id' => $id ?? StoryType::factory()->create()->id,
             ];
         });
     }
