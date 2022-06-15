@@ -37,7 +37,7 @@
                             <em class="text-muted">{{ Str::limit($content->body, 50, '...') }}</em>
                         </td>
                         <td valign="middle">
-                            <a href="{{ route('admin.content.index') }}">
+                            <a href="{{ route('admin.comments.index', $content) }}">
                                 <span class="badge bg-info">{{ $content->comments_count }}</span>
                             </a>
                         </td>

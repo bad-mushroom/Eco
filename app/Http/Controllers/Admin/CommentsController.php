@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
+use App\Models\Content;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class CommentsController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, Content $content)
     {
-        return view('admin.pages.dashboard');
+
+        return view('admin.pages.comments.index')
+            ->with('comments', $content->comments()->paginate(15))
+            ->with('content', $content);
     }
 }
