@@ -15,6 +15,8 @@ class StoriesController extends Controller
             ->notFeatured()
             ->notPages()
             ->with('type')
+            ->byType($request->get('type') ?? '*')
+            ->byTag($request->get('tag') ?? '*')
             ->orderByDesc('published_at')
             ->paginate(Setting::get('posts_per_page'));
 

@@ -17,9 +17,9 @@
             @foreach($storyTypes->chunk(2) as $chunk)
             <div class="row">
                 @foreach($chunk as $type)
-                <div class="col-md-6">
-                   <a href="#">{{ Str::plural($type->label) }} ({{ $type->stories_count }})</a>
-                </div>
+                    <div class="col-md-6">
+                    <a href="{{ route('home', ['type' => $type->slug]) }}">{{ Str::plural($type->label) }} ({{ $type->stories_count }})</a>
+                    </div>
                 @endforeach
             </div>
             @endforeach
@@ -31,7 +31,7 @@
     <div class="card-header">Tags</div>
     <div class="card-body">
         @foreach ($tags as $tag)
-           <span class="badge bg-primary text-light p-2 my-1 mx-1">{{ $tag->label }}</span>
+           <a href="{{ route('home', ['tag' => $tag->slug]) }}" class="badge bg-primary text-light text-decoration-none p-2 my-1 mx-1">{{ $tag->label }}</a>
         @endforeach
     </div>
 </div>

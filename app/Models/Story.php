@@ -124,7 +124,18 @@ class Story extends Model
 
     public function scopeForType($query, $slug)
     {
-        return $query->whereHas('type', function($query) use ($slug) {
+        return $query->whereHas('type', function ($query) use ($slug) {
+            return $query->where('slug', $slug);
+        });
+    }
+
+    public function scopeByTag($query, string $slug = '*')
+    {
+        if ($slug === '*') {
+            return $query;
+        }
+
+        return $query->whereHas('tags', function ($query) use ($slug) {
             return $query->where('slug', $slug);
         });
     }
