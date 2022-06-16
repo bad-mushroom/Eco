@@ -17,7 +17,7 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col-xl-5 col-md-6 mb-4">
+        <div class="col-xl-6 col-md-6 mb-4">
             <x-card header="Quick Note">
                 <x-slot:body>
                     <form action="{{ route('admin.stories.store') }}" method="post" enctype="multipart/form-data">
@@ -27,7 +27,7 @@
                 </x-slot:body>
             </x-card>
         </div>
-        <div class="col-xl-7 col-md-6 mb-4">
+        <div class="col-xl-6 col-md-6 mb-4">
             <x-card header="Recent Stories">
                 <x-slot:body>
                     <ul class="list-group list-group-flush">

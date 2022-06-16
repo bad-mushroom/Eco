@@ -36,3 +36,5 @@ Route::group(['middleware' => 'theme:ecosphere'], function () {
     Route::get('/', 'App\Http\Controllers\StoriesController@index')->name('home');
     Route::resource('stories/{story}/comments', 'App\Http\Controllers\CommentsController');
 });
+
+Route::feeds();

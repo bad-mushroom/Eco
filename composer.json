@@ -12,7 +12,8 @@
         "laravel/telescope": "^4.9",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
-        "qirolab/laravel-themer": "^1.7"
+        "qirolab/laravel-themer": "^1.7",
+        "spatie/laravel-feed": "^4.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

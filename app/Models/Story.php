@@ -10,8 +10,10 @@ use App\Models\Traits\Uuidable;
 use App\Services\StoryTypes\Facades\Type;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
-class Story extends Model
+class Story extends Model implements Feedable
 {
     use Commentable, Formatable, HasFactory, Sluggable, Taggable, Uuidable;
 
@@ -49,7 +51,6 @@ class Story extends Model
     ];
 
     // -- Lifecycle
-
 
     /**
      * Model Boot.
@@ -149,6 +150,25 @@ class Story extends Model
         return $query->where('subject', 'like', '%' . $search . '%')
             ->orWhere('summary', 'like', '%' . $search . '%')
             ->orWhere('body', 'like', '%' . $search . '%');
+    }
+
+    // -- Feed
+
+    public function getAllFeedItems()
+    {
+        return $this->published()->forType('post')->get();
+    }
+
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->subject)
+            ->summary($this->summary ?? '')
+            ->updated($this->updated_at)
+            ->link('/stories/post/' . $this->slug)
+            ->authorName($this->author->name)
+            ->authorEmail($this->author->email);
     }
 
 }

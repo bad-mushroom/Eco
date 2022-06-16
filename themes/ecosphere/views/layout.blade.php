@@ -11,6 +11,10 @@
 
     <title>{{ config('app.name', 'Eco') }}</title>
 
+    <link rel="alternate" type="application/atom+xml" title="News" href="/feed">
+
+    @include('feed::links')
+
     <script src="{{ mix('js/app.js', 'themes/ecosphere') }}" defer></script>
     <link href="{{ mix('css/app.css', 'themes/ecosphere') }}" rel="stylesheet">
 

@@ -23,10 +23,14 @@
         @endforeach
     </div>
 </div>
-
-<div class="card mb-4">
-    <div class="card-header">Side Widget</div>
-    <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and
-        feature the Bootstrap 5 card component!</div>
+<div class="row">
+    <div class="col-4">
+        <a href="{{ route('feeds.main') }}">
+            <img src="/images/atom.gif" height="25" class="img-fluid">
+        </a>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4"></div>
 </div>
+
 

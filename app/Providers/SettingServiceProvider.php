@@ -9,6 +9,6 @@ class SettingServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton(ServiceProvider::class, fn () => new SettingsService());
+        $this->app->singleton(SettingsService::class, fn () => new SettingsService());
     }
 }
