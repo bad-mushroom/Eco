@@ -11,6 +11,7 @@ class StoriesController extends Controller
     public function index(Request $request)
     {
         $stories = Story::query()
+            ->search($request->get('search'))
             ->published()
             ->notFeatured()
             ->notPages()

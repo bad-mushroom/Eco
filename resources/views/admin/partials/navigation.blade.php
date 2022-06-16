@@ -1,8 +1,9 @@
 <nav class="sb-topnav navbar navbar-expand sticky-top navbar-dark bg-dark">
-        <a class="navbar-brand ps-3" href="{{ route('admin.dashboard') }}">{{ $site_title ?? 'Eco' }}</a>
+    <a class="navbar-brand ps-3" href="{{ route('admin.dashboard') }}">{{ $site_title ?? 'Eco' }}</a>
 
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars text-light"></i></button>
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+        <i class="fas fa-bars text-light"></i></button>
 
     <ul class="navbar-nav ms-auto ms-md-0 ms-5 me-lg-4 ps-3">
         <li>
@@ -13,16 +14,17 @@
     </ul>
 
     <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    <form action="{{ route('admin.search') }}" method="post" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        @csrf
         <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+            <input class="form-control" name="search" type="text" placeholder="Search for..." aria-label="Search for..."
                 aria-describedby="btnNavbarSearch" />
-            <button class="btn btn-primary text-light" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-primary text-light" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
         </div>
     </form>
 
     <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+    <ul class="navbar-nav  ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-user fa-fw"></i>

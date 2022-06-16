@@ -140,4 +140,15 @@ class Story extends Model
         });
     }
 
+    public function scopeSearch($query, string $search = null)
+    {
+        if (!$search) {
+            return $query;
+        }
+
+        return $query->where('subject', 'like', '%' . $search . '%')
+            ->orWhere('summary', 'like', '%' . $search . '%')
+            ->orWhere('body', 'like', '%' . $search . '%');
+    }
+
 }

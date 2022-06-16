@@ -14,6 +14,7 @@ class StoriesController extends Controller
     public function index(Request $request)
     {
         $stories = Story::query()
+            ->search($request->get('search'))
             ->byType($request->get('type') ?? '*')
             ->notPages()
             ->withCount('comments')
