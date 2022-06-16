@@ -19,10 +19,18 @@
         </figure>
     @endif
 
-    <section class="mb-5 e-content">
+    <section class="mb-5 e-content" id="story-body">
         {{ $story->body }}
     </section>
 </article>
 
 @include('partials.comments')
+@endsection
+
+@section('js')
+    <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+    <script>
+        var converter = new showdown.Converter();
+        document.getElementById('story-body').innerHTML = converter.makeHtml(document.getElementById('story-body').innerHTML);
+    </script>
 @endsection
