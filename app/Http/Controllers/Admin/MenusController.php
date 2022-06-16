@@ -10,12 +10,7 @@ class MenusController extends Controller
 {
     public function index(Request $request)
     {
-        $menus = Menu::query()
-            ->withCount('items')
-            ->paginate(15);
-
-        return view('admin.pages.menus.index')
-            ->with('menus', $menus);
+        return view('admin.pages.menus.index');
     }
 
     public function edit(Request $request, string $menuId)
