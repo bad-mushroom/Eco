@@ -33,3 +33,5 @@ $theme-colors: ("primary": $cyan,
     "light": $white,
     "dark": $black,
 );
+
+$text-grey: lighten($black, 30%);

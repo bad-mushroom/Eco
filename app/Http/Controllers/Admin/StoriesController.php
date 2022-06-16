@@ -83,6 +83,7 @@ class StoriesController extends Controller
         $data = Type::fetch($request->get('story_type'))->validate($request->all());
 
         $attributes = array_merge([
+            'user_id' => auth()->id(),
             'story_type_id' => Type::model($request->get('story_type'))->id,
             'published_at'    => $request->has('publish') ? Carbon::now() : null,
             'featured_image'  => $request->hasFile('featured_image') ? base64_encode(file_get_stories($request->file('featured_image')->path())) : null,

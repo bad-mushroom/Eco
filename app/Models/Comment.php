@@ -21,7 +21,7 @@ class Comment extends Model
         'body',
         'session',
         'author',
-        
+        'is_approved',
     ];
 
     // -- Relationships
