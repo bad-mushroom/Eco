@@ -9,8 +9,8 @@
         </div>
         <div class="col-lg-12">
             <div class="mb-3">
-                <label for="editor" class="form-label">Note</label>
-                <textarea class="form-control" name="body" id="editor" style="height: 100px">{{ $story->body ?? '' }}</textarea>
+                <label for="summary" class="form-label">Note</label>
+                <textarea class="form-control" name="summary" id="summary" style="height: 100px">{{ $story->summary ?? '' }}</textarea>
                 <div id="editor-help" class="form-text">Notes should be short and concise and will often lack full context.</div>
             </div>
         </div>

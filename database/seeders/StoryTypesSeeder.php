@@ -24,5 +24,15 @@ class StoryTypesSeeder extends Seeder
         $page->label = 'Page';
         $page->description = 'A website page.';
         $page->save();
+
+        $bookmark = StoryType::firstOrNew(['slug' => 'bookmark']);
+        $bookmark->label = 'Bookmark';
+        $bookmark->description = 'Link to a website.';
+        $bookmark->save();
+
+        $note = StoryType::firstOrNew(['slug' => 'note']);
+        $note->label = 'Note';
+        $note->description = 'A note or random thought.';
+        $note->save();
     }
 }

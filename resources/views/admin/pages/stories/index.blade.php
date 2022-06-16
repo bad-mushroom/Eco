@@ -29,7 +29,7 @@
                 </tr>
             </tfoot>
             <tbody>
-                @foreach ($stories as $story)
+                @forelse ($stories as $story)
                     <tr>
                         <td valign="middle" class="text-center">
                             <i class="fas fa-{{ $story->type->icon ?? 'file' }} @if ($story->published_at) text-primary @else text-muted @endif fs-4 mt-2"></i>
@@ -69,7 +69,11 @@
                             </a>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="7">No stories to show</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
