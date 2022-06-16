@@ -22,5 +22,4 @@
         </div>
         @include('admin.partials.form_buttons')
     </div>
-
 </div>

@@ -1,7 +1,4 @@
-<div class="col-lg-6">
-    <button type="button" name="preview" class="btn btn-secondary text-light"><i class="fas fa-eye me-2"></i>Preview</button>
-</div>
-<div class="col-lg-6 text-end">
+<div class="col-lg-12 text-end">
     @if ($story)
         @if ($story->published_at)
             <button type="submit" name="unpublish" class="btn btn-secondary text-light"><i class="fas fa-cloud me-2"></i>Convert to Draft</button>
