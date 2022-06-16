@@ -53,7 +53,7 @@
                         </td>
                         <td valign="middle">
                             <a href="{{ route('admin.stories.index', ['type' => $story->type->slug]) }}">
-                                <span class="badge bg-primary p-2"><i class="fas fa-{{ $story->type->icon ?? 'message' }} me-2"></i>{{ $story->type->label }}</span>
+                                <span class="badge bg-primary p-2">{{ $story->type->label }}</span>
                             </a>
                         </td>
                         <td valign="middle">

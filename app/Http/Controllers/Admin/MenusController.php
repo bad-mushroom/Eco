@@ -14,7 +14,7 @@ class MenusController extends Controller
             ->withCount('items')
             ->paginate(15);
 
-        return view('admin.pages.menus.menus_index')
+        return view('admin.pages.menus.index')
             ->with('menus', $menus);
     }
 
@@ -24,13 +24,13 @@ class MenusController extends Controller
             ->where('id', $menuId)
             ->first();
 
-        return view('admin.pages.menus.menus_edit')
+        return view('admin.pages.menus.edit')
             ->with('menu', $menu);
     }
 
     public function create(Request $request)
     {
-        return view('admin.pages.menus.menus_create');
+        return view('admin.pages.menus.create');
     }
 
     public function show(Request $request, string $menuId)

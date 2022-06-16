@@ -45,8 +45,7 @@
                     @endforeach
                 </nav>
             </div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAppearance"
-                aria-expanded="false" aria-controls="collapseAppearance">
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAppearance" aria-expanded="false" aria-controls="collapseAppearance">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Appearance
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -56,13 +55,9 @@
                     <a class="nav-link" href="{{ route('admin.menus.index') }}">Navigation Menus</a>
                 </nav>
             </div>
-            <div class="collapse" id="collapseAppearance" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="{{ route('admin.menus.index') }}">Themes</a>
-                </nav>
-            </div>
         </div>
     </div>
+
     <div class="sb-sidenav-footer">
         <div class="small">Last Seen:</div>
         {{ auth()->user()->last_login_at->format('m/d/Y h:i a') ?? 'Unknown' }}
