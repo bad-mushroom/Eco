@@ -7,7 +7,6 @@ use App\Models\Story;
 use App\Models\StoryType;
 use App\Services\StoryTypes\Facades\Type;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 

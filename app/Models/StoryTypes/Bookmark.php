@@ -11,6 +11,9 @@ class Bookmark extends Story implements StoryTypeInterface
 {
     public $table = 'stories';
 
+    /**
+     * @inherit
+     */
     public function rules(): array
     {
         return [
@@ -21,17 +24,29 @@ class Bookmark extends Story implements StoryTypeInterface
 
     /**
      * Validate the story type's data.
+     *
+     * @return Validator
      */
     public function validate(array $input): Validator
     {
         return ValidatorFacade::make($input, $this->rules());
     }
 
+    /**
+     * Called before a Story is saved.
+     *
+     * @param Story $story
+     */
     public function onSaving(Story $story)
     {
         //
     }
 
+    /**
+     * Called after a Story is saved.
+     *
+     * @param Story $story
+     */
     public function onSaved(Story $story)
     {
         //

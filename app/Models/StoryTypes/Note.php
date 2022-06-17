@@ -11,6 +11,9 @@ class Note extends Story implements StoryTypeInterface
 {
     public $table = 'stories';
 
+    /**
+     * @inherit
+     */
     public function rules(): array
     {
         return [
@@ -28,11 +31,21 @@ class Note extends Story implements StoryTypeInterface
         return ValidatorFacade::make($input, $this->rules());
     }
 
+    /**
+     * Called before a Story is saved.
+     *
+     * @param Story $story
+     */
     public function onSaving(Story $story)
     {
         //
     }
 
+    /**
+     * Called after a Story is saved.
+     *
+     * @param Story $story
+     */
     public function onSaved(Story $story)
     {
         //

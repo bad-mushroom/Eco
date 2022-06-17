@@ -18,14 +18,20 @@ class AppViewComposer
      */
     public function compose(View $view)
     {
-        $view->with('tags', Tag::all());
         $this->registerMenus($view);
 
+        $view->with('tags', Tag::all());
         $view->with('site_title', Setting::get('site_title'));
         $view->with('site_headline', Setting::get('site_headline'));
     }
 
-    protected function registerMenus(View $view)
+    /**
+     * Make all menus available to the view.
+     *
+     * @param View $view
+     * @return void
+     */
+    protected function registerMenus(View $view): void
     {
         foreach (Menu::with('items')->get() as $menu) {
             $label = 'menu' . Str::ucfirst($menu->slug);
