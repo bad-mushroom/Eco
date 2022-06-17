@@ -4,16 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordChangeRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 
 class PasswordController extends Controller
 {
-    public function edit(Request $request)
+    /**
+     * Show change password form.
+     */
+    public function edit()
     {
-        return view('admin.pages.profile.password');
+        return View::make('admin.pages.profile.password');
     }
 
+    /**
+     * Update the password.
+     *
+     * @param PasswordChangeRequest $request
+     */
     public function update(PasswordChangeRequest $request)
     {
         /** @var User $user */
@@ -21,6 +30,7 @@ class PasswordController extends Controller
         $user->password = Hash::make($request->get('password'));
         $user->save();
 
-        return redirect()->back()->with('success', 'Your password has been changed.');
+        return Redirect::back()
+            ->with('success', 'Your password has been changed.');
     }
 }

@@ -5,38 +5,64 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Story;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 
 class CommentsController extends Controller
 {
-    public function index(Request $request, Story $story)
+    /**
+     * Show all comments for a story.
+     *
+     * @param Story $story
+     */
+    public function index(Story $story)
     {
-
-        return view('admin.pages.comments.index')
-            ->with('comments', $story->comments()->paginate(15))
+        return View::make('admin.pages.comments.index')
+            ->with('comments', $story->comments()->paginate())
             ->with('story', $story);
     }
 
-    public function approve(Request $request, Story $story, Comment $comment)
+    /**
+     * Approve a comment.
+     *
+     * @param Story $story
+     * @param Comment $comment
+     */
+    public function approve(Story $story, Comment $comment)
     {
         $comment->is_approved = true;
         $comment->save();
 
-        return redirect()->back()->with('success', 'The comment has been approved.');
+        return Redirect::back()
+            ->with('success', 'The comment has been approved.');
     }
 
-    public function disapprove(Request $request, Story $story, Comment $comment)
+    /**
+     * Disapprove a comment.
+     *
+     * @param Story $story
+     * @param Comment $comment
+     */
+    public function disapprove(Story $story, Comment $comment)
     {
         $comment->is_approved = false;
         $comment->save();
 
-        return redirect()->back()->with('success', 'The comment has been disapproved and will no longer appear.');
+        return Redirect::back()
+            ->with('success', 'The comment has been disapproved and will no longer appear.');
     }
 
-    public function destroy(Request $request, Story $story, Comment $comment)
+    /**
+     * Delete a comment.
+     *
+     * @param Story $story
+     * @param Comment $comment
+     */
+    public function destroy(Story $story, Comment $comment)
     {
         $comment->delete();
 
-        return redirect()->route('admin.comments.index', $story)->with('success', 'The comment has been deleted.');
+        return Redirect::route('admin.comments.index', $story)
+            ->with('success', 'The comment has been deleted.');
     }
 }

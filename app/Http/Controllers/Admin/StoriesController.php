@@ -8,22 +8,27 @@ use App\Models\StoryType;
 use App\Services\StoryTypes\Facades\Type;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 
 class StoriesController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Show all stories.
+     */
+    public function index()
     {
         $stories = Story::query()
-            ->search($request->get('search'))
-            ->byType($request->get('type') ?? '*')
+            ->search($this->request->get('search'))
+            ->byType($this->request->get('type') ?? '*')
             ->notPages()
             ->withCount('comments')
             ->with(['author:id,name', 'type'])
             ->orderByDesc('updated_at')
             ->paginate(15);
 
-        $selectedType = $request->has('type') && $request->get('type') !== '*'
-            ? StoryType::where('slug', $request->get('type'))->first()
+        $selectedType = $this->request->has('type') && $this->request->get('type') !== '*'
+            ? StoryType::where('slug', $this->request->get('type'))->first()
             : null;
 
         return view('admin.pages.stories.index')
@@ -31,7 +36,12 @@ class StoriesController extends Controller
             ->with('stories', $stories);
     }
 
-    public function edit(Request $request, string $storyId)
+    /**
+     * Show the edit view for the story.
+     *
+     * @param string $storyId
+     */
+    public function edit(string $storyId)
     {
         $story = Story::query()
             ->where('id', $storyId)
@@ -39,70 +49,92 @@ class StoriesController extends Controller
             ->withCount('comments')
             ->first();
 
-        return view('admin.pages.stories.edit')
+        return View::make('admin.pages.stories.edit')
             ->with('selectedType', $story->type)
             ->with('story', $story);
     }
 
-    public function create(Request $request)
+    /**
+     * Show the create story view.
+     */
+    public function create()
     {
-        $selectedType = $request->has('type') && $request->get('type') !== '*'
-            ? StoryType::where('slug', $request->get('type'))->first()
+        $selectedType = $this->request->has('type') && $this->request->get('type') !== '*'
+            ? StoryType::where('slug', $this->request->get('type'))->first()
             : null;
 
-        return view('admin.pages.stories.create')
+        return View::make('admin.pages.stories.create')
             ->with('selectedType', $selectedType);
     }
 
-    public function show(Request $request, string $storyId)
+    /**
+     * Show the "show" story view.
+     *
+     * @param string $storyId
+     */
+    public function show(string $storyId)
     {
-        return $this->edit($request, $storyId);
+        return $this->edit($storyId);
     }
 
-    public function update(Request $request, Story $story)
+    /**
+     * Update the story.
+     *
+     * @param Story $story
+     */
+    public function update(Story $story)
     {
-        $data = Type::fetch($story->type->slug)->validate($request->all());
+        $data = Type::fetch($story->type->slug)->validate($this->request->all());
 
-        $attributes = array_merge([
-            'story_type_id' => Type::model($story->type->slug)->id,
-            'published_at'    => $request->has('publish') ? Carbon::now() : null,
-            'featured_image'  => $request->hasFile('featured_image') ? base64_encode(file_get_contents($request->file('featured_image')->path())) : null,
-
-        ], $data->validated());
+        $attributes = array_merge($data->validated(), [
+            'story_type_id'  => Type::model($story->type->slug)->id,
+            'published_at'   => $this->request->has('publish') ? Carbon::now() : null,
+            'featured_image' => $this->request->hasFile('featured_image')
+                                    ? base64_encode(file_get_contents($this->request->file('featured_image')->path()))
+                                    :  null,
+        ]);
 
         $story->update($attributes);
-        $story->createAndAssociateTags(explode(',', $request->get('tags')));
+        $story->createAndAssociateTags(explode(',', $this->request->get('tags')));
 
-        return redirect()
-            ->back()
+        return Redirect::back()
             ->with('success', 'Your story has been updated.');
     }
 
-    public function store(Request $request)
+    /**
+     * Save the story
+     */
+    public function store()
     {
-        $data = Type::fetch($request->get('story_type'))->validate($request->all());
+        $data = Type::fetch($this->request->get('story_type'))->validate($this->request->all());
 
-        $attributes = array_merge([
-            'user_id' => auth()->id(),
-            'story_type_id' => Type::model($request->get('story_type'))->id,
-            'published_at'    => $request->has('publish') ? Carbon::now() : null,
-            'featured_image'  => $request->hasFile('featured_image') ? base64_encode(file_get_contents($request->file('featured_image')->path())) : null,
-        ], $data->validated());
+        $attributes = array_merge($data->validated(), [
+            'user_id'        => auth()->id(),
+            'story_type_id'  => Type::model($this->request->get('story_type'))->id,
+            'published_at'   => $this->request->has('publish') ? Carbon::now() : null,
+            'featured_image' => $this->request->hasFile('featured_image')
+                                    ? base64_encode(file_get_contents($this->request->file('featured_image')->path()))
+                                    :  null,
+        ]);
 
         $story = Story::create($attributes);
-        $story->createAndAssociateTags(explode(',', $request->get('tags')));
+        $story->createAndAssociateTags(explode(',', $this->request->get('tags')));
 
-        return redirect()
-            ->route('admin.stories.edit', $story->id)
+        return Redirect::route('admin.stories.edit', $story->id)
             ->with('success', 'Your story has been added.');
     }
 
+    /**
+     * Delete the story
+     *
+     * @param  mixed $story
+     * @return void
+     */
     public function delete(Story $story)
     {
         $story->delete();
 
-        return redirect()
-            ->route('admin.stories.index')
+        return Redirect::route('admin.stories.index')
             ->with('success', 'Your story has been deleted.');
     }
 }

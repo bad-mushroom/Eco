@@ -4,34 +4,44 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 
 class SettingsController extends Controller
 {
-    public function index(Request $request, string $type)
+    /**
+     * Show all the settings.
+     *
+     * @param string $type
+     */
+    public function index(string $type)
     {
         $settings = Setting::query()
             ->whereHas('type', function($query) use ($type) {
                 return $query->where('slug', $type);
-            })->get();
+            })
+            ->get();
 
-        return view('admin.pages.settings.general')
+        return View::make('admin.pages.settings.general')
             ->with('settings', $settings)
             ->with('settingType', $settings->first()->type);
     }
 
-    public function update(Request $request)
+    /**
+     * Update the settings.
+     */
+    public function update()
     {
-        foreach ($request->all() as $setting => $value) {
-            Setting::where('slug', $setting)
+        foreach ($this->request->all() as $setting => $value) {
+            Setting::query()
+                ->where('slug', $setting)
                 ->update(['value' => $value]);
         }
 
         Cache::forget('settings');
 
-        return redirect()
-            ->back()
+        return Redirect::back()
             ->with('success', 'Your settings have been saved.');
     }
 }

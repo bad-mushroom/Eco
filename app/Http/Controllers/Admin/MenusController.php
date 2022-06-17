@@ -4,32 +4,50 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class MenusController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Show all menus.
+     *
+     */
+    public function index()
     {
-        return view('admin.pages.menus.index');
+        return View::make('admin.pages.menus.index');
     }
 
-    public function edit(Request $request, string $menuId)
+    /**
+     * Edit a menu.
+     *
+     * @param string $menuId
+     */
+    public function edit(string $menuId)
     {
         $menu = Menu::query()
+            ->with('items')
             ->where('id', $menuId)
             ->first();
 
-        return view('admin.pages.menus.edit')
+        return View::make('admin.pages.menus.edit')
             ->with('menu', $menu);
     }
 
-    public function create(Request $request)
+    /**
+     * Show the create menu view.
+     */
+    public function create()
     {
-        return view('admin.pages.menus.create');
+        return View::make('admin.pages.menus.create');
     }
 
-    public function show(Request $request, string $menuId)
+    /**
+     * Show a menu.
+     *
+     * @param  string $menuId
+     */
+    public function show(string $menuId)
     {
-        return $this->edit($request, $menuId);
+        return $this->edit($menuId);
     }
 }

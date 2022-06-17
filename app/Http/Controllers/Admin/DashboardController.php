@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Story;
 use App\Models\Tag;
-use App\Models\User;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Show the Dashboard.
+     */
+    public function index()
     {
         $totals = [
             'comments' => Comment::where('is_approved')->count(),
@@ -21,7 +24,7 @@ class DashboardController extends Controller
 
         $recentStories = Story::orderByDesc('created_at')->take(5)->get();
 
-        return view('admin.pages.dashboard')
+        return View::make('admin.pages.dashboard')
             ->with('totals', $totals)
             ->with('recentStories', $recentStories);
     }

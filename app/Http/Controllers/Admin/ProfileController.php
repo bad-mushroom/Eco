@@ -4,16 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileSaveRequest;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\View;
 
 class ProfileController extends Controller
 {
-    public function edit(Request $request)
+    /**
+     * Show the profile edit view.
+     */
+    public function edit()
     {
-        return view('admin.pages.profile.profile_edit')
+        return View::make('admin.pages.profile.profile_edit')
             ->with('profile', auth()->user());
     }
 
+    /**
+     * Update the profile.
+     *
+     * @param ProfileSaveRequest $request
+     * @return void
+     */
     public function update(ProfileSaveRequest $request)
     {
         /** @var User $user */
@@ -27,6 +37,7 @@ class ProfileController extends Controller
 
         $user->update($attributes);
 
-        return redirect()->back()->with('success', 'Your profile changes have been saved.');
+        return Redirect::back()
+            ->with('success', 'Your profile changes have been saved.');
     }
 }
