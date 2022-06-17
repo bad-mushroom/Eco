@@ -66,7 +66,7 @@ class StoriesController extends Controller
         $attributes = array_merge([
             'story_type_id' => Type::model($story->type->slug)->id,
             'published_at'    => $request->has('publish') ? Carbon::now() : null,
-            'featured_image'  => $request->hasFile('featured_image') ? base64_encode(file_get_stories($request->file('featured_image')->path())) : null,
+            'featured_image'  => $request->hasFile('featured_image') ? base64_encode(file_get_contents($request->file('featured_image')->path())) : null,
 
         ], $data->validated());
 
@@ -86,7 +86,7 @@ class StoriesController extends Controller
             'user_id' => auth()->id(),
             'story_type_id' => Type::model($request->get('story_type'))->id,
             'published_at'    => $request->has('publish') ? Carbon::now() : null,
-            'featured_image'  => $request->hasFile('featured_image') ? base64_encode(file_get_stories($request->file('featured_image')->path())) : null,
+            'featured_image'  => $request->hasFile('featured_image') ? base64_encode(file_get_contents($request->file('featured_image')->path())) : null,
         ], $data->validated());
 
         $story = Story::create($attributes);

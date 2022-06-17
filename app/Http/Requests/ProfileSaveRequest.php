@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProfileSaveRequest extends FormRequest
 {
@@ -24,8 +25,9 @@ class ProfileSaveRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'max:255'],
-            'email' => ['required', 'email'. 'unique:users,email,except,' . auth()->id()]
+            'name'   => ['required', 'max:255'],
+            'email'  => ['required', 'email', Rule::unique('users')->ignore(auth()->id())],
+            'avatar' => ['sometimes'],
         ];
     }
 }

@@ -2,7 +2,7 @@
     <div class="sb-sidenav-menu">
         <div class="text-center my-3">
             <a href="{{ route('admin.profile') }}">
-                <img src="/avatar.jpg" class="rounded-circle border border-3" style="width: 100px;" alt="" />
+                <img src="data:image/png;base64,{{ auth()->user()->avatar }}" class="rounded-circle border border-3" style="width: 100px;" alt="" />
             </a>
             <p class="fw-bold fs-5 pt-2">{{ auth()->user()->name }}</p>
         </div>

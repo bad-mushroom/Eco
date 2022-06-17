@@ -18,7 +18,14 @@ class ProfileController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
-        $user->update($request->validated());
+
+        $attributes = array_merge($request->validated(), [
+            'avatar' => $request->hasFile('avatar')
+                ? base64_encode(file_get_contents($request->file('avatar')->path()))
+                : $user->avatar ?? null,
+        ]);
+
+        $user->update($attributes);
 
         return redirect()->back()->with('success', 'Your profile changes have been saved.');
     }

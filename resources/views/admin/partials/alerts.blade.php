@@ -18,7 +18,7 @@
 
     @if (session()->has('errors'))
     <div class="my-2 alert alert-danger" role="alert">
-        Please chack the form for errors and try again.
+        Please check the form for errors and try again.
     </div>
     @endif
 
