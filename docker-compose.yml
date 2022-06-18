@@ -56,5 +56,5 @@ services:
 # Volumes ---------------------------------------------------------------------
 
 volumes:
-  storage:
+  content:
   database:
