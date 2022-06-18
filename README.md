@@ -1,31 +1,33 @@
 # Eco - Personal Web Ecosystem
 
-Inspired by @IndieWeb, Eco aims to be a personal hub for your web presence and content.
+Inspired by @IndieWeb, Eco aims to be a personal hub for your web presence and publishing platform where you own your content.
 
-Build with modern tooling:
+Built with modern tooling:
 - Laravel 9
 - Bootstrap 5 & SaSS
 - Livewire
 
 Features
+- Not a blog platform, a content platform
 - Developer friendly
 - Extendable themes
-- Fast and secure
+- Supports hCard microformat
+- Atom syndication
 
 ## Screenshots
 
 // Todo
 
-## Development Installation
+# Development Installation
 
-### Requirements
+## Requirements
 
 * Docker [Docker Website](http://www.docker.com)
 * Git [Git Website](https://git-scm.com/)
 * Composer [PHP Composer Website](https://getcomposer.org/)
 * NPM [NPM Website](https://www.npmjs.com/)
 
-#### Clone this repo locally
+### Clone this repo locally
 
 ```
 git clone https://github.com:bad-mushroom/eco.git ./eco
@@ -35,13 +37,13 @@ cd ./eco
 
 The remaining installation steps will assume you're in the `eco` directory, or which ever directory you cloned the repo to.
 
-#### Install Composer Dependencies
+### Install Composer Dependencies
 
 ```
 composer install
 ```
 
-#### Environemnt Variables
+### Environemnt Variables
 
 Eco is build on Laravel which uses .env files for environment configuration. You'll first need to copy the example file.
 
@@ -62,7 +64,7 @@ php artisan key:generate
 ```
 
 
-#### Docker
+### Docker
 
 With the configuration values in place, we need to spin up Eco's Docker environemnt. This will spin up all the necessary containers to run Eco; MySQL, php-fpm, etc.
 
@@ -70,7 +72,7 @@ With the configuration values in place, we need to spin up Eco's Docker environe
 docker-compose up
 ```
 
-#### Node Packages
+### Node Packages
 
 There are a handfull of node packages to install and frontend assets to build that Eco requires for the admin page as well as any themes that are installed.
 
@@ -79,7 +81,7 @@ npm ci
 npm run dev
 ```
 
-#### Database and Seeded Data
+### Database and Seeded Data
 
 We'll need to build the database tables and seed them with some initial data.
 
@@ -90,9 +92,9 @@ php artisan migrate --seed
 The seeders that run will populate some settings and meta data for your content.
 
 
-## Configuration
+# Configuration
 
-#### User Account
+### User Account
 
 By default, there isn't a user account created during setup. To do this there is an artisan command you can run:
 
@@ -110,6 +112,6 @@ User account created:
  - Password: password
 ```
 
-## Wrapping Up
+# Wrapping Up
 
 You should now be able to access Eco in your web browser at http://localhost:8080 to see the main page or the admin page at http://localhost:8300/admin and log in with the email/password you created.
