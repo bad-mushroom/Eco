@@ -27,12 +27,14 @@ class SettingsSeeder extends Seeder
 
         $title = Setting::firstOrNew(['slug' => 'site_title']);
         $title->label = 'Website Title';
+        $title->value = 'My Website';
         $title->description = 'The title of your website';
         $title->setting_type_id = $this->lookupSettingType('general')->id;
         $title->save();
 
         $headline = Setting::firstOrNew(['slug' => 'site_headline']);
         $headline->label = 'Website Headline';
+        $headline->value = 'Welcome to my new home on the web!';
         $headline->description = 'A headline or tag line for your website';
         $headline->setting_type_id = $this->lookupSettingType('general')->id;
         $headline->save();
@@ -58,6 +60,14 @@ class SettingsSeeder extends Seeder
         $timeFormat->description = 'The format to use when displaying times.';
         $timeFormat->setting_type_id = $this->lookupSettingType('general')->id;
         $timeFormat->save();
+
+        $allowComments = Setting::firstOrNew(['slug' => 'allow_comments']);
+        $allowComments->label = 'Allow Comments';
+        $allowComments->value = false;
+        $allowComments->default = false;
+        $allowComments->description = 'Allow comments from visitors';
+        $allowComments->setting_type_id = $this->lookupSettingType('comments')->id;
+        $allowComments->save();
     }
 
     protected function lookupSettingType(string $slug): ?SettingType

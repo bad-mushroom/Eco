@@ -57,16 +57,6 @@
                     @endforeach
                 </nav>
             </div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAppearance" aria-expanded="false" aria-controls="collapseAppearance">
-                <div class="sb-nav-link-icon"><i class="fas fa-table me-2"></i></div>
-                Appearance
-                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapseAppearance" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="{{ route('manage.menus.index') }}">Navigation Menus</a>
-                </nav>
-            </div>
         </div>
     </div>
 
