@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Story;
 use App\Services\Settings\Facades\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class StoriesController extends Controller
 {
@@ -21,7 +22,7 @@ class StoriesController extends Controller
             ->orderByDesc('published_at')
             ->paginate(Setting::get('posts_per_page'));
 
-        return view('home')
+        return View::make('home')
             ->with('stories', $stories)
             ->with('featured', Story::where('is_featured', true)->with('type')->first());
     }

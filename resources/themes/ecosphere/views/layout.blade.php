@@ -9,14 +9,13 @@
     <meta name="generator" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Eco') }}</title>
+    <title>{{ $site_title ?? 'Eco' }}</title>
 
     <link rel="alternate" type="application/atom+xml" title="News" href="/feed">
 
     @include('feed::links')
 
-    <script src="{{ mix('js/app.js', 'themes/ecosphere') }}" defer></script>
-    <link href="{{ mix('css/app.css', 'themes/ecosphere') }}" rel="stylesheet">
+    <link href="{{ mix('themes/ecosphere/css/app.css', 'eco') }}" rel="stylesheet">
 
     @livewireStyles
 </head>
@@ -46,6 +45,7 @@
 
     @include('partials.footer')
 
+    <script src="{{ mix('themes/ecosphere/js/app.js', 'eco') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
         integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async>
     </script>

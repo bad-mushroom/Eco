@@ -11,8 +11,23 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/manage/js')
-mix.sass('resources/scss/app.scss', 'public/manage/css');
+/**
+ * Sets the default public path to "public/eco".
+ */
+mix.setPublicPath('public/eco');
 
+/**
+ * These resources are responsible for the Eco management app.
+ */
+mix.js('resources/js/app.js', 'js')
+  .sass('resources/scss/app.scss', 'css');
 
-// require(`${__dirname}/themes/ecosphere/webpack.mix.js`);
+/**
+ * Eco Themes
+ *
+ * Each theme file should maintain its own webpack.mix.js file.
+ * As you create new themes, or remove old ones, make sure to include
+ * the theme's mix file here.
+ */
+
+require(`${__dirname}/resources/themes/ecosphere/webpack.mix.js`);

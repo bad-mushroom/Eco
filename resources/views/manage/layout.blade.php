@@ -9,7 +9,7 @@
 
     <title>Dashboard - Eco Manage</title>
 
-    <link href="/manage/css/app.css" rel="stylesheet" />
+    <link href="/eco/css/app.css" rel="stylesheet" />
 
     @yield('css')
     @livewireStyles
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <script src="/manage/js/app.js"></script>
+    <script src="/eco/js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 

@@ -68,6 +68,14 @@ class SettingsSeeder extends Seeder
         $allowComments->description = 'Allow comments from visitors';
         $allowComments->setting_type_id = $this->lookupSettingType('comments')->id;
         $allowComments->save();
+
+        $activeTheme = Setting::firstOrNew(['slug' => 'theme']);
+        $activeTheme->label = 'Active Theme';
+        $activeTheme->value = 'ecosphere';
+        $activeTheme->default = 'ecosphere';
+        $activeTheme->description = 'Theme name from /themes/ directory';
+        $activeTheme->setting_type_id = $this->lookupSettingType('general')->id;
+        $activeTheme->save();
     }
 
     protected function lookupSettingType(string $slug): ?SettingType

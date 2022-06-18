@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\Settings\Facades\Setting;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,7 +36,7 @@ Route::group(['prefix' => 'manage', 'as' => 'manage.', 'middleware' => 'auth'], 
     Route::post('search', 'App\Http\Controllers\Manage\StoriesController@index')->name('search');
 });
 
-Route::group(['middleware' => 'theme:ecosphere'], function () {
+Route::group(['middleware' => 'theme:' . Setting::get('theme', 'ecosphere')], function () {
     Route::get('stories', 'App\Http\Controllers\StoriesController@index');
     Route::get('stories/{storyType:slug}/{story:slug}', 'App\Http\Controllers\StoriesController@show')->name('stories.show');
     Route::get('/', 'App\Http\Controllers\StoriesController@index')->name('home');
