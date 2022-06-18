@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Login</title>
-    <link href="/admin/css/app.css" rel="stylesheet" />
+    <link href="/manage/css/app.css" rel="stylesheet" />
 </head>
 
 <body class="bg-primary">
@@ -56,6 +56,6 @@
         </div>
     </div>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <script src="/admin/js/app.js"></script>
+    <script src="/manage/js/app.js"></script>
 </body>
 </html>

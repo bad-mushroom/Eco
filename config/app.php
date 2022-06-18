@@ -196,7 +196,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\SettingServiceProvider::class,
-        App\Providers\AdminServiceProvider::class,
+        App\Providers\ManageServiceProvider::class,
         App\Providers\ThemeServiceProvider::class,
         App\Providers\StoryTypeServiceProvider::class,
 

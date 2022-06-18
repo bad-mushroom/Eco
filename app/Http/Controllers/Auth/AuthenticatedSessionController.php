@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
         $user->last_login_at = Carbon::now();
         $user->save();
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('manage.dashboard');
     }
 
     /**

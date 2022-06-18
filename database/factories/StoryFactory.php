@@ -20,7 +20,8 @@ class StoryFactory extends Factory
     {
         return [
             'subject' => $this->faker->words(3, true),
-            'body'    => $this->faker->sentence(),
+            'summary' => $this->faker->sentence(),
+            'body'    => $this->faker->sentence(50),
         ];
     }
 

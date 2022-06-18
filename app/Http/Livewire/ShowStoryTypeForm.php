@@ -8,9 +8,9 @@ class ShowStoryTypeForm extends Component
 {
     /**
      * The value here will need to corespond to a blade partial in
-     * `resources/views/admin/partials/story_types`.
+     * `resources/views/manage/partials/story_types`.
      *
-     * Example: `resources/views/admin/partials/story_types/post.blade.php`
+     * Example: `resources/views/manage/partials/story_types/post.blade.php`
      */
     public $selectedStoryType;
 
