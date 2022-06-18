@@ -5,17 +5,20 @@
 
 <div class="container-fluid px-4">
     <div class="row">
-        <div class="col-xl-4 col-md-6 mb-4">
-            <x-widget label="Pending Comments" icon="fas fa-comments" value="{{ $totals['comments'] }}" type="primary" />
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{{ route('manage.comments.index', ['approved' => 0]) }}" class="text-decoration-none">
+                <x-widget label="Pending Comments" icon="fas fa-comments" value="{{ $totals['comments'] }}" type="primary" />
+            </a>
         </div>
-        <div class="col-xl-4 col-md-6 mb-4">
-            <x-widget label="Total Tags" icon="fas fa-tag" value="{{ $totals['tags'] }}" type="success" />
-        </div>
-        <div class="col-xl-4 col-md-6 mb-4">
-            <x-widget label="Total Stories" icon="fas fa-file-lines" value="{{ $totals['stories'] }}" type="primary" />
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="{{ route('manage.stories.index') }}" class="text-decoration-none">
+                <x-widget label="Total Stories" icon="fas fa-file-lines" value="{{ $totals['stories'] }}" type="primary" />
+            </a>
         </div>
     </div>
-    <hr>
+
+    <hr />
+
     <div class="row">
         <div class="col-xl-6 col-md-6 mb-4">
             <x-card header="Quick Note">

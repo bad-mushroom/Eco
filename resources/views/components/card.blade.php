@@ -1,6 +1,6 @@
 <div class="card mb-4">
-    <div class="card-header bg-secondary text-light">{{ $header }}</div>
+    <div class="card-header bg-primary text-light">{{ $header }}</div>
     <div class="card-body">
-            {{ $body }}
+        {{ $body }}
     </div>
 </div>

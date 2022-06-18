@@ -39,4 +39,14 @@ class Comment extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    // -- Scopes
+
+    public function scopeByState($query, $approved = null)
+    {
+        if (is_null($approved)) {
+            return $query;
+        }
+        return $query->where('is_approved', $approved);
+    }
+
 }

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Comment;
 use App\Models\Story;
+use Illuminate\Support\Facades\View;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,7 +12,13 @@ class Comments extends Component
 {
     use WithPagination;
 
+    public $approved = '';
+
     protected $paginationTheme = 'bootstrap';
+
+    protected $queryString = [
+        'approved' => ['excpept' => '']
+    ];
 
     public $story;
 
@@ -44,9 +51,11 @@ class Comments extends Component
 
     public function render()
     {
-        $comments = Comment::paginate();
+        $comments = Comment::query()
+            ->byState($this->approved)
+            ->paginate();
 
-        return view('livewire.comments')
+        return View::make('livewire.comments')
             ->with('comments', $comments);
     }
 
