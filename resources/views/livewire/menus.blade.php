@@ -1,5 +1,6 @@
-<div class="container">
-    <div class="row px-4">
+<div class="container-fluid px-5">
+    @include('manage.partials.alerts')
+    <div class="row px-4 pb-3">
         <div class="col-12 text-end">
             <a href="{{ route('manage.menus.create') }}" class="btn btn-primary text-light">
                 <i class="fas fa-plus me-2"></i>New Menu

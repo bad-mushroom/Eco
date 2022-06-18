@@ -15,11 +15,9 @@ class CommentsController extends Controller
      *
      * @param Story $story
      */
-    public function index(Story $story)
+    public function index()
     {
-        return View::make('manage.pages.comments.index')
-            ->with('comments', $story->comments()->paginate())
-            ->with('story', $story);
+        return View::make('manage.pages.comments.index');
     }
 
     /**

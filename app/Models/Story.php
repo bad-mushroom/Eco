@@ -125,6 +125,7 @@ class Story extends Model implements Feedable
 
     public function scopeForType($query, $slug)
     {
+
         return $query->whereHas('type', function ($query) use ($slug) {
             return $query->where('slug', $slug);
         });

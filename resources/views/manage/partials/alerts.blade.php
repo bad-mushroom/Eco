@@ -1,29 +1,29 @@
-    @if (session()->has('success'))
+@if (session()->has('success'))
     <div class="my-2 alert alert-success" role="alert">
         {{ session()->get('success') }}
     </div>
-    @endif
+@endif
 
-    @if (session()->has('warning'))
+@if (session()->has('warning'))
     <div class="my-2 alert alert-warning" role="alert">
         {{ session()->get('warning') }}
     </div>
-    @endif
+@endif
 
-    @if (session()->has('danger'))
+@if (session()->has('danger'))
     <div class="my-2 alert alert-danger" role="alert">
         {{ session()->get('danger') }}
     </div>
-    @endif
+@endif
 
-    @if (session()->has('errors'))
+@if (session()->has('errors'))
     <div class="my-2 alert alert-danger" role="alert">
         Please check the form for errors and try again.
     </div>
-    @endif
+@endif
 
-    @if (session()->has('info'))
+@if (session()->has('info'))
     <div class="my-2 alert alert-info" role="alert">
         {{ session()->get('info') }}
     </div>
-    @endif
+@endif

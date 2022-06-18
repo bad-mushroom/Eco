@@ -17,7 +17,7 @@ class StoriesController extends Controller
      */
     public function index()
     {
-        return View::make('manage.pages.storiess.index');
+        return View::make('manage.pages.stories.index');
     }
 
     /**

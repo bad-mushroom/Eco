@@ -12,21 +12,29 @@ class Stories extends Component
 {
     use WithPagination;
 
+    public $search = '';
+    public $type = '*';
+
     protected $paginationTheme = 'bootstrap';
+
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'type'   => ['except' => ''],
+    ];
 
     public function render()
     {
         $stories = Story::query()
-            ->search($this->request->get('search'))
-            ->byType($this->request->get('type') ?? '*')
+            ->search($this->search)
+            ->byType($this->type ?? '*')
             ->notPages()
             ->withCount('comments')
             ->with(['author:id,name', 'type'])
             ->orderByDesc('updated_at')
             ->paginate(15);
 
-        $selectedType = $this->request->has('type') && $this->request->get('type') !== '*'
-            ? StoryType::where('slug', $this->request->get('type'))->first()
+        $selectedType = $this->type && $this->type !== '*'
+            ? StoryType::where('slug', $this->type)->first()
             : null;
 
         return View::make('livewire.stories')

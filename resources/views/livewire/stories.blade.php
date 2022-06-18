@@ -1,5 +1,6 @@
-<div class="container">
-    <div class="row px-4">
+<div class="container-fluid px-5">
+    @include('manage.partials.alerts')
+    <div class="row px-4 pb-3">
         <div class="col-12 text-end">
             <a href="{{ route('manage.stories.create', ['type' => optional($selectedType)->slug ]) }}" class="btn btn-primary text-light">
                 <i class="fas fa-plus me-2"></i>New {{ optional($selectedType)->label }}
@@ -20,7 +21,7 @@
         <x-slot:body>
             @forelse ($stories as $story)
                 <x-table.row>
-                    <x-table.cell>
+                    <x-table.cell classes="text-center">
                         <x-icon icon="fas fa-{{ $story->type->icon ?? 'file' }}" color="primary" />
                     </x-table.cell>
                     <x-table.cell>

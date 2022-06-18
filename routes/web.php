@@ -20,6 +20,7 @@ Route::group(['prefix' => 'manage', 'as' => 'manage.', 'middleware' => 'auth'], 
     Route::put('settings', 'App\Http\Controllers\Manage\SettingsController@update')->name('settings.update');
     Route::resource('stories', 'App\Http\Controllers\Manage\StoriesController');
     Route::resource('stories/{story}/comments', 'App\Http\Controllers\Manage\CommentsController');
+    Route::get('/comments', 'App\Http\Controllers\Manage\CommentsController@index');
     Route::put('stories/{story}/comments{comment}/approve', 'App\Http\Controllers\Manage\CommentsController@approve')->name('comments.approve');
     Route::put('stories/{story}/comments{comment}/disapprove', 'App\Http\Controllers\Manage\CommentsController@disapprove')->name('comments.disapprove');
     Route::resource('menus', 'App\Http\Controllers\Manage\MenusController');
