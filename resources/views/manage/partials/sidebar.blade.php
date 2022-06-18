@@ -10,19 +10,24 @@
         <div class="nav">
             <div class="sb-sidenav-menu-heading">Favorites</div>
             <a class="nav-link" href="{{ route('manage.dashboard') }}">
-                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt me-2"></i></div>
                 Dashboard
             </a>
 
-            <div class="sb-sidenav-menu-heading">Stories</div>
+            <div class="sb-sidenav-menu-heading">Content</div>
+
+            <a class="nav-link collapsed" href="{{ route('manage.stories.index', ['type' => '*']) }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns me-2"></i></div>
+                All Stories
+            </a>
+
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePosts" aria-expanded="false" aria-controls="collapsePosts">
-                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                By Types
+                <div class="sb-nav-link-icon"><i class="fas fa-columns me-2"></i></div>
+               Stories By Types
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="collapsePosts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="{{ route('manage.stories.index', ['type' => '*']) }}">View All Stories</a>
                     @foreach ($storyTypes as $type)
                         <a class="nav-link" href="{{ route('manage.stories.index', ['type' => $type->slug]) }}">{{ Str::plural($type->label) }}</a>
                     @endforeach
@@ -30,13 +35,18 @@
             </div>
 
             <a class="nav-link collapsed" href="{{ route('manage.stories.index', ['type' => 'page']) }}">
-                <div class="sb-nav-link-icon"><i class="fas fa-file-lines"></i></div>
+                <div class="sb-nav-link-icon"><i class="fas fa-file-lines me-2"></i></div>
                 Pages
+            </a>
+
+            <a class="nav-link collapsed" href="{{ route('manage.comments.index') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-comments me-2"></i></div>
+                Comments
             </a>
 
             <div class="sb-sidenav-menu-heading">Configuration</div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
-                <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
+                <div class="sb-nav-link-icon"><i class="fas fa-cog me-2"></i></div>
                 Settings
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
@@ -48,7 +58,7 @@
                 </nav>
             </div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAppearance" aria-expanded="false" aria-controls="collapseAppearance">
-                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                <div class="sb-nav-link-icon"><i class="fas fa-table me-2"></i></div>
                 Appearance
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
