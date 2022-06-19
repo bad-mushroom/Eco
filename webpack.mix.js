@@ -19,8 +19,8 @@ mix.setPublicPath('public/eco');
 /**
  * These resources are responsible for the Eco management app.
  */
-mix.js('resources/js/app.js', 'js')
-  .sass('resources/scss/app.scss', 'css');
+mix.js('resources/js/app.js', 'manage/js')
+  .sass('resources/scss/app.scss', '/manage/css');
 
 /**
  * Eco Themes

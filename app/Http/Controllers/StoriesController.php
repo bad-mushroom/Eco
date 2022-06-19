@@ -24,7 +24,7 @@ class StoriesController extends Controller
 
         return View::make('home')
             ->with('stories', $stories)
-            ->with('featured', Story::where('is_featured', true)->with('type')->first());
+            ->with('featuredStories', Story::where('is_featured', true)->with('type')->get());
     }
 
     public function show(Request $request, string $storyTypeSlug, string $storySlug)

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\ViewComposers;
 use App\Http\ViewComposers\SidebarViewComposer;
+use App\Services\Settings\Facades\Setting;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -18,7 +19,7 @@ class ThemeServiceProvider extends ServiceProvider
     public function boot()
     {
         // -- Composers
-        View::composer(['*.layout'], ViewComposers\AppViewComposer::class);
+        View::composer(['*', 'home'], ViewComposers\AppViewComposer::class);
         View::composer('partials.widgetbar', SidebarViewComposer::class);
 
         Blade::directive('author', function ($story) {

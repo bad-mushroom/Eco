@@ -23,25 +23,7 @@
 <body class="d-flex flex-column min-vh-100">
     @include('partials.navigation')
 
-    <header class="py-5 bg-primary text-light border-bottom mb-4">
-        <div class="container">
-            <div class="text-center my-5">
-                <h1 class="fw-bolder">Welcome to {{ $site_title }}!</h1>
-                <p class="lead mb-0">{{ $site_headline }}</p>
-            </div>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                @yield('content')
-            </div>
-            <div class="col-lg-4">
-                @include('partials.widgetbar')
-            </div>
-        </div>
-    </div>
+    @yield('content')
 
     @include('partials.footer')
 

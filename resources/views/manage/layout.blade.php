@@ -9,8 +9,7 @@
 
     <title>Dashboard - Eco Manage</title>
 
-    <link href="/eco/css/app.css" rel="stylesheet" />
-
+    <link href="{{ mix('manage/css/app.css', 'eco') }}" rel="stylesheet">
     @yield('css')
     @livewireStyles
 </head>
@@ -23,13 +22,13 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-               @yield('content')
+                @yield('content')
             </main>
             @include('manage.partials.footer')
         </div>
     </div>
 
-    <script src="/eco/js/app.js"></script>
+    <script src="{{ mix('manage/js/app.js', 'eco') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
