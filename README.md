@@ -18,7 +18,9 @@ Eco is still very early in development and not recommended for production sites.
 
 ## Screenshots
 
-// Todo
+![Theme](https://github.com/bad-mushroom/eco/blob/main/docs/screenshots/default_theme.pngg?raw=true)
+![Creating Posts](https://github.com/bad-mushroom/eco/blob/main/docs/screenshots/manage_create_post.png?raw=true)
+![Stories](https://github.com/bad-mushroom/eco/blob/main/docs/screenshots/manage_stories.png?raw=true)
 
 # Development Installation
 
