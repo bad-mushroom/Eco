@@ -14,6 +14,8 @@ Features
 - Supports hCard microformat
 - Atom syndication
 
+Eco is still very early in development and not recommended for production sites. Pull requests and issues are very much welcome!
+
 ## Screenshots
 
 // Todo
