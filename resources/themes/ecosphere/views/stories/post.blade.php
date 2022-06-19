@@ -7,6 +7,8 @@
         <div class="small text-muted"><span class="dt-published">{{ $story->relative_published_at }}</span> by @author($story)</div>
         <h2 class="card-title h4 h-title">{{ $story->subject }}</h2>
         <p class="card-text p-summary">{{ $story->summary }}</p>
-        <a class="btn btn-primary u-url" href="{{ route('stories.show', ['storyType' => $story->type, 'story' => $story->slug]) }}">Read more →</a>
+        @if ($story->body)
+            <a class="btn btn-primary text-light" href="{{ route('stories.show', ['storyType' => $story->type, 'story' => $story->slug]) }}">Read more →</a>
+        @endif
     </div>
 </div>

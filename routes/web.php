@@ -39,6 +39,7 @@ Route::group(['prefix' => 'manage', 'as' => 'manage.', 'middleware' => 'auth'], 
 Route::group(['middleware' => 'theme:' . Setting::get('theme', 'ecosphere')], function () {
     Route::get('stories', 'App\Http\Controllers\StoriesController@index');
     Route::get('stories/{storyType:slug}/{story:slug}', 'App\Http\Controllers\StoriesController@show')->name('stories.show');
+    Route::get('pages/{page:slug}', 'App\Http\Controllers\PagesController@show')->name('pages.show');
     Route::get('/', 'App\Http\Controllers\StoriesController@index')->name('home');
     Route::resource('stories/{story}/comments', 'App\Http\Controllers\CommentsController');
 });

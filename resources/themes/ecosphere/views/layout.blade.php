@@ -20,14 +20,14 @@
     @livewireStyles
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     @include('partials.navigation')
 
-    <header class="py-5 bg-light border-bottom mb-4">
+    <header class="py-5 bg-primary text-light border-bottom mb-4">
         <div class="container">
             <div class="text-center my-5">
                 <h1 class="fw-bolder">Welcome to {{ $site_title }}!</h1>
-                <p class="lead mb-0">{{ $site_headline ?? 'A Bootstrap 5 starter layout for your next blog homepage' }}</p>
+                <p class="lead mb-0">{{ $site_headline }}</p>
             </div>
         </div>
     </header>
@@ -47,7 +47,9 @@
 
     <script src="{{ mix('themes/ecosphere/js/app.js', 'eco') }}" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
-        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async>
+        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
+        crossorigin="anonymous"
+        async>
     </script>
     @yield('js')
     @livewireScripts

@@ -62,7 +62,7 @@
                 </x-table.row>
             @empty
                 <x-table.row>
-                    <x-table.cell colspan="7">No menus to show</x-table.cell>
+                    <x-table.cell colspan="7">No stories to show</x-table.cell>
                 </x-table.row>
             @endforelse
         </x-slot:body>

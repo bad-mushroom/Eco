@@ -24,13 +24,11 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-4">
+    <div class="col-12">
         <a href="{{ route('feeds.main') }}">
-            <img src="/images/atom.gif" height="25" class="img-fluid">
+            <img src="/images/atom.gif" class="img-fluid">
         </a>
     </div>
-    <div class="col-4"></div>
-    <div class="col-4"></div>
 </div>
 
 

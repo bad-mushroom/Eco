@@ -27,7 +27,6 @@ class Stories extends Component
         $stories = Story::query()
             ->search($this->search)
             ->byType($this->type ?? '*')
-            ->notPages()
             ->withCount('comments')
             ->with(['author:id,name', 'type'])
             ->orderByDesc('updated_at')

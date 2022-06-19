@@ -5,14 +5,20 @@
             aria-controls="navbarSupportedStory" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        @if ($menuMain ?? false)
             <div class="collapse navbar-collapse" id="navbarSupportedStory">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    @foreach ($menuMain as $item)
-                        <li class="nav-item"><a class="nav-link" href="#">{{ $item->label }}</a></li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('manage.index') }}">Manage Site</a>
+                        </li>
+                    @endauth
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    @foreach ($pages as $page)
+                        <li class="nav-item"><a class="nav-link" href="{{ route('pages.show', $page) }}">{{ $page->subject }}</a></li>
                     @endforeach
                 </ul>
             </div>
-        @endif
     </div>
 </nav>
