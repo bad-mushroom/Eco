@@ -28,7 +28,7 @@ class Stories extends Component
             ->search($this->search)
             ->byType($this->type ?? '*')
             ->withCount('comments')
-            ->with(['author:id,name', 'type'])
+            ->with(['author:id,name,avatar', 'type'])
             ->orderByDesc('updated_at')
             ->paginate(15);
 

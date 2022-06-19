@@ -38,7 +38,7 @@
                     </x-table.cell>
                     <x-table.cell>
                         <a href="{{ route('manage.stories.index', ['author' => $story->author]) }}">
-                            <img src="/avatar.jpg" class="rounded-circle border border-3" style="width: 35px;" alt="{{ $story->author->name }}"
+                            <img src="data:image/png;base64,{{ $story->author->avatar }}" class="rounded-circle border border-3" style="width: 35px;" alt="{{ $story->author->name }}"
                                 title="{{ $story->author->name }}" />
                         </a>
                     </x-table.cell>
