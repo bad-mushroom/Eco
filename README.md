@@ -34,7 +34,7 @@ Eco is still very early in development and not recommended for production sites.
 ### Clone this repo locally
 
 ```
-git clone https://github.com:bad-mushroom/eco.git ./eco
+git clone https://github.com:bad-mushroom/eco.git ./my-website/eco
 
 cd ./eco
 ```
@@ -55,19 +55,22 @@ Eco is built on Laravel which uses .env files for environment configuration. You
 cp .env.example .env
 ```
 
-Open `.env` in your editor and update as needed. There is one particular value you may want to manually change, `STORAGE_PATH`. If you want to persist any data outside of Docker you will need to change this value to a path to a value outside of the `eco` directory to store your database and content. Otherwise data will be lost each time your docker envirment is recreated.
+#### Paths
 
-For example, by default your developer environement will have a `eco/storage` directory which will contain a `content` and `database` folder. To save these folders outside of Docker, change the `STORAGE_PATH` value to a relative or absolute path: `../storage` or `/users/home/chris/eco-data`.
+In your `.env` file there are a few paths that Eco will use to store content that you create - your data, file uploads, custom themes, etc. All of that data needs to be stored outside of Docker otherwise it will be lost each time Docker recreates its containers.
+
+The values should be a relative path from the root Eco directory.
 
 ```
 # -- Environment
 
-STORAGE_PATH=../storage
+CONTENT_PATH=../eco-content
+DATABASE_PATH=../eco-db
+THEMES_PATH=../eco-themes
+PUBLIC_PATH=../eco-public
 ```
 
-In the above example, your data and database will be saved in a folder called "storage" at the parent level, outside of Eco.
-
-For a development environement, the remaining default values should be fine.
+Let's say you have installed Eco in `/srv/apps/my-website/eco`. When Eco builds, your content files will be placed in `/srv/apps/my-website/eco-content`.
 
 ### Docker
 

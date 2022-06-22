@@ -32,13 +32,25 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root'   => storage_path('eco/content'),
+            'root'   => storage_path(env('CONTENT_PATH')),
+            'throw'  => false,
+        ],
+
+        'themes' => [
+            'driver' => 'local',
+            'root'   => storage_path(env('THEMES_PATH')),
+            'throw'  => false,
+        ],
+
+        'content' => [
+            'driver' => 'local',
+            'root'   => storage_path(env('CONTENT_PATH')),
             'throw'  => false,
         ],
 
         'public' => [
             'driver'     => 'local',
-            'root'       => storage_path('eco/public'),
+            'root'       => storage_path(env('PUBLIC_PATH')),
             'url'        => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw'      => false,
