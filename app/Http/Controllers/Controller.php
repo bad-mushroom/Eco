@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\Settings\Facades\Setting;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -20,6 +21,6 @@ class Controller extends BaseController
      */
     public function __construct(protected Request $request)
     {
-        //
+
     }
 }

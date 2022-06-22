@@ -18,6 +18,12 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::getFinder()
+            ->setPaths([
+                storage_path('eco/themes/' . Setting::get('theme') . '/views'),
+                resource_path('views/theme'),
+            ]);
+
         // -- Composers
         View::composer(['*', 'home'], ViewComposers\AppViewComposer::class);
         View::composer('partials.widgetbar', SidebarViewComposer::class);

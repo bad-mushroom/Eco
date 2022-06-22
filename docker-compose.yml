@@ -21,7 +21,8 @@ services:
     volumes:
       - ./.build/nginx.dev.conf:/etc/nginx/conf.d/default.conf
       - ./:/var/www
-      - ${CONTENT_PATH}:/var/www/storage/eco
+      - ${CONTENT_PATH}:/var/www/storage/eco/content
+      - ${THEMES_PATH}:/var/www/storage/eco/themes
 
 # -- FPM
 
@@ -35,7 +36,8 @@ services:
       - 9000
     volumes:
       - ./:/var/www
-      - ${CONTENT_PATH}:/var/www/storage/eco
+      - ${CONTENT_PATH}:/var/www/storage/eco/content
+      - ${THEMES_PATH}:/var/www/storage/eco/themes
 
 # -- DB
 

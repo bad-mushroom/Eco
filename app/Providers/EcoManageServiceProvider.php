@@ -6,7 +6,7 @@ use App\Http\ViewComposers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
-class ManageServiceProvider extends ServiceProvider
+class EcoManageServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any ViewServiceProvider services.
@@ -15,6 +15,11 @@ class ManageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::getFinder()
+            ->setPaths([
+                resource_path('views/manage'),
+            ]);
+
         // -- Composers
 
         View::composer(['layout'], ViewComposers\AppViewComposer::class);
