@@ -55,18 +55,19 @@ Eco is built on Laravel which uses .env files for environment configuration. You
 cp .env.example .env
 ```
 
-Open `.env` in your editor and update as needed. There is one particular value you may want to manually change, `STORAGE_PATH`. If you want to persist any data outside of Docker you will need to change this value to a path to a value outside of the `eco` directory store your database and content. Otherwise data will be lost each time your docker envirment is recreated.
+Open `.env` in your editor and update as needed. There is one particular value you may want to manually change, `STORAGE_PATH`. If you want to persist any data outside of Docker you will need to change this value to a path to a value outside of the `eco` directory to store your database and content. Otherwise data will be lost each time your docker envirment is recreated.
 
 For example, by default your developer environement will have a `eco/storage` directory which will contain a `content` and `database` folder. To save these folders outside of Docker, change the `STORAGE_PATH` value to a relative or absolute path: `../storage` or `/users/home/chris/eco-data`.
 
+```
+# -- Environment
+
+STORAGE_PATH=../storage
+```
+
+In the above example, your data and database will be saved in a folder called "storage" at the parent level, outside of Eco.
+
 For a development environement, the remaining default values should be fine.
-
-You will however, need to generate an `APP_KEY` value:
-
-```
-php artisan key:generate
-```
-
 
 ### Docker
 
@@ -85,16 +86,13 @@ npm i
 npm run dev
 ```
 
-### Database and Seeded Data
+### Environment Setup
 
-We'll need to build the database tables and seed them with some initial data.
+We'll need to build the database tables, seed them with some initial data, generate an app key, etc... but we can do this all with one command:
 
 ```
-docker exec -it eco_fpm /var/www/artisan migrate --seed
+docker exec -it eco_fpm /var/www/artisan eco:setup
 ```
-
-The seeders that run will populate some settings and meta data for your content.
-
 
 # Configuration
 
@@ -103,12 +101,12 @@ The seeders that run will populate some settings and meta data for your content.
 By default, there isn't a user account created during setup. To do this there is an artisan command you can run:
 
 ```
-docker exec -it eco_fpm /var/www/artisan eco:make-account <email address> <name> --password=<password123>
+docker exec -it eco_fpm /var/www/artisan eco:make-account <email address> <name> --password=<password>
 ```
 
 For example:
 ```
-$ docker exec -it eco_fpm /var/www/artisan eco:make-account chris@example.org Chris
+$ docker exec -it eco_fpm /var/www/artisan eco:make-account chris@example.org Chris --password password123
 User account created:
  - ID: 8eded58c-6cca-41f8-be73-c79584d767d9
  - Email: chris@example.org
@@ -118,4 +116,4 @@ User account created:
 
 # Wrapping Up
 
-You should now be able to access Eco in your web browser at http://localhost:8080 to see the main page or the admin page at http://localhost:8300/admin and log in with the email/password you created.
+You should now be able to access Eco in your web browser at http://localhost:8080 to see the main page or the admin page at http://localhost:8300/manage and log in with the email/password you created.
