@@ -4,7 +4,7 @@ version: '3.7'
 
 networks:
   eco:
-    driver: host
+    driver: bridge
 
 # Services --------------------------------------------------------------------
 
