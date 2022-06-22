@@ -49,7 +49,7 @@ composer install
 
 ### Environemnt Variables
 
-Eco is build on Laravel which uses .env files for environment configuration. You'll first need to copy the example file.
+Eco is built on Laravel which uses .env files for environment configuration. You'll first need to copy the example file.
 
 ```
 cp .env.example .env
@@ -81,7 +81,7 @@ docker-compose up
 There are a handfull of node packages to install and frontend assets to build that Eco requires for the admin page as well as any themes that are installed.
 
 ```
-npm ci
+npm i
 npm run dev
 ```
 
@@ -90,7 +90,7 @@ npm run dev
 We'll need to build the database tables and seed them with some initial data.
 
 ```
-php artisan migrate --seed
+docker exec -it eco_fpm /var/www/artisan migrate --seed
 ```
 
 The seeders that run will populate some settings and meta data for your content.
@@ -103,17 +103,17 @@ The seeders that run will populate some settings and meta data for your content.
 By default, there isn't a user account created during setup. To do this there is an artisan command you can run:
 
 ```
-php artisan eco:make-account <email address> <name> <password>
+docker exec -it eco_fpm /var/www/artisan eco:make-account <email address> <name> --password=<password123>
 ```
 
 For example:
 ```
-$ php artisan eco:make-account chris@chaoscontrol.org Chris
+$ docker exec -it eco_fpm /var/www/artisan eco:make-account chris@example.org Chris
 User account created:
  - ID: 8eded58c-6cca-41f8-be73-c79584d767d9
- - Email: chris@chaoscontrol.org
+ - Email: chris@example.org
  - Name: Chris
- - Password: password
+ - Password: password123
 ```
 
 # Wrapping Up
