@@ -4,15 +4,21 @@ namespace App\Services\Settings;
 
 use App\Models\Setting;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class SettingsService
 {
     public function get(string $settingSlug, $default = null)
     {
-        $settings = $this->all();
-        $setting = $settings->first(fn ($setting) => $setting->slug == $settingSlug);
+        try {
+            $settings = $this->all();
+            $setting = $settings->first(fn ($setting) => $setting->slug == $settingSlug);
 
-        return ($setting) ? $setting->value : $default;
+            return ($setting) ? $setting->value : $default;
+        } catch (\Exception $e) {
+            Log::warning($e->getMessage());
+            return null;
+        }
     }
 
     public function all()
