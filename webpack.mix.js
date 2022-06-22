@@ -22,12 +22,3 @@ mix.setPublicPath('public/eco');
 mix.js('resources/js/app.js', 'manage/js')
   .sass('resources/scss/app.scss', '/manage/css');
 
-/**
- * Eco Themes
- *
- * Each theme file should maintain its own webpack.mix.js file.
- * As you create new themes, or remove old ones, make sure to include
- * the theme's mix file here.
- */
-
-require(`${__dirname}/resources/themes/ecosphere/webpack.mix.js`);
