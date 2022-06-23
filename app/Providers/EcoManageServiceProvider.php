@@ -15,11 +15,6 @@ class EcoManageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::getFinder()
-            ->setPaths([
-                resource_path('views/manage'),
-            ]);
-
         // -- Composers
 
         View::composer(['layout'], ViewComposers\AppViewComposer::class);

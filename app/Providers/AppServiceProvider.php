@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Story;
+use App\Services\Settings\Facades\Setting;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,5 +36,12 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'Story' => Story::class,
         ]);
+
+        View::getFinder()
+            ->setPaths([
+                theme_path(Setting::get('theme') . '/views'),
+                resource_path('views/theme'),
+                resource_path('views'),
+            ]);
     }
 }

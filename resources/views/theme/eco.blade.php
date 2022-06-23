@@ -9,21 +9,18 @@
     <meta name="generator" content="Eco">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @yield('meta')
+    @yield('head')
 
     <title>@yield('page_title', $site_title ?? 'Eco')</title>
 
-    @yield('links')
-
     <link rel="alternate" type="application/atom+xml" title="News" href="/feed">
-
     @include('feed::links')
 
-    <link rel="stylesheet" href="/theme/css/theme.css">
+    @stack('css')
 </head>
-    <body class="@yield('body_styles')">
-        @yield('body')
-        <script src="/theme/js/theme.js"></script>
-        @stack('scripts')
-    </body>
+<body class="@yield('body_styles', '')">
+    @yield('body')
+
+    @stack('scripts')
+</body>
 </html>

@@ -17,14 +17,6 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // -- Register Theme Paths
-
-        View::getFinder()
-            ->setPaths([
-                storage_path('eco/themes/' . Setting::get('theme') . '/views'),
-                resource_path('views/theme'),
-            ]);
-
         // -- Composers
 
         View::composer(['layout'], ViewComposers\ThemeViewComposer::class);

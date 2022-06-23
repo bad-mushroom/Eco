@@ -33,8 +33,12 @@ class PublishThemeAssets extends Command
         $theme = Setting::get('theme');
 
         $themeAssetsDir = theme_path($theme . '/dist');
-        $publicAssetsDir = public_path('theme');
+        $publicAssetsDir = public_path('theme/');
 
-        File::copyDirectory($themeAssetsDir, $publicAssetsDir);
+        if (File::copyDirectory($themeAssetsDir, $publicAssetsDir)) {
+            $this->info(' - Theme assets published to ' . $publicAssetsDir);
+        } else {
+            $this->error('error');
+        }
     }
 }
