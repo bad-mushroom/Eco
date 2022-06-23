@@ -38,7 +38,7 @@ return [
 
         'themes' => [
             'driver' => 'local',
-            'root'   => storage_path(env('THEMES_PATH')),
+            'root'   => theme_path(),
             'throw'  => false,
         ],
 

@@ -22,8 +22,8 @@ class AppViewComposer
         $this->registerMenus($view);
 
         $view->with('tags', Tag::all());
-        $view->with('site_title', Setting::get('site_title'));
         $view->with('pages', Story::byType('page')->get());
+        $view->with('site_title', Setting::get('site_title'));
         $view->with('site_headline', Setting::get('site_headline'));
     }
 

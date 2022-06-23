@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Http\ViewComposers;
-use App\Http\ViewComposers\SidebarViewComposer;
 use App\Services\Settings\Facades\Setting;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
@@ -18,6 +17,8 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // -- Register Theme Paths
+
         View::getFinder()
             ->setPaths([
                 storage_path('eco/themes/' . Setting::get('theme') . '/views'),
@@ -25,8 +26,12 @@ class ThemeServiceProvider extends ServiceProvider
             ]);
 
         // -- Composers
+
+        View::composer(['layout'], ViewComposers\ThemeViewComposer::class);
         View::composer(['*', 'home'], ViewComposers\AppViewComposer::class);
-        View::composer('partials.widgetbar', SidebarViewComposer::class);
+        View::composer('partials.widgetbar', ViewComposers\SidebarViewComposer::class);
+
+        // -- Blade Directives
 
         Blade::directive('author', function ($story) {
             return '<?php echo "<span class=\"h-card p-author\">" . with($story)->author->name . "</span>"; ?>';

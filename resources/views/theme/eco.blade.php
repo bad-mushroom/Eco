@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="generator" content="">
+    <meta name="description" content="@yield('page_description')">
+    <meta name="author" content="@yield('page_author')">
+    <meta name="generator" content="Eco">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @yield('meta')
 
-    <title>{{ $site_title ?? 'Eco' }}</title>
+    <title>@yield('page_title', $site_title ?? 'Eco')</title>
 
     @yield('links')
 
@@ -19,10 +19,11 @@
 
     @include('feed::links')
 
-    @yield('css')
-    {{-- <link href="{{ mix('themes/ecosphere/css/app.css', 'eco') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="/theme/css/theme.css">
 </head>
-
-    @yield('theme')
-
+    <body>
+        @yield('body')
+        <script src="/theme/js/theme.js"></script>
+        @stack('scripts')
+    </body>
 </html>
