@@ -35,6 +35,8 @@ class Setup extends Command
         $this->copyTheme();
         $this->migrateAndSeed();
 
+        Artisan::call('eco:publish-theme-assets');
+
         $this->info('Setup complete!');
     }
 
