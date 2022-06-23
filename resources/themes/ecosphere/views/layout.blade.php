@@ -2,6 +2,10 @@
 
 @section('css') {{ $css }} @endsection
 
+@section('body-syles')
+    d-flex flex-column min-vh-100
+@endsection
+
 @section('body')
     @include('partials.navigation')
 

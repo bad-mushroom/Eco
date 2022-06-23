@@ -21,7 +21,7 @@
 
     <link rel="stylesheet" href="/theme/css/theme.css">
 </head>
-    <body>
+    <body class="@yield('body-styles')">
         @yield('body')
         <script src="/theme/js/theme.js"></script>
         @stack('scripts')
