@@ -39,7 +39,7 @@ WORKDIR /var/www
 COPY composer.json composer.lock ./
 
 # Configure supervisord
-COPY .docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY .build/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Copy app
 COPY . ./
