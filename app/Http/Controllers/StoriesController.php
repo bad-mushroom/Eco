@@ -24,18 +24,21 @@ class StoriesController extends Controller
 
         return View::make('home')
             ->with('stories', $stories)
-            ->with('featuredStories', Story::where('is_featured', true)->with('type')->get());
+            ->with('featuredStories', Story::where('is_featured', true)->with('type')->get())
+            ->with('filterTag', $request->get('tag'))
+            ->with('filterSearch', $request->get('search'))
+            ->with('filterType', $request->get('type'));
     }
 
     public function show(Request $request, string $storyTypeSlug, string $storySlug)
     {
         $story = Story::query()
-            ->with(['author:id,name', 'type:label,slug', 'comments', 'tags:label,slug'])
+            ->with(['author:id,name', 'type', 'comments', 'tags:label,slug'])
             ->where('slug', $storySlug)
             ->forType($storyTypeSlug)
             ->first();
 
-        return view('pages.story')
+        return view('story')
             ->with('story', $story)
             ->with('comments', $story->comments);
     }
