@@ -27,9 +27,6 @@ RUN apk update && \
     curl \
     supervisor
 
-# Link php binary alias
-RUN ln -s /usr/bin/php8 /usr/bin/php
-
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php \
     && chmod +x composer.phar \
