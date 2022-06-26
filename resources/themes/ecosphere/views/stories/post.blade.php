@@ -1,14 +1,13 @@
-<div class="card mb-4 h-entry">
-    @if ($story->featured_image)
-        <img class="card-img-top" src="data:image/png;base64,{{ $story->featured_image }}" alt="{{ $story->subject }}" />
-    @endif
+<article class="blog-post mb-5 bg-light p-3">
+    <h2 class="blog-post-title mb-1">{{ $story->subject }}</h2>
+    <p class="blog-post-meta">{{ $story->relative_published_at }} by @author($story)</p>
 
-    <div class="card-body">
-        <div class="small text-muted">
-            <span class="dt-published">{{ $story->relative_published_at }}</span> by @author($story)
-        </div>
-        <h2 class="card-title h4 h-title">{{ $story->subject }}</h2>
-        <p class="card-text p-summary">{{ $story->summary }}</p>
-        <a class="btn btn-primary text-light" href="{{ route('stories.show', ['storyType' => $story->type, 'story' => $story->slug]) }}">Read more →</a>
-    </div>
-</div>
+    @foreach ($story->tags as $tag)
+    <span class="badge bg-info">{{ $tag->label }}</span>
+    @endforeach
+
+    <div class="py-3 story-markdown" id="{{ $story->id }}">{{ $story->summary}}</div>
+    @if ($story->body)
+        <a href="{{ route('stories.show', ['storyType' => $story->type, 'story' => $story->slug]) }}" class="btn btn-primary">Continue reading</a>
+    @endif
+</article>

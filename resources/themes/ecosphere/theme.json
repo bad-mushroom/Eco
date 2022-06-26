@@ -1,7 +1,7 @@
 {
     "name": "Ecosphere",
-    "description": "Default theme that ships with Eco.",
-    "author": "Eco",
+    "description": "A simple blog theme based off of https://startbootstrap.com/template/blog-post.",
+    "author": "Chirs",
     "website": "https://github.com/bad-mushroom/eco",
     "preview_path": "./preview.png"
 }

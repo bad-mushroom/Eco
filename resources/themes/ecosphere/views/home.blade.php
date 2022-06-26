@@ -1,54 +1,44 @@
 @extends('layout')
 
 @section('content')
+    <main class="container">
 
-    <header class="py-5 bg-primary text-light border-bottom mb-4">
-        <div class="container">
-            <div class="text-center my-5">
-                <h1 class="fw-bolder">{{ $site_title }}</h1>
-                <p class="lead mb-0">{{ $site_headline }}</p>
+        <div class="p-4 p-md-5 mb-4 mt-5 text-white rounded bg-dark">
+            <div class="col-md-6 px-0">
+                <h1 class="display-4 fst-italic">{{ $site_headline }}</h1>
+                <p class="lead my-3">{{ $site_description }}</p>
             </div>
         </div>
-    </header>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8">
-                @if ($featuredStories ?? false)
-                    @foreach($featuredStories as $featured)
-                        <div class="row">
-                            <div class="col-12">
-                                @includeIf('stories.' . $featured->type->slug, ['story' => $featured])
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-
-                <div class="row" data-masonry='{"percentPosition": true }'>
-                    @forelse($stories as $story)
-                        <div class="col-lg-6">
-                            @includeIf('stories.' . $story->type->slug)
-                        </div>
-                    @empty
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    I'll think of something to say real soon! Still getting set up here :)
-                                </div>
-                            </div>
-                        </div>
-                    @endforelse
+        <div class="row mb-2">
+            @foreach ($featuredStories as $story)
+                <div class="col-md-6">
+                    @if ($story->featured_image)
+                        <img src="data:image/png;base64,{{ $story->featured_image }}" alt="{{ $story->subject }}">
+                    @endif
+                    @includeIf('stories.' . $story->type->slug)
                 </div>
-
-                <nav aria-label="Pagination">
-                    <hr class="my-2 mb-4" />
-                    {{ $stories->links() }}
-                </nav>
-            </div>
-            <div class="col-lg-4">
-                @include('partials.widgetbar')
-            </div>
+            @endforeach
         </div>
-    </div>
-
+        <hr>
+        <div class="row" data-masonry='{"percentPosition": true }'>
+            @forelse ($stories as $story)
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    @includeIf('stories.' . $story->type->slug)
+                </div>
+            @empty
+                <p>Sorry... there's nothing to see here yet</p>
+            @endforelse
+        </div>
+        {{ $stories->links() }}
+    </main>
 @endsection
+
+@push('scripts')
+<script
+    src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+    integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
+    crossorigin="anonymous"
+    async>
+</script>
+@endpush

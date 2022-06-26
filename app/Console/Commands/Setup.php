@@ -42,11 +42,11 @@ class Setup extends Command
 
     protected function copyTheme()
     {
-        $from = resource_path('themes/ecosphere');
+        $from = resource_path('themes/eco');
         $to = theme_path('ecosphere');
 
         if (File::copyDirectory($from, $to)) {
-            $this->info(' - Ecosphere theme copied to user content.');
+            $this->info(' - Eco theme copied to user content.');
         } else {
             $this->error(' - Failed to copy Ecosphere theme.');
         }
