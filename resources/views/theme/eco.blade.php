@@ -22,5 +22,15 @@
     @yield('body')
 
     @stack('scripts')
+    <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+    <script>
+        let converter = new showdown.Converter();
+        let stories = document.getElementsByClassName('story-markdown');
+
+        for (let i = 0; i < stories.length; i++) {
+            let el = document.getElementById(stories[i].id);
+            el.innerHTML = converter.makeHtml(el['innerHTML']);
+        }
+    </script>
 </body>
 </html>

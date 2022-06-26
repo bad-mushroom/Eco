@@ -1,7 +1,5 @@
 @extends('eco')
 
-@section('css') {{ $css }} @endsection
-
 @section('body_styles')
     d-flex flex-column min-vh-100
 @endsection

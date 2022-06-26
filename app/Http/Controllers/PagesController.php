@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Story;
-use App\Services\Settings\Facades\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -16,7 +15,7 @@ class PagesController extends Controller
             ->where('slug', $pageSlug)
             ->first();
 
-        return View::make('pages.story')
+        return View::make('page')
             ->with('story', $story)
             ->with('comments', $story->comments);
     }
