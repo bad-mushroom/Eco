@@ -42,7 +42,7 @@ class Setup extends Command
 
     protected function copyTheme()
     {
-        $from = resource_path('themes/eco');
+        $from = resource_path('themes/ecosphere');
         $to = theme_path('ecosphere');
 
         if (File::copyDirectory($from, $to)) {
