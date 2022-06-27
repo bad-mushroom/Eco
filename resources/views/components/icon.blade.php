@@ -1,6 +1,4 @@
 @props([
-    'icon'   => 'fas fa-circle-info',
-    'color'  => 'primary',
-    'size'   => '3'
+w
 ])
-<i class="text-{{ $color }} {{ $icon }} fs-{{ $size }} me-2"></i>
+<i class="text-{{ $color }} {{ $icon }} fs-{{ $size }} {{ $classes }} me-2"></i>
