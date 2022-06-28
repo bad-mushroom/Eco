@@ -32,7 +32,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root'   => storage_path(env('CONTENT_PATH')),
+            'root'   => storage_path('eco/content'),
             'throw'  => false,
         ],
 

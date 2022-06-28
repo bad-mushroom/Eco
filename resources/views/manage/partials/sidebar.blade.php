@@ -44,6 +44,11 @@
                 Comments
             </a>
 
+            <a class="nav-link collapsed" href="{{ route('manage.files.index') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-photo-video me-2"></i></div>
+                Media Library
+            </a>
+
             <div class="sb-sidenav-menu-heading">Configuration</div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseSettings" aria-expanded="false" aria-controls="collapseSettings">
                 <div class="sb-nav-link-icon"><i class="fas fa-cog me-2"></i></div>
