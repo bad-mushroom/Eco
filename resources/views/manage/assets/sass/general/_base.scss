@@ -1,0 +1,52 @@
+body {
+    background-color: $light;
+    color: $grey;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    color: $pink;
+    text-decoration: none;
+}
+
+p {
+    padding: 5px 0 5px 0;
+    margin: 0;
+}
+
+section {
+    margin-top: 11px;
+    margin-bottom: 11px;
+    border: 0;
+    background-color: $white;
+    padding: 18px;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("/eco/manage/fonts/Roboto-Regular.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("/eco/manage/fonts/Roboto-Medium.ttf") format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("/eco/manage/fonts/Roboto-Bold.ttf") format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("/eco/manage/fonts/Roboto-Italic.ttf") format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}

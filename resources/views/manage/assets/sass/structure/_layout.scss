@@ -1,0 +1,25 @@
+.wrapper-main {
+    width: 100%;
+    overflow: hidden;
+}
+
+.wrapper-page {
+    margin-left: $sidebar-left-width;
+    margin-bottom: 60px;
+    height: 100%;
+    z-index: -1;
+}
+
+.footer {
+    position: fixed;
+    padding-left: $sidebar-left-width;
+    font-size: 0.8rem;
+    bottom: 0;
+    width: 100%;
+    background-color: $footer-bg-color;
+    color: $footer-font-color;
+
+    a {
+        color: $footer-font-color;
+    }
+}

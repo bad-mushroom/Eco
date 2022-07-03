@@ -1,0 +1,146 @@
+.fixed-top-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1001;
+}
+
+.top-nav {
+    background-color: $top-navigation-bg-color;
+    color: $top-navigation-font-color;
+}
+
+.fixed-top-nav-page-margin {
+    margin-top: 85px;
+}
+
+.navigation-top {
+    z-index: 50;
+    margin-left: $sidebar-left-width;
+
+    .nav-item {
+        a {
+            font-size: 0.95rem;
+        }
+    }
+
+    .nav-link {
+        color: $white;
+        font-size: 1.2rem;
+
+        &:hover {
+            color: lighten($top-navigation-bg-color, 30%);
+        }
+    }
+}
+
+.dropdown-item {
+    padding: 10px;
+}
+
+.nav-search {
+
+    width: 330px;
+
+    input {
+        position: relative;
+        border: 1px solid transparent;
+        border-bottom: 1px solid $white;
+        background-color: transparent;
+        border-radius: 0;
+        color: $white;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 300;
+        padding: 8px 10px;
+        padding-left: 25px;
+        outline: none;
+        transition: border-color .3s ease;
+    }
+
+    span {
+        position: absolute;
+        color: $white;
+        font-size: 1rem;
+        margin-top: 8px;
+        cursor: pointer;
+    }
+}
+
+
+.notification {}
+
+.notification-dropdown {
+    min-width: 300px;
+}
+
+.notification-dropdown,
+.search-dropdown,
+.nav-user-dropdown {
+    padding: 0px;
+    margin: 0px;
+    border-radius: 15px;
+}
+
+.notification-title {
+    font-size: 1rem;
+    color: $dark;
+    font-weight: bold;
+    border-bottom: 1px solid $grey;
+    line-height: 1.5;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.notification-list {
+
+    .list-group-item {
+        border-radius: 0px;
+        padding: 12px;
+        margin-top: -1px;
+        border-left: transparent;
+        border-right: transparent;
+    }
+
+    .list-group-item-action {
+
+        &:active,
+        &:focus {
+            color: $dark;
+            text-decoration: none;
+            background-color: $light;
+        }
+    }
+
+    .unread {
+        // Change unread message and notifcation blocks here
+    }
+}
+
+.notification-list-alert-block {
+    padding-left: 50px;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+
+.notification-dropdown .arrow {
+    position: absolute;
+    height: 10px;
+    overflow: hidden;
+    width: 40px;
+    top: -10px;
+
+    i {
+        background-color: #fff;
+        width: 15px;
+        height: 15px;
+        top: 3px;
+        left: 15px;
+        position: absolute;
+        content: "";
+        -moz-border-radius: 6px 0 0 0;
+        border-radius: 6px 0 0 0;
+    }
+}
