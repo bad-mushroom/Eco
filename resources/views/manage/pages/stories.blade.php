@@ -1,6 +1,7 @@
 @extends('manage.layout')
 
 @section('content')
+<div>
     <div class="row">
         <div class="col-6">
             <x-header header="Stories" />
@@ -15,20 +16,9 @@
         </div>
     </div>
 
-    <div class="row pt-3" data-masonry='{"percentPosition": true }'>
+    @livewire('stories')
 
-        @forelse ($stories as $story)
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <x-dynamic-component :component="'partials.story_types.' . $story->type->slug" :story="$story">
-                    {{ $story->summary }}
-                </x-dynamic-component>
-            </div>
-        @empty
-            <div class="col-12">Doesn't look like there are any stories to show.</div>
-        @endforelse
-
-        <div class="col-12">{{ $stories->links() }}</div>
-    </div>
+</div>
 @endsection
 
 @push('scripts')

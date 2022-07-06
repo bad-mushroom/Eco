@@ -23,18 +23,8 @@ class StoriesController extends Controller
             'current' => 'All Stories'
         ];
 
-        $stories = Story::query()
-            ->notPages()
-            ->search($request->input('search'))
-            ->byType($request->input('type') ?? '*')
-            ->withCount('comments')
-            ->with(['author:id,name,avatar', 'type'])
-            ->orderByDesc('updated_at')
-            ->paginate(15);
-
         return View::make('manage.pages.stories')
-            ->with('breadcrumbs', $breadcrumbs)
-            ->with('stories', $stories);
+            ->with('breadcrumbs', $breadcrumbs);
     }
 
     /**

@@ -36,10 +36,10 @@
                             <a class="nav-link" href="#" target="_blank">View Siie</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://github.com/bad-mushroom/eco" target="_blank">Support</a>
+                            <a class="nav-link" href="https://github.com/bad-mushroom/eco/issues" target="_blank">Support</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://github.com/bad-mushroom/eco" target="_blank">Documentation</a>
+                            <a class="nav-link" href="https://github.com/bad-mushroom/eco/wiki" target="_blank">Documentation</a>
                         </li>
                     </ul>
                 </div>
@@ -241,6 +241,13 @@
                                 <a class="sub-nav-link" href="{{ route('manage.comments.index') }}">Pending Comments</a>
                             </li>
                         </ul>
+                    </li>
+
+                    <li class="sidebar-nav-item">
+                        <a href="{{ route('manage.dashboard') }}" class="@if (Route::is('manage.dashboard')) active @endif">
+                            <i class="bi bi-images"></i>
+                            <span>Media</span>
+                        </a>
                     </li>
 
                     <li class="sidebar-nav-item disabled">
