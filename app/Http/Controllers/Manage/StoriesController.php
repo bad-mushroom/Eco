@@ -49,7 +49,6 @@ class StoriesController extends Controller
 
         return View::make('manage.pages.stories.edit')
             ->with('breadcrumbs', $breadcrumbs)
-            ->with('selectedType', $story->type)
             ->with('story', $story);
     }
 
@@ -58,10 +57,6 @@ class StoriesController extends Controller
      */
     public function create()
     {
-        $selectedType = $this->request->has('type') && $this->request->get('type') !== '*'
-            ? StoryType::where('slug', $this->request->get('type'))->first()
-            : null;
-
         $breadcrumbs = [
             'crumbs' => [
                 ['label' => 'Stories', 'route' => 'manage.stories.index']
@@ -70,8 +65,7 @@ class StoriesController extends Controller
         ];
 
         return View::make('manage.pages.stories.create')
-            ->with('breadcrumbs', $breadcrumbs)
-            ->with('selectedType', $selectedType);
+            ->with('breadcrumbs', $breadcrumbs);
     }
 
     /**
