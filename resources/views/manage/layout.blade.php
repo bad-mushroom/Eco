@@ -7,10 +7,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Eco</title>
+
     <link rel="stylesheet" href="/eco/manage/appcss.css">
+    @livewireStyles
 </head>
 <body>
-<div class="wrapper-main">
+    <div class="wrapper-main">
 
         <!-- Page Header --------------------------------------- -->
         <nav class="navbar navbar-expand-md top-nav fixed-top-nav p-3 mb-3 border-bottom">
@@ -26,18 +28,20 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
 
                     <!-- Brand / Title -->
-                    <a class="navbar-brand text-light" href="#">Dharma</a>
+                    <a class="navbar-brand text-light" href="{{ route('manage.dashboard') }}">{{ $site_title }}</a>
 
                     <!-- Navigation Links -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Support</a>
+                            <a class="nav-link" href="#" target="_blank">View Siie</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="https://github.com/bad-mushroom/eco" target="_blank">Support</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/bad-mushroom/eco" target="_blank">Documentation</a>
                         </li>
                     </ul>
-
                 </div>
 
                 <!-- Status Icons -->
@@ -153,78 +157,6 @@
                             </li>
                         </ul>
                     </li>
-
-                    <!-- Messages -->
-                    <li class="dropdown notification">
-                        <a class="nav-link" href="#" role="button" id="notification-menu-messages" data-bs-toggle="dropdown"
-                            aria-expanded="false" aria-expanded="false">
-                            <i class="bs bi-chat"></i>
-                            <span class="indicator"></span>
-                        </a>
-                        <ul class="dropdown-menu notification-dropdown  dropdown-menu-md-end"
-                            aria-labelledby="notification-menu-messages">
-                            <li>
-                                <div class="notification-title text-center py-3 bg-light">Messages</div>
-                                <div class="notification-list">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action unread">
-                                            <div class="notification-info">
-                                                <div class="float-start mt-3">
-                                                    <span class="bg-primary p-2 text-light rounded-circle">
-                                                        <i class="bs bi-chat-fill"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="notification-list-alert-block">
-                                                    <span class="text-warning">Woody</span> sent you a message.
-                                                    <p>Hi! Just checking in to see you wanted...</p>
-                                                    <div class="text-muted">Just now</div>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="notification-info">
-                                                <div class="float-start mt-3">
-                                                    <span class="bg-secondary p-2 text-light rounded-circle">
-                                                        <i class="bs bi-chat-fill"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="notification-list-alert-block text-muted">
-                                                    <span class="text-warning">Buzzlight Year</span> sent you a
-                                                    message.
-                                                    <p>I was hoping we could go to infinity and...</p>
-                                                    <div class="text-muted">4 hours ago</div>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <a href="#" class="list-group-item list-group-item-action">
-                                            <div class="notification-info">
-                                                <div class="float-start mt-3">
-                                                    <span class="bg-secondary p-2 text-light rounded-circle">
-                                                        <i class="bs bi-chat-fill"></i>
-                                                    </span>
-                                                </div>
-                                                <div class="notification-list-alert-block text-muted">
-                                                    <span class="text-warning">LiTitle Bo Peep</span> sent you a
-                                                    message.
-                                                    <p>Sorry, I can't make it tonight.</p>
-                                                    <div class="text-muted">Yesterday</div>
-                                                </div>
-                                            </div>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="text-center py-2">
-                                    <a href="#">View all notifications</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
 
                 <!-- Profile -->
@@ -242,8 +174,11 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2 text-danger"></i>Sign
-                                out</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="bi bi-box-arrow-right me-2 text-danger"></i>Sign out
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -251,6 +186,10 @@
             </div>
 
         </nav>
+
+        <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
         <!-- End Page Header ----------------------------------- -->
 
         <!-- Left Sidebar -------------------------------------- -->
@@ -258,59 +197,78 @@
             <div class="scroll-sidebar">
                 <ul class="nav nav-flush flex-column mb-auto">
                     <li class="sidebar-nav-item">
-                        <a href="index.html">
+                        <a href="{{ route('manage.dashboard') }}" class="@if (Route::is('manage.dashboard')) active @endif">
                             <i class="bi bi-house-door"></i>
                             <span>Home</span>
                         </a>
                     </li>
-                    <li class="sidebar-nav-item">
-                        <a href="elements.html" class="active">
-                            <i class="bi bi-box"></i>
-                            <span class="nav-label">Elements</span>
-                        </a>
-                    </li>
                     <li class="sidebar-nav-item disabled">
-                        <span class=" submenu-link disabled" data-bs-toggle="dropdown">
-                            <i class="bi bi-map"></i>
-                            <span>Submenu</span>
+                        <span class=" submenu-link disabled @if (Route::is('manage.stories.*')) active @endif" data-bs-toggle="dropdown">
+                            <i class="bi bi-newspaper"></i>
+                            <span>Stories</span>
                         </span>
                         <ul class="submenu dropdown-menu">
                             <li class="sidebar-subnav-title">
-                                <span>Submenu Items</span>
+                                <span>Stories</span>
                             </li>
                             <li class="sidebar-subnav-item">
-                                <a class="sub-nav-link" href="#">Submenu Item 1</a>
+                                <a class="sub-nav-link" href="{{ route('manage.stories.index') }}">View all Stories</a>
                             </li>
                             <li class="sidebar-subnav-item">
-                                <a class="sub-nav-link" href="#">Submenu Item 2</a>
-                            </li>
-                            <li class="sidebar-subnav-item">
-                                <a class="sub-nav-link" href="#">Submenu Item 3</a>
+                                <a class="sub-nav-link" href="{{ route('manage.stories.create') }}">Create Story</a>
                             </li>
                         </ul>
                     </li>
                     <li class="sidebar-nav-item">
-                        <a href="tables.html">
-                            <i class="bi bi-table"></i>
-                            <span class="nav-label">Tables</span>
+                        <a href="{{ route('manage.pages.index') }}" class="@if (Route::is('manage.pages.*')) active @endif">
+                            <i class="bi bi-journal-text"></i>
+                            <span>Pages</span>
                         </a>
                     </li>
-                    <li class="sidebar-nav-item">
-                        <a href="blank.html">
-                            <i class="bi bi-file"></i>
-                            <span>Blank</span>
-                        </a>
+                    <li class="sidebar-nav-item disabled">
+                        <span class=" submenu-link disabled @if (Route::is('manage.comments.*')) active @endif" data-bs-toggle="dropdown">
+                            <i class="bi bi-chat"></i>
+                            <span>Comments</span>
+                        </span>
+                        <ul class="submenu dropdown-menu">
+                            <li class="sidebar-subnav-title">
+                                <span>Comments</span>
+                            </li>
+                            <li class="sidebar-subnav-item">
+                                <a class="sub-nav-link" href="{{ route('manage.comments.index') }}">View all Comments</a>
+                            </li>
+                            <li class="sidebar-subnav-item">
+                                <a class="sub-nav-link" href="{{ route('manage.comments.index') }}">Pending Comments</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="sidebar-nav-item">
-                        <a href="#">
-                            <i class="bi bi-people"></i>
-                            <span>Users</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a href="#">
-                            <i class="bi bi-sliders"></i>
+
+                    <li class="sidebar-nav-item disabled">
+                        <span class="submenu-link disabled @if ( Route::is('manage.settings.*') || Route::is('manage.settings')) active @endif" data-bs-toggle="dropdown">
+                            <i class="bi bi-gear"></i>
                             <span>Settings</span>
+                        </span>
+                        <ul class="submenu dropdown-menu">
+                            <li class="sidebar-subnav-title">
+                                <span>Settings</span>
+                            </li>
+                            @foreach ($settingTypes as $settingType)
+                                <li class="sidebar-subnav-item">
+                                    <a class="sub-nav-link" href="{{ route('manage.settings', ['type' => $settingType->slug]) }}">{{ $settingType->label }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="{{ route('manage.themes.index') }}" class="@if (Route::is('manage.themes.index')) active @endif">
+                            <i class="bi bi-palette"></i>
+                            <span>Themes</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="{{ route('manage.plugins.index') }}" class="@if (Route::is('manage.plugins.index')) active @endif">
+                            <i class="bi bi-plugin"></i>
+                            <span>Plugins</span>
                         </a>
                     </li>
                 </ul>
@@ -321,10 +279,6 @@
         <!-- Page Content -------------------------------------- -->
         <div class="wrapper-page fixed-top-nav-page-margin">
             <div class="container-fluid px-md-5">
-
-
-
-                <!-- Content -->
                 @yield('content')
             </div>
         </div>
@@ -337,20 +291,21 @@
 
                     <!-- Social Links -->
                     <div class="col-md-6 d-none d-md-block">
-                        <a href="#" class="me-4"><i class="bs bi-github me-2"></i>GitHub</a>
-                        <a href="#" class="me-4"><i class="bs bi-twitter me-2"></i>Twitter</a>
-                        <a href="#" class="me-4"><i class="bs bi-instagram me-2"></i>Instagram</a>
+                        <a href="https://github.com/bad-mushroom/eco" target="_blank" class="me-4"><i class="bs bi-github me-2"></i>GitHub</a>
                     </div>
 
                     <!-- Copyright -->
                     <div class="col-md-6 col-sm-12 text-end">
-                        <span class="text-muted">&copy; 2022 Dharma Themes</span>
+                        <span class="text-muted">&copy; {{ date('Y') }} {{ $site_title }}</span>
                     </div>
                 </div>
             </div>
         </footer>
         <!-- End Page Footer ----------------------------------- -->
     </div>
+
     <script src="/eco/manage/appjs.js"></script>
+    @stack('scripts')
+    @livewireScripts
 </body>
 </html>

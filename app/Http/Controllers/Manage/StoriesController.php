@@ -7,6 +7,7 @@ use App\Models\Story;
 use App\Models\StoryType;
 use App\Services\StoryTypes\Facades\Type;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
@@ -15,9 +16,25 @@ class StoriesController extends Controller
     /**
      * Show all stories.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return View::make('manage.pages.stories.index');
+        $breadcrumbs = [
+            'crumbs' => [],
+            'current' => 'All Stories'
+        ];
+
+        $stories = Story::query()
+            ->notPages()
+            ->search($request->input('search'))
+            ->byType($request->input('type') ?? '*')
+            ->withCount('comments')
+            ->with(['author:id,name,avatar', 'type'])
+            ->orderByDesc('updated_at')
+            ->paginate(15);
+
+        return View::make('manage.pages.stories')
+            ->with('breadcrumbs', $breadcrumbs)
+            ->with('stories', $stories);
     }
 
     /**
@@ -33,7 +50,15 @@ class StoriesController extends Controller
             ->withCount('comments')
             ->first();
 
+        $breadcrumbs = [
+            'crumbs' => [
+                ['label' => 'Stories', 'route' => 'manage.stories.index']
+            ],
+            'current' => 'Edit Story'
+        ];
+
         return View::make('manage.pages.stories.edit')
+            ->with('breadcrumbs', $breadcrumbs)
             ->with('selectedType', $story->type)
             ->with('story', $story);
     }
@@ -47,7 +72,15 @@ class StoriesController extends Controller
             ? StoryType::where('slug', $this->request->get('type'))->first()
             : null;
 
+        $breadcrumbs = [
+            'crumbs' => [
+                ['label' => 'Stories', 'route' => 'manage.stories.index']
+            ],
+            'current' => 'Create Story'
+        ];
+
         return View::make('manage.pages.stories.create')
+            ->with('breadcrumbs', $breadcrumbs)
             ->with('selectedType', $selectedType);
     }
 

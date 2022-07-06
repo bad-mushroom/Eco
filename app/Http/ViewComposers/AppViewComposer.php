@@ -20,27 +20,11 @@ class AppViewComposer
      */
     public function compose(View $view)
     {
-        $this->registerMenus($view);
-
         $view->with('tags', Tag::all());
         $view->with('pages', Story::byType('page')->get());
         $view->with('storyTypes', StoryType::withCount('stories')->get());
         $view->with('site_title', Setting::get('site_title'));
         $view->with('site_headline', Setting::get('site_headline'));
         $view->with('site_description', Setting::get('site_description'));
-    }
-
-    /**
-     * Make all menus available to the view.
-     *
-     * @param View $view
-     * @return void
-     */
-    protected function registerMenus(View $view): void
-    {
-        foreach (Menu::with('items')->get() as $menu) {
-            $label = 'menu' . Str::ucfirst($menu->slug);
-            $view->with($label, $menu->items);
-        }
     }
 }

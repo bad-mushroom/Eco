@@ -21,11 +21,19 @@ class SettingsController extends Controller
             ->whereHas('type', function($query) use ($type) {
                 return $query->where('slug', $type);
             })
-            ->get();
+            ->paginate();
 
-        return View::make('manage.pages.settings.general')
+        $settingType = $settings->first()->type;
+
+        $breadcrumbs = [
+            'crumbs' => [],
+            'current' => $settingType->label . ' Settings',
+        ];
+
+        return View::make('manage.pages.settings')
             ->with('settings', $settings)
-            ->with('settingType', $settings->first()->type);
+            ->with('breadcrumbs', $breadcrumbs)
+            ->with('settingType', $settingType);
     }
 
     /**

@@ -49,4 +49,13 @@ class Comment extends Model
         return $query->where('is_approved', $approved);
     }
 
+    public function scopeByStory($query, string $id = null)
+    {
+        if (is_null($id)) {
+            return $query;
+        }
+
+        return $query->where('commentable_id', $id);
+    }
+
 }

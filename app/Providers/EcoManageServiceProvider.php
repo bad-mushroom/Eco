@@ -15,9 +15,6 @@ class EcoManageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // -- Composers
-
-        View::composer(['layout'], ViewComposers\AppViewComposer::class);
-        View::composer(['manage.partials.sidebar', 'manage.pages.stories.sidebar'], ViewComposers\SidebarViewComposer::class);
+        View::composer(['manage.*'], ViewComposers\ManagerViewComposer::class);
     }
 }
