@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Comment;
-use App\Models\Story;
 use Illuminate\Support\Facades\View;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -15,11 +14,13 @@ class Comments extends Component
     public string $status;
     public string $perPage;
     public string $sort;
+    public string $confirmId;
 
     protected $paginationTheme = 'bootstrap';
 
     public function mount()
     {
+        $this->confirmId = '';
         $this->status = '';
         $this->sort = '';
         $this->perPage = '15';
@@ -49,5 +50,25 @@ class Comments extends Component
 
         return View::make('livewire.comments')
             ->with('comments', $query->paginate($this->perPage));
+    }
+
+    public function setDeleteId($id)
+    {
+        $this->confirmId = $id;
+    }
+
+    public function setApproveId($id)
+    {
+        $this->confirmId = $id;
+    }
+
+    public function delete()
+    {
+        Comment::destroy($this->confirmId);
+    }
+
+    public function approve()
+    {
+        Comment::find($this->confirmId)->update(['is_approved', true]);
     }
 }

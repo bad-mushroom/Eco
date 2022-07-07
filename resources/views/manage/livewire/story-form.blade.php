@@ -7,8 +7,12 @@
                 @includeIf('manage.partials.forms.' . $type)
 
                 <div class="mb-3 text-end">
-                    <button class="btn btn-secondary text-light"><i class="bi bi-cloud me-2"></i>Save Draft</button>
-                    <button class="btn btn-success text-light"><i class="bi bi-cloud-fill me-2"></i>Save and Publish</button>
+                    <button type="button" class="btn btn-secondary text-light" wire:click="saveDraft">
+                        <i class="bi bi-cloud me-2"></i>Save Draft
+                    </button>
+                    <button type="button" class="btn btn-success text-light" wire:click="publish">
+                        <i class="bi bi-cloud-fill me-2"></i>Save and Publish
+                    </button>
                 </div>
             </section>
         </div>
@@ -20,7 +24,7 @@
                     <label for="type" class="form-label required">Story Type</label>
                     <select class="form-control" id="type" aria-describedby="typeHelp" wire:model="type">
                         @foreach ($storyTypes as $type)
-                        <option value="{{ $type->slug }}">{{ $type->label }}</option>
+                            <option value="{{ $type->slug }}">{{ $type->label }}</option>
                         @endforeach
                     </select>
                     <div id="typeHelp" class="form-text text-muted">Each story type has its own template</div>

@@ -32,4 +32,5 @@ class CommentsController extends Controller
             ->with('breadcrumbs', $breadcrumbs)
             ->with('comments', $comments->paginate());
     }
+
 }

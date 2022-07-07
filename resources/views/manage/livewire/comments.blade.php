@@ -1,4 +1,7 @@
 <div>
+    @include('livewire.modals.confirm_delete', ['confirmTitle' => 'Delete Comment?', 'confirmBody' => 'Are you sure you want to delete this comment?'])
+    @include('livewire.modals.confirm_approve', ['confirmTitle' => 'Approve Comment?', 'confirmBody' => 'Are you sure you want to approve this comment?'])
+
     <section id="comments-filter" class="row mt-3">
         <div class="col-sm">
             <label class="small">Sort</label>
@@ -37,8 +40,10 @@
                     <span class="text-dark badge bg-info"></span>
                 </div>
                 <div class="card-footer">
-                    <a href="" title="Delete" class="me-2"><i class="bi bi-trash"></i></a> | <a href="" class="ms-2"
-                        title="Spam"><i class="bi bi-flag"></i></a>
+                    <a href="#" title="Delete" class="me-2" wire:click="setDeleteId('{{ $comment->id }}')" data-bs-toggle="modal" data-bs-target="#confirmDelete"><i class="bi bi-trash"></i></a>
+                    @if (!$comment->is_approved)
+                        <a href="#" title="Approve" class="me-2" wire:click="setApproveId('{{ $comment->id }}')" data-bs-toggle="modal" data-bs-target="#confirmApprove"><i class="bi bi-check"></i></a>
+                    @endif
                 </div>
             </div>
         </div>
