@@ -29,14 +29,6 @@
                     </select>
                     <div id="typeHelp" class="form-text text-muted">Each story type has its own template</div>
                 </div>
-                <div class="mb-3">
-                    <label for="user" class="form-label required">Author</label>
-                    <select class="form-control" id="type" aria-describedby="userHelp">
-                        <option></option>
-                    </select>
-                    <div id="userHelp" class="form-text"></div>
-                </div>
-
             </section>
 
             <section id="story-image">

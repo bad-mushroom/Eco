@@ -219,12 +219,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="sidebar-nav-item">
-                        <a href="{{ route('manage.pages.index') }}" class="@if (Route::is('manage.pages.*')) active @endif">
-                            <i class="bi bi-journal-text"></i>
-                            <span>Pages</span>
-                        </a>
-                    </li>
                     <li class="sidebar-nav-item disabled">
                         <span class=" submenu-link disabled @if (Route::is('manage.comments.*')) active @endif" data-bs-toggle="dropdown">
                             <i class="bi bi-chat"></i>
@@ -244,7 +238,7 @@
                     </li>
 
                     <li class="sidebar-nav-item">
-                        <a href="{{ route('manage.dashboard') }}" class="@if (Route::is('manage.dashboard')) active @endif">
+                        <a href="{{ route('manage.media.index') }}" class="@if (Route::is('manage.media.*')) active @endif">
                             <i class="bi bi-images"></i>
                             <span>Media</span>
                         </a>

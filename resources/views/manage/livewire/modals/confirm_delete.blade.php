@@ -10,7 +10,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                <button type="button" wire:click.prevent="delete()" data-bs-dismiss="modal" class="btn btn-primary">Yes</button>
+                <button type="button" wire:click.prevent="delete()" data-bs-dismiss="modal" class="btn btn-danger text-light">Yes</button>
             </div>
         </div>
     </div>

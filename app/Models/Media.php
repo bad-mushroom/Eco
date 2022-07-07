@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Formatable;
 use App\Models\Traits\Uuidable;
 use App\Services\Settings\Facades\Setting;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class File extends Model
+class Media extends Model
 {
-    use Uuidable;
+    use Formatable, Uuidable;
 
     /**
      * The attributes that are mass assignable.
