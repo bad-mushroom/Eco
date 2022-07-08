@@ -14,8 +14,14 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return View::make('manage.pages.profile.profile_edit')
-            ->with('profile', auth()->user());
+        $breadcrumbs = [
+            'crumbs' => [],
+            'current' => auth()->user()->name
+        ];
+
+        return View::make('manage.pages.profile')
+            ->with('profile', auth()->user())
+            ->with('breadcrumbs', $breadcrumbs);
     }
 
     /**

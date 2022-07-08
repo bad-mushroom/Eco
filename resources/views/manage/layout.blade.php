@@ -161,16 +161,13 @@
 
                 <!-- Profile -->
                 <div class="dropdown">
-                    <a href="#" class="d-block text-decoration-none dropdown-toggle text-light" id="dropdownUser1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/eco/manage/images/avatar.jpg" alt="mdo" width="45" height="45"
-                            class="border border-light rounded-circle">
+                    <a href="#" class="d-block text-decoration-none dropdown-toggle text-light" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/eco/manage/images/avatar.jpg" alt="mdo" width="45" height="45" class="border border-light rounded-circle">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">
-                                <i class="bs bi-gear me-2 text-primary"></i>Preferences</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bs bi-person me-2 text-primary"></i>My
-                                Profile</a></li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('manage.profile') }}"><i class="bs bi-person me-2 text-primary"></i>My Profile</a>
+                        </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -181,10 +178,7 @@
                         </li>
                     </ul>
                 </div>
-
-
             </div>
-
         </nav>
 
         <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
