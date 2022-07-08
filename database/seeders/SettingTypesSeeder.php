@@ -15,8 +15,8 @@ class SettingTypesSeeder extends Seeder
      */
     public function run()
     {
-        $story = SettingType::firstOrNew(['slug' => 'content']);
-        $story->label = 'Content';
+        $story = SettingType::firstOrNew(['slug' => 'stories']);
+        $story->label = 'Stories & Content';
         $story->description = 'Settings relating to story writing and reading.';
         $story->save();
 
@@ -25,9 +25,9 @@ class SettingTypesSeeder extends Seeder
         $comments->description = 'Settings relating to visitor commenting.';
         $comments->save();
 
-        $general = SettingType::firstOrNew(['slug' => 'general']);
-        $general->label = 'General';
-        $general->description = 'General website settings';
+        $general = SettingType::firstOrNew(['slug' => 'appearance']);
+        $general->label = 'Appearance';
+        $general->description = 'Appearance related settings';
         $general->save();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Models\SettingType;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
@@ -21,9 +22,9 @@ class SettingsController extends Controller
             ->whereHas('type', function($query) use ($type) {
                 return $query->where('slug', $type);
             })
-            ->paginate();
+            ->pluck('value', 'slug');
 
-        $settingType = $settings->first()->type;
+        $settingType = SettingType::where('slug', $type)->first();
 
         $breadcrumbs = [
             'crumbs' => [],

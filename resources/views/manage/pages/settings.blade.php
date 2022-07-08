@@ -10,9 +10,9 @@
         </div>
     </div>
 
-    <section id="settings-{{ $settingType }}">
-        <x-header header="{{ $settingType->label }}" size="5" classes="pb-3" />
+    @include('manage.partials.alerts')
 
-        
+    <section id="settings-{{ $settingType->slug }}">
+        @includeIf('manage.pages.settings.' . $settingType->slug)
     </section>
 @endsection
