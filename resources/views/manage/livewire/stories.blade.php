@@ -40,7 +40,7 @@
 
     <div class="row pt-3" data-masonry='{"percentPosition": true }'>
         @forelse ($stories as $story)
-            <div class="col-xl-3 col-lg-4 col-md-3 col-sm-2">
+            <div class="col-xl-2 col-lg-4 col-md-3 col-sm-2">
                 @include('manage.partials.story')
             </div>
         @empty

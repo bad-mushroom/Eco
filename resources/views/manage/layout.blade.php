@@ -219,22 +219,12 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="sidebar-nav-item disabled">
-                        <span class=" submenu-link disabled @if (Route::is('manage.comments.*')) active @endif" data-bs-toggle="dropdown">
+                        <a href="{{ route('manage.comments.index') }}" class="@if (Route::is('manage.comments.*')) active @endif">
                             <i class="bi bi-chat"></i>
                             <span>Comments</span>
-                        </span>
-                        <ul class="submenu dropdown-menu">
-                            <li class="sidebar-subnav-title">
-                                <span>Comments</span>
-                            </li>
-                            <li class="sidebar-subnav-item">
-                                <a class="sub-nav-link" href="{{ route('manage.comments.index') }}">View all Comments</a>
-                            </li>
-                            <li class="sidebar-subnav-item">
-                                <a class="sub-nav-link" href="{{ route('manage.comments.index') }}">Pending Comments</a>
-                            </li>
-                        </ul>
+                        </a>
                     </li>
 
                     <li class="sidebar-nav-item">
