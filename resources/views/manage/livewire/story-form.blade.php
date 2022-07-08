@@ -1,6 +1,8 @@
 <form>
     <div class="row">
         <div class="col-lg-8 col-md-9 col-sm-12">
+            @include('manage.partials.alerts')
+
             <section id="story-create">
                 <x-header header="Details" size="5" classes="pb-3" />
 
@@ -18,6 +20,7 @@
         </div>
 
         <div class="col-lg-4 col-md-3 col-sm-12">
+
             <section id="story-meta">
                 <x-header header="Meta" size="5" classes="pb-2" />
                 <div class="mb-3">

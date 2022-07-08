@@ -19,5 +19,5 @@ interface StoryTypeInterface
      *
      * @return array
      */
-    public function rules(): array;
+    public static function rules(): array;
 }

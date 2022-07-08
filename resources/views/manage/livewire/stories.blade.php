@@ -39,10 +39,8 @@
 
     <div class="row pt-3" data-masonry='{"percentPosition": true }'>
         @forelse ($stories as $story)
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <x-dynamic-component :component="'partials.story_types.' . $story->type->slug" :story="$story">
-                    {{ $story->summary }}
-                </x-dynamic-component>
+            <div class="col-xl-3 col-lg-4 col-md-3 col-sm-2">
+                @include('manage.partials.story')
             </div>
         @empty
             <div class="col-12">Doesn't look like there are any stories to show.</div>
