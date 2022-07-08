@@ -14,7 +14,7 @@ class Note extends Story implements StoryTypeInterface
     /**
      * @inherit
      */
-    public function rules(): array
+    public static function rules(): array
     {
         return [
             'subject' => ['required', 'max:255'],

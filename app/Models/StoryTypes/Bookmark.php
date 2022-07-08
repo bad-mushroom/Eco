@@ -14,7 +14,7 @@ class Bookmark extends Story implements StoryTypeInterface
     /**
      * @inherit
      */
-    public function rules(): array
+    public static function rules(): array
     {
         return [
             'subject' => ['sometimes', 'max:255', 'url'],

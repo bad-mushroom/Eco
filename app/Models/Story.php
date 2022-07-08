@@ -39,6 +39,7 @@ class Story extends Model implements Feedable
         'user_id',
         'featured_image',
         'is_featured',
+        'allow_comments',
     ];
 
     /**

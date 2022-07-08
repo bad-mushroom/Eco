@@ -1,4 +1,5 @@
 <div>
+    @include('manage.partials.alerts')
     <section id="stories-filter" class="row mt-3">
         <div class="col-sm">
             <label class="small">Story Type</label>

@@ -5,7 +5,10 @@
 <div>
     <div class="row">
         <div class="col-8">
-            <x-header :header="'Edit ' . $story->type->label . ': ' . $story->subject" />
+            @php
+                $badge = $story->publushed_at ? '' : ' (Draft)';
+            @endphp
+            <x-header :header="'Edit ' . $story->type->label . $badge" />
             <x-breadcrumbs :current="$breadcrumbs['current']" :crumbs="$breadcrumbs['crumbs']" />
         </div>
         <div class="col-4">

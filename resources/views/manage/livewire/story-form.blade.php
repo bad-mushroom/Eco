@@ -46,7 +46,7 @@
             <section id="story-tags">
                 <x-header header="Tags" size="5" classes="pb-2" />
                 <div class="mb-3">
-                    <textarea class="form-control" name="tags" rows="2" aria-describedby="tagsHelp"></textarea>
+                    <textarea class="form-control" name="tags" rows="2" wire:model="tags" aria-describedby="tagsHelp"></textarea>
                     <div id="tagsHelp" class="form-text">Comma seperated values</div>
                 </div>
             </section>
