@@ -33,7 +33,7 @@
                     <!-- Navigation Links -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" target="_blank">View Siie</a>
+                            <a class="nav-link" href="{{ route('home') }}" target="_blank">View Siie</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="https://github.com/bad-mushroom/eco/issues" target="_blank">Support</a>
@@ -245,13 +245,13 @@
                         </ul>
                     </li>
                     <li class="sidebar-nav-item">
-                        <a href="{{ route('manage.themes.index') }}" class="@if (Route::is('manage.themes.index')) active @endif">
+                        <a href="{{ route('manage.themes') }}" class="@if (Route::is('manage.themes.*')) active @endif">
                             <i class="bi bi-palette"></i>
                             <span>Themes</span>
                         </a>
                     </li>
                     <li class="sidebar-nav-item">
-                        <a href="{{ route('manage.plugins.index') }}" class="@if (Route::is('manage.plugins.index')) active @endif">
+                        <a href="{{ route('manage.plugins') }}" class="@if (Route::is('manage.plugins')) active @endif">
                             <i class="bi bi-plugin"></i>
                             <span>Plugins</span>
                         </a>

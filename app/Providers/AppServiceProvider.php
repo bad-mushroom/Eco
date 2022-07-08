@@ -42,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
                 resource_path('views/manage'),
                 resource_path('views'),
                 resource_path('views/theme'),
-                // theme_path(Setting::get('theme') . '/views'),
+                theme_path(Setting::get('theme') . '/views'),
             ]);
     }
 }
