@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('label')->nullable();
             $table->string('description')->nullable();
             $table->string('mime')->nullable();
-            $table->string('size')->nullable();
+            $table->integer('size')->nullable();
             $table->foreignUuid('user_id')->constrained('users');
             $table->timestamps();
         });

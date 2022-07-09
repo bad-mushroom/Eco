@@ -22,13 +22,11 @@
                             <label for="subject" class="form-label required">File</label>
                             <input type="file" class="form-control" wire:model="upload">
                         </div>
-
-
                         <div wire:loading wire:target="upload">Uploading...</div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Upload</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" wire:click="clearUpload">Cancel</button>
+                        <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Upload</button>
                     </div>
                 </div>
             </div>

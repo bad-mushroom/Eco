@@ -6,12 +6,14 @@
 
     @include('livewire.modals.upload')
 
-    <section id="comments-filter" class="row mt-3">
+    <section id="media-filter" class="row mt-3">
         <div class="col-sm">
             <label class="small">Sort</label>
             <select class="form-control" name="sort" wire:model="sort">
                 <option value="created_at_desc">Added Date (Recent)</option>
                 <option value="created_at">Added Date (Oldest)</option>
+                <option value="size_desc">Size (Largest)</option>
+                <option value="size">Size (Smallest)</option>
             </select>
         </div>
         <div class="col-sm">

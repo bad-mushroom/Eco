@@ -25,6 +25,9 @@ class Media extends Component
     public $label;
     public $description;
 
+    public $success;
+    public $error;
+
     protected $paginationTheme = 'bootstrap';
 
     public function mount()
@@ -53,20 +56,36 @@ class Media extends Component
 
     public function save()
     {
-        $objectName = Str::uuid() . '.' . $this->upload->getClientOriginalExtension();
+        $objectName = Str::uuid() . '.' . $this->upload->extension();
+        $result = $this->upload->storeAs('uploads', $objectName);
 
-        Medium::create([
-            'label'           => $this->label,
-            'description'     => $this->description,
-            'size'            => $this->upload->getSize(),
-            'filename'        => $this->upload->getClientOriginalName(),
-            'mime'            => $this->upload->getMimeType(),
-            'object_filename' => $objectName,
-            'user_id'         => auth()->user()->id,
-        ]);
+        if ($result) {
+            Medium::create([
+                'label'           => $this->label,
+                'description'     => $this->description,
+                'size'            => $this->upload->getSize(),
+                'filename'        => $this->upload->getClientOriginalName(),
+                'mime'            => $this->upload->getMimeType(),
+                'object_filename' => $objectName,
+                'user_id'         => auth()->user()->id,
+            ]);
 
-        Storage::disk(Setting::get('storage_disk', 'local'))->put($objectName, file_get_contents($this->upload));
+            $this->success = $this->upload->getClientOriginalName() . ' has been uploaded successfully';
+        } else {
+            $this->error = 'Something went wrong with your upload. Please try again.';
+        }
 
+        $this->clearUpload();
+        return;
+    }
+
+    public function clearUpload()
+    {
+        $this->upload = null;
+        $this->label = null;
+        $this->description = null;
+        $this->success = null;
+        $this->error = null;
     }
 
     public function setDeleteId($id)
@@ -76,7 +95,12 @@ class Media extends Component
 
     public function delete()
     {
-        Medium::destroy($this->confirmId);
+        $file = Medium::find($this->confirmId);
+
+        if ($file) {
+            Storage::disk('local')->delete('uploads/' . $file->object_filename);
+            $file->destroy($this->confirmId);
+        }
     }
 
 }
