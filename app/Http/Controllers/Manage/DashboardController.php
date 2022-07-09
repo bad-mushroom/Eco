@@ -16,10 +16,12 @@ class DashboardController extends Controller
     {
         $totals = [
             'comments' => Comment::where('is_approved', false)->count(),
-            'stories'  => Story::whereNull('published_at')->count(),
+            'stories_draft'  => Story::whereNull('published_at')->count(),
+            'stories_total'  => Story::count(),
         ];
 
         return View::make('manage.pages.dashboard')
+            ->with('stories', Story::orderByDesc('created_at')->limit(5)->get())
             ->with('totals', $totals);
     }
 }

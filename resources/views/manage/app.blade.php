@@ -48,7 +48,7 @@
                 <ul class="nav notifications col-sm-8 col-md-auto ms-md-auto me-4 mb-md-0">
 
                     <!-- Search -->
-                    <li class="dropdown notification">
+                    <li class="dropdown notification" style="display:none;">
                         <a class="nav-link" href="#" role="button" id="dropdown-menu-notifications"
                             data-bs-toggle="dropdown" aria-expanded="false" aria-expanded="false">
                             <i class="bs bi-search"></i>
@@ -68,7 +68,7 @@
                     </li>
 
                     <!-- Notificaitons -->
-                    <li class="dropdown notification">
+                    <li class="dropdown notification" style="display:none;">
                         <a class="nav-link" href="#" role="button" id="dropdown-menu-notifications"
                             data-bs-toggle="dropdown" aria-expanded="false" aria-expanded="false">
                             <i class="bs bi-bell"></i>
