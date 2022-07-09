@@ -1,10 +1,10 @@
 <div>
-    @include('livewire.modals.confirm_delete', [
+    @include('manage.livewire.modals.confirm_delete', [
         'confirmTitle' => 'Delete File?',
         'confirmBody'  => 'Are you sure you want to delete this file?',
     ])
 
-    @include('livewire.modals.upload')
+    @include('manage.livewire.modals.upload')
 
     <section id="media-filter" class="row mt-3">
         <div class="col-sm">

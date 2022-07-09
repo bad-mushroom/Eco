@@ -50,7 +50,7 @@ class Media extends Component
                 }
             });
 
-        return View::make('livewire.media')
+        return View::make('manage.livewire.media')
             ->with('media', $query->paginate($this->perPage));
     }
 

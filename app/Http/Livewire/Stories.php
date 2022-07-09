@@ -56,7 +56,7 @@ class Stories extends Component
 
             });
 
-        return View::make('livewire.stories')
+        return View::make('manage.livewire.stories')
             ->with('stories', $query->paginate($this->perPage));
     }
 

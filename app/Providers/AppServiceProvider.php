@@ -39,9 +39,8 @@ class AppServiceProvider extends ServiceProvider
 
         View::getFinder()
             ->setPaths([
-                resource_path('views/manage'),
                 resource_path('views'),
-                resource_path('views/theme'),
+                // resource_path('views/theme'),
                 theme_path(Setting::get('theme') . '/views'),
             ]);
     }

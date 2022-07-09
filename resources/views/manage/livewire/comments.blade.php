@@ -1,6 +1,6 @@
 <div>
-    @include('livewire.modals.confirm_delete', ['confirmTitle' => 'Delete Comment?', 'confirmBody' => 'Are you sure you want to delete this comment?'])
-    @include('livewire.modals.confirm_approve', ['confirmTitle' => 'Approve Comment?', 'confirmBody' => 'Are you sure you want to approve this comment?'])
+    @include('manage.livewire.modals.confirm_delete', ['confirmTitle' => 'Delete Comment?', 'confirmBody' => 'Are you sure you want to delete this comment?'])
+    @include('manage.livewire.modals.confirm_approve', ['confirmTitle' => 'Approve Comment?', 'confirmBody' => 'Are you sure you want to approve this comment?'])
 
     <section id="comments-filter" class="row mt-3">
         <div class="col-sm">

@@ -48,7 +48,7 @@ class Comments extends Component
                 }
             });
 
-        return View::make('livewire.comments')
+        return View::make('manage.livewire.comments')
             ->with('comments', $query->paginate($this->perPage));
     }
 

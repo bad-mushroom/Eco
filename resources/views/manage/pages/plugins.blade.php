@@ -1,4 +1,4 @@
-@extends('manage.app')
+@extends('manage.layout')
 
 @section('content')
 <div class="row">
