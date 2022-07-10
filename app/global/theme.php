@@ -38,6 +38,22 @@ if (!function_exists('pages')) {
 }
 
 /**
+ * page()
+ *
+ * @param string $page_slug
+ *
+ * Get all published pages.
+ *
+ * Example: page('about)
+ */
+if (!function_exists('page')) {
+    function page(string $page_slug)
+    {
+        return Page::where('slug', $page_slug)->first();
+    }
+}
+
+/**
  * tags()
  *
  * Get all tags.
@@ -69,7 +85,7 @@ if (!function_exists('story_types')) {
 if (!function_exists('stories')) {
     function stories()
     {
-        return Story::paginated();
+        return Story::paginate();
     }
 }
 
