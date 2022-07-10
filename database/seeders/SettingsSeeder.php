@@ -22,27 +22,27 @@ class SettingsSeeder extends Seeder
         $postsPerPage->value = 10;
         $postsPerPage->default = 10;
         $postsPerPage->datatype = 'number';
-        $postsPerPage->setting_type_id = $this->lookupSettingType('content')->id;
+        $postsPerPage->setting_type_id = $this->lookupSettingType('stories')->id;
         $postsPerPage->save();
 
         $title = Setting::firstOrNew(['slug' => 'site_title']);
         $title->label = 'Website Title';
         $title->value = 'My Website';
         $title->description = 'The title of your website';
-        $title->setting_type_id = $this->lookupSettingType('general')->id;
+        $title->setting_type_id = $this->lookupSettingType('appearance')->id;
         $title->save();
 
         $headline = Setting::firstOrNew(['slug' => 'site_headline']);
         $headline->label = 'Website Headline';
         $headline->value = 'Welcome to my new home on the web!';
         $headline->description = 'A headline or tag line for your website';
-        $headline->setting_type_id = $this->lookupSettingType('general')->id;
+        $headline->setting_type_id = $this->lookupSettingType('appearance')->id;
         $headline->save();
 
         $description = Setting::firstOrNew(['slug' => 'site_Description']);
         $description->label = 'Website Description';
         $description->description = 'A brief description for your website';
-        $description->setting_type_id = $this->lookupSettingType('general')->id;
+        $description->setting_type_id = $this->lookupSettingType('appearance')->id;
         $description->save();
 
         $dateFormat = Setting::firstOrNew(['slug' => 'date_format']);
@@ -50,7 +50,7 @@ class SettingsSeeder extends Seeder
         $dateFormat->value = 'F jS Y';
         $dateFormat->default = 'F jS Y';
         $dateFormat->description = 'The format to use when displaying dates.';
-        $dateFormat->setting_type_id = $this->lookupSettingType('general')->id;
+        $dateFormat->setting_type_id = $this->lookupSettingType('appearance')->id;
         $dateFormat->save();
 
         $timeFormat = Setting::firstOrNew(['slug' => 'time_format']);
@@ -58,7 +58,7 @@ class SettingsSeeder extends Seeder
         $timeFormat->value = 'h:i:s a';
         $timeFormat->default = 'h:i:s a';
         $timeFormat->description = 'The format to use when displaying times.';
-        $timeFormat->setting_type_id = $this->lookupSettingType('general')->id;
+        $timeFormat->setting_type_id = $this->lookupSettingType('appearance')->id;
         $timeFormat->save();
 
         $allowComments = Setting::firstOrNew(['slug' => 'allow_comments']);
@@ -74,7 +74,7 @@ class SettingsSeeder extends Seeder
         $activeTheme->value = 'ecosphere';
         $activeTheme->default = 'ecosphere';
         $activeTheme->description = 'Theme name from /themes/ directory';
-        $activeTheme->setting_type_id = $this->lookupSettingType('general')->id;
+        $activeTheme->setting_type_id = $this->lookupSettingType('appearance')->id;
         $activeTheme->save();
     }
 
