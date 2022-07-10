@@ -100,6 +100,14 @@ docker exec -it eco_fpm /var/www/artisan eco:setup
 
 # Configuration
 
+### Theme Assets
+
+Anytime you add a theme or make changes to any frontend assets you'll need to publish those changes.
+
+```
+docker exec -it eco_fpm /var/www/artisan eco:publish-theme-assets
+```
+
 ### User Account
 
 By default, there isn't a user account created during setup. To do this there is an artisan command you can run:
