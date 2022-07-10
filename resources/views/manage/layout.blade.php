@@ -162,7 +162,11 @@
                 <!-- Profile -->
                 <div class="dropdown">
                     <a href="#" class="d-block text-decoration-none dropdown-toggle text-light" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/eco/manage/images/avatar.jpg" alt="mdo" width="45" height="45" class="border border-light rounded-circle">
+                        @if (auth()->user()->avatar)
+                            <img src="data:image/png;base64,{{ auth()->user()->avatar }}" width="45" height="45" class="border rounded-circle border-light" />
+                        @else
+                            <img src="https://via.placeholder.com/150" width="45" height="45" class="border rounded-circle border-light" />
+                        @endif
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser1">
                         <li>

@@ -14,14 +14,18 @@
 
 <section id="section-profile">
 <div class="container">
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="row">
             <div class="col-md-4">
                 <div class="text-center">
-                    <img src="https://via.placeholder.com/150" class="img-fluid border rounded-circle border-light p-2 m-3" />
+                    @if (auth()->user()->avatar)
+                        <img src="data:image/png;base64,{{ auth()->user()->avatar }}" width="150" class="img-fluid border rounded-circle border-primary m-3" />
+                    @else
+                        <img src="https://via.placeholder.com/150" class="iborder rounded-circle border-primary m-3" />
+                    @endif
                 </div>
                 <div class="mb-3">
                     <label for="site_title" class="form-label">Avatar</label>
