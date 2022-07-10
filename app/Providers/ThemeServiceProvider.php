@@ -19,9 +19,6 @@ class ThemeServiceProvider extends ServiceProvider
     {
         // -- Composers
 
-        View::composer(['layout'], ViewComposers\ThemeViewComposer::class);
-        View::composer(['*', 'home'], ViewComposers\AppViewComposer::class);
-        View::composer('partials.widgetbar', ViewComposers\SidebarViewComposer::class);
 
         // -- Blade Directives
 

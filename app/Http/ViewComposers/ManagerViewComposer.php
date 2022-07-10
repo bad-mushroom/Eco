@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers;
 
 use App\Models\StoryType;
 use App\Models\SettingType;
+use App\Services\Settings\Facades\Setting;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
@@ -20,6 +21,8 @@ class ManagerViewComposer
     {
         $view->with('storyTypes', StoryType::withCount('stories')->get());
         $view->with('settingTypes', $this->getSettingTypes());
+
+        $view->with('site_title', Setting::get('site_title'));
     }
 
     protected function getSettingTypes(): Collection

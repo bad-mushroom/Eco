@@ -30,6 +30,7 @@ class Stories extends Component
     {
         $query = Story::query()
             ->withCount('comments')
+            ->with(['type', 'author:name'])
             ->notPages()
             ->when($this->type, function ($query) {
                 return $query->whereHas('type', function ($query) {

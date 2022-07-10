@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\ViewComposers;
+use App\Http\ViewComposers\AppViewComposer;
 use App\Models\Story;
 use App\Services\Settings\Facades\Setting;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -40,8 +42,10 @@ class AppServiceProvider extends ServiceProvider
         View::getFinder()
             ->setPaths([
                 resource_path('views'),
-                // resource_path('views/theme'),
                 theme_path(Setting::get('theme') . '/views'),
             ]);
+
+        View::composer(['layout'], ViewComposers\ThemeViewComposer::class);
+        View::composer(['manage.*'], ViewComposers\ManagerViewComposer::class);
     }
 }

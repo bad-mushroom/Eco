@@ -21,7 +21,7 @@ class DashboardController extends Controller
         ];
 
         return View::make('manage.pages.dashboard')
-            ->with('stories', Story::orderByDesc('created_at')->limit(5)->get())
+            ->with('stories', Story::with('type')->orderByDesc('created_at')->limit(5)->get())
             ->with('totals', $totals);
     }
 }

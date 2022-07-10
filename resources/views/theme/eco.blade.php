@@ -13,7 +13,7 @@
 
     <title>@yield('page_title', $site_title ?? 'Eco')</title>
 
-    <link rel="alternate" type="application/atom+xml" title="{{ $site_title }} Feed" href="{{ route('feeds.main') }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ $site_title ?? 'Eco' }} Feed" href="{{ route('feeds.main') }}">
     @include('feed::links')
 
     @stack('css')
