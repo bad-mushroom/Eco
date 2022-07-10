@@ -39,7 +39,7 @@ class SettingsSeeder extends Seeder
         $headline->setting_type_id = $this->lookupSettingType('appearance')->id;
         $headline->save();
 
-        $description = Setting::firstOrNew(['slug' => 'site_Description']);
+        $description = Setting::firstOrNew(['slug' => 'site_description']);
         $description->label = 'Website Description';
         $description->description = 'A brief description for your website';
         $description->setting_type_id = $this->lookupSettingType('appearance')->id;

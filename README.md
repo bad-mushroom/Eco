@@ -82,9 +82,10 @@ docker-compose up
 
 ### Node Packages
 
-There are a handfull of node packages to install and frontend assets to build that Eco requires for the admin page as well as any themes that are installed.
+There are a handfull of node packages to install and frontend assets to build that Eco requires for the admin pages.
 
 ```
+cd resources/views/manage
 npm i
 npm run dev
 ```
