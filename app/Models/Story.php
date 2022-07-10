@@ -118,6 +118,11 @@ class Story extends Model implements Feedable
         return $query->where('is_featured', false);
     }
 
+    public function scopeFeatured($query)
+    {
+        return $query->where('is_featured', true);
+    }
+
     public function scopeNotPages($query)
     {
         $page = StoryType::where('slug', 'page')->first();

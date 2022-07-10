@@ -11,7 +11,7 @@
         </div>
 
         <div class="row mb-2">
-            @foreach ($featuredStories as $story)
+            @foreach (featured_stories() as $story)
                 <div class="col-md-6">
                     @if ($story->featured_image)
                         <img src="data:image/png;base64,{{ $story->featured_image }}" alt="{{ $story->subject }}">
@@ -22,7 +22,7 @@
         </div>
         <hr>
         <div class="row" data-masonry='{"percentPosition": true }'>
-            @forelse ($stories as $story)
+            @forelse (stories() as $story)
                 <div class="col-sm-6 col-lg-4 mb-4">
                     @includeIf('stories.' . $story->type->slug)
                 </div>
@@ -30,7 +30,7 @@
                 <p>Sorry... there's nothing to see here yet</p>
             @endforelse
         </div>
-        {{ $stories->links() }}
+        {{ stories()->links() }}
     </main>
 @endsection
 

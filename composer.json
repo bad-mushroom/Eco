@@ -29,7 +29,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/eco_global.php"
+            "app/global/functions.php",
+            "app/global/theme.php"
         ]
     },
     "autoload-dev": {
