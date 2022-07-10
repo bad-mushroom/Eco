@@ -27,8 +27,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '16'
-    - run: npm ci
-    - run: npm run prod
+    - run: npm --prefix resources/views/manage ci
+    - run: npm --prefix resources/views/manage run prod
 
     # Tag and create GitHub release
     - name: Create Release
