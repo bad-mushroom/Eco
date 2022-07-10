@@ -9,7 +9,7 @@
 --}}
 
 {{-- All themes must extend the "eco" parent theme. --}}
-@extends('eco')
+@extends('theme.eco')
 
 {{-- Add any additional header data that needs to appear in <head></head>  --}}
 @section('head')

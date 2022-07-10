@@ -5,8 +5,8 @@
 
         <div class="p-4 p-md-5 mb-4 mt-5 text-white rounded bg-dark">
             <div class="col-md-6 px-0">
-                <h1 class="display-4 fst-italic">{{ $site_headline }}</h1>
-                <p class="lead my-3">{{ $site_description }}</p>
+                <h1 class="display-4 fst-italic">{{ setting('site_headline') }}</h1>
+                <p class="lead my-3">{{ setting('site_description') }}</p>
             </div>
         </div>
 
