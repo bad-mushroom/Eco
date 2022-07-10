@@ -27,10 +27,28 @@
                     <label for="type" class="form-label required">Story Type</label>
                     <select class="form-control" id="type" aria-describedby="typeHelp" wire:model="type">
                         @foreach ($storyTypes as $type)
-                            <option value="{{ $type->slug }}">{{ $type->label }}</option>
+                        <option value="{{ $type->slug }}">{{ $type->label }}</option>
                         @endforeach
                     </select>
                     <div id="typeHelp" class="form-text text-muted">Each story type has its own template</div>
+                </div>
+                <hr>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input wire:model="isFeatured" class="form-check-input" type="checkbox" value="1" id="featured-story"
+                            aria-describedby="featured-story-help">
+                        <label class="form-check-label" for="featured-story">Featured Story?</label>
+                    </div>
+                    <div id="featured-story-help" class="form-text text-muted">Featured stories can be shown at the top of all other
+                        stories</div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input wire:model="allowComments" class="form-check-input" type="checkbox" value="1" id="allow_comments"
+                            aria-describedby="allow_comments-help">
+                        <label class="form-check-label" for="allow_comments">Allow Comments?</label>
+                    </div>
+                    <div id="allow_comments-help" class="form-text text-muted">Allow commenting for this story</div>
                 </div>
             </section>
 

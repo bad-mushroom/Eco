@@ -53,17 +53,23 @@
                         <div id="publishedAtHelp" class="form-text text-muted">Date and time this story was published</div>
                     </div>
                 @endif
-            </section>
-
-            <section id="story-image">
-                <x-header header="Settings" size="5" classes="pb-2" />
+                <hr>
                 <div class="mb-3">
-                    <label for="allowComments" class="form-label">Comments</label>
-                    <select class="form-control" id="allowComments" aria-describedby="allowCommentsHelp" wire:model="allowComments">
-                        <option value="1" @if ($story->allow_comments) selected @endif>Allow Comments</option>
-                        <option value="0" @if ($story->allow_comments) selected @endif>Do not Allow Comments</option>
-                    </select>
-                    <div id="allowCommentsHelp" class="form-text">Allow or disallow commenting on this story</div>
+                    <div class="form-check">
+                        <input wire:model="isFeatured" class="form-check-input" type="checkbox" value="1" id="featured-story"
+                            aria-describedby="featured-story-help">
+                        <label class="form-check-label" for="featured-story">Featured Story?</label>
+                    </div>
+                    <div id="featured-story-help" class="form-text text-muted">Featured stories can be shown at the top of all other
+                        stories</div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input wire:model="allowComments" class="form-check-input" type="checkbox" value="1" id="allow_comments"
+                            aria-describedby="allow_comments-help">
+                        <label class="form-check-label" for="allow_comments">Allow Comments?</label>
+                    </div>
+                    <div id="allow_comments-help" class="form-text text-muted">Allow commenting for this story</div>
                 </div>
             </section>
 

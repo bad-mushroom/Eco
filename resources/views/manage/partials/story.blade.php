@@ -3,7 +3,7 @@
     <img src="..." class="card-img-top" alt="...">
     @endif
     <div class="card-body">
-        <h5>{{ $story->subject }}</h5>
+        <h5>@if($story->is_featured) <i class="bi bi-star-fill text-warning me-2" title="Feauted Story"></i>@endif{{ $story->subject }}</h5>
         @if ($story->published_at)
             <div class="text-muted small">{{ $story->relative_published_at }}</div>
         @endif

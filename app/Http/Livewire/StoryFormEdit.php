@@ -18,7 +18,8 @@ class StoryFormEdit extends Component
     public ?string $publishedAt;
     public Story $story;
     public ?string $tags;
-    public  $allowComments;
+    public bool $allowComments;
+    public bool $isFeatured;
 
     public function mount(Story $story)
     {
@@ -31,6 +32,7 @@ class StoryFormEdit extends Component
         $this->publishedAt = $story->published_at;
         $this->story = $story;
         $this->allowComments = $story->allow_comments;
+        $this->isFeatured = $story->is_featured;
     }
 
     public function render()

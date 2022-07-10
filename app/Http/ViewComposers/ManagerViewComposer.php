@@ -21,7 +21,6 @@ class ManagerViewComposer
     {
         $view->with('storyTypes', StoryType::withCount('stories')->get());
         $view->with('settingTypes', $this->getSettingTypes());
-
         $view->with('site_title', Setting::get('site_title'));
     }
 

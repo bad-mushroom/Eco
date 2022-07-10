@@ -16,16 +16,18 @@ class StoryFormCreate extends Component
     public ?string $body;
     public ?string $tags;
     public bool $allowComments;
+    public bool $isFeatured;
 
     public function mount()
     {
         $this->type = 'post';
         $this->subject = '';
-        $this->summary = null;
-        $this->body = null;
+        $this->summary = '';
+        $this->body = '';
         $this->user_id = auth()->user()->id ?? '79ef60bb-dac4-45c4-bb43-ad2089c2f95e';
         $this->tags = '';
         $this->allowComments = true;
+        $this->isFeatured = false;
     }
 
     public function render()
