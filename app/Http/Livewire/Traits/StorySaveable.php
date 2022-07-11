@@ -50,9 +50,10 @@ trait StorySaveable
     protected function saveStory(array $data)
     {
         if (isset($this->story)) {
+            $story = $this->story;
             $this->story->update($data);
         } else {
-            Story::create($data);
+            $story = Story::create($data);
         }
 
         foreach ($data['tags'] as $label) {
@@ -60,7 +61,7 @@ trait StorySaveable
 
             if (!empty($label)) {
                 $tag = Tag::firstOrCreate(['label' => Str::title($label)]);
-                $this->story->tags()->save($tag);
+                $story->tags()->save($tag);
             }
         }
 

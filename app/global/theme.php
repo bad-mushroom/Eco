@@ -73,7 +73,7 @@ if (!function_exists('tags')) {
 if (!function_exists('story_types')) {
     function story_types()
     {
-        return StoryType::all();
+        return StoryType::withCount('stories')->get();
     }
 }
 
@@ -85,7 +85,7 @@ if (!function_exists('story_types')) {
 if (!function_exists('stories')) {
     function stories()
     {
-        return Story::paginate();
+        return Story::published()->paginate();
     }
 }
 

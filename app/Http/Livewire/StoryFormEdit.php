@@ -26,8 +26,8 @@ class StoryFormEdit extends Component
         $this->tags = $story->tag ?? '';
         $this->type = $story->type->slug;
         $this->subject = $story->subject;
-        $this->summary = $story->summary;
-        $this->body = $story->body;
+        $this->summary = $story->summary ?? '';
+        $this->body = $story->body ?? '';
         $this->user_id = $story->user_id;
         $this->publishedAt = $story->published_at;
         $this->story = $story;

@@ -18,7 +18,8 @@ class Note extends Story implements StoryTypeInterface
     {
         return [
             'subject' => ['required', 'max:255'],
-            'summary' => ['required'],
+            'summary' => ['sometimes'],
+            'body' => ['sometimes'],
             'user_id' => ['required']
         ];
     }
