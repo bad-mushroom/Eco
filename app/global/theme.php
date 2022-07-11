@@ -33,7 +33,7 @@ if (!function_exists('setting')) {
 if (!function_exists('pages')) {
     function pages()
     {
-        return Page::published()->get();
+        return Page::onlyPages()->published()->get();
     }
 }
 

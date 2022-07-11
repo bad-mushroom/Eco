@@ -129,6 +129,13 @@ class Story extends Model implements Feedable
         return $query->where('story_type_id', '!=', $page->id);
     }
 
+    public function scopeOnlyPages($query)
+    {
+        return $query->whereHas('type', function ($query) {
+            return $query->where('slug', 'page');
+        });
+    }
+
     public function scopeForType($query, $slug)
     {
         return $query->whereHas('type', function ($query) use ($slug) {
