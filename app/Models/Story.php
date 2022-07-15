@@ -10,12 +10,13 @@ use App\Models\Traits\Uuidable;
 use App\Services\StoryTypes\Facades\Type;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
 class Story extends Model implements Feedable
 {
-    use Commentable, Formatable, HasFactory, Sluggable, Taggable, Uuidable;
+    use Commentable, Formatable, HasFactory, Sluggable, SoftDeletes, Taggable, Uuidable;
 
     /**
      * Sluggable Column.

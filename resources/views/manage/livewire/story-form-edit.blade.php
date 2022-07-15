@@ -1,28 +1,41 @@
 <form>
+    @include('manage.livewire.modals.confirm_delete', [
+        'confirmTitle' => 'Delete Story?',
+        'confirmBody' => 'Are you sure you want to delete this story?',
+        ])
+
     <div class="row">
         <div class="col-lg-8 col-md-9 col-sm-12">
             @include('manage.partials.alerts')
 
-            <section id="story-create">
+            <section id="story-edit">
                 <x-header header="Details" size="5" classes="pb-3" />
 
                 @includeIf('manage.partials.forms.' . $type)
-
-                <div class="mb-3 text-end">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-danger text-light" wire:click="setDeleteId('{{ $story->id }}')" data-bs-toggle="modal"
+                        data-bs-target="#confirmDelete">
+                            <i class="bi bi-trash me-2"></i>Delete
+                        </button>
+                    </div>
+                    <div class="col-md-6 text-end">
 
                     @if ($story->published_at)
-                        <button type="button" class="btn btn-secondary text-light" wire:click="saveDraft">
-                            <i class="bi bi-cloud-fill me-2"></i>Convert to draft
-                        </button>
+                    <button type="button" class="btn btn-secondary text-light" wire:click="saveDraft">
+                        <i class="bi bi-cloud-fill me-2"></i>Convert to draft
+                    </button>
                     @else
-                        <button type="button" class="btn btn-secondary text-light" wire:click="saveDraft">
-                            <i class="bi bi-cloud me-2"></i>Save Draft
-                        </button>
+                    <button type="button" class="btn btn-secondary text-light" wire:click="saveDraft">
+                        <i class="bi bi-cloud me-2"></i>Save Draft
+                    </button>
                     @endif
                     <button type="button" class="btn btn-success text-light" wire:click="publish">
                         <i class="bi bi-cloud-fill me-2"></i>Save and Publish
                     </button>
                 </div>
+                </div>
+
             </section>
         </div>
 

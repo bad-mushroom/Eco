@@ -20,9 +20,11 @@ class StoryFormEdit extends Component
     public ?string $tags;
     public bool $allowComments;
     public bool $isFeatured;
+    public string $confirmId;
 
     public function mount(Story $story)
     {
+        $this->confirmId = '';
         $this->tags = $story->tag ?? '';
         $this->type = $story->type->slug;
         $this->subject = $story->subject;
@@ -40,6 +42,22 @@ class StoryFormEdit extends Component
         return View::make('manage.livewire.story-form-edit')
             ->with('error', $this->getErrorBag()->count() ? 'Something went wrong! Check the form and try again.' : null)
             ->with('type', $this->type);
+    }
+
+    public function setDeleteId($id)
+    {
+        $this->confirmId = $id;
+    }
+
+    public function delete()
+    {
+        $story = Story::find($this->confirmId);
+
+        $story->delete();
+
+        return redirect()->route('manage.stories.index')
+            ->with('success', $story->subject . ' has been deleted.');
+
     }
 
 }
