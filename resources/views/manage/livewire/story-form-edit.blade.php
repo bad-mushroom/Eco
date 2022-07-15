@@ -13,27 +13,31 @@
 
                 @includeIf('manage.partials.forms.' . $type)
                 <div class="row">
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-danger text-light" wire:click="setDeleteId('{{ $story->id }}')" data-bs-toggle="modal"
-                        data-bs-target="#confirmDelete">
+                    <div class="col">
+                        <button type="button" class="btn btn-danger text-light" wire:click="setDeleteId('{{ $story->id }}')"
+                            data-bs-toggle="modal" data-bs-target="#confirmDelete">
                             <i class="bi bi-trash me-2"></i>Delete
                         </button>
-                    </div>
-                    <div class="col-md-6 text-end">
 
-                    @if ($story->published_at)
-                    <button type="button" class="btn btn-secondary text-light" wire:click="saveDraft">
-                        <i class="bi bi-cloud-fill me-2"></i>Convert to draft
-                    </button>
-                    @else
-                    <button type="button" class="btn btn-secondary text-light" wire:click="saveDraft">
-                        <i class="bi bi-cloud me-2"></i>Save Draft
-                    </button>
-                    @endif
-                    <button type="button" class="btn btn-success text-light" wire:click="publish">
-                        <i class="bi bi-cloud-fill me-2"></i>Save and Publish
-                    </button>
-                </div>
+                    </div>
+                    <div class="col text-end">
+                        <button type="button" class="btn btn-info text-dark me-4" data-bs-toggle="modal" data-bs-target="#previewStory">
+                            <i class="bi bi-eye me-2"></i>Preview
+                        </button>
+
+                        @if ($story->published_at)
+                        <button type="button" class="btn btn-secondary text-light" wire:click="saveDraft">
+                            <i class="bi bi-cloud-fill me-2"></i>Convert to draft
+                        </button>
+                        @else
+                        <button type="button" class="btn btn-secondary text-light" wire:click="saveDraft">
+                            <i class="bi bi-cloud me-2"></i>Save Draft
+                        </button>
+                        @endif
+                        <button type="button" class="btn btn-success text-light" wire:click="publish">
+                            <i class="bi bi-cloud-fill me-2"></i>Save and Publish
+                        </button>
+                    </div>
                 </div>
 
             </section>
@@ -109,4 +113,7 @@
             </section>
         </div>
     </div>
+
+    @include('manage.livewire.modals.preview')
+
 </form>
